@@ -1,0 +1,24 @@
+server:
+  port: 8088
+# datasource config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kd-shop?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=UTC
+    username: root
+    password: root
+    tomcat:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  #文件上传大小设置
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+# logback
+logging:
+  config: classpath:logback-spring.xml

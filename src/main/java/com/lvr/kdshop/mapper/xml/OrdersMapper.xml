@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvr.kdshop.mapper.OrdersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lvr.kdshop.entity.Orders">
+        <id column="id" property="id" />
+        <result column="order_id" property="order_id" />
+        <result column="user_id" property="user_id" />
+        <result column="good_id" property="good_id" />
+        <result column="address_id" property="address_id" />
+        <result column="pay_id" property="pay_id" />
+        <result column="create_at" property="create_at" />
+        <result column="status" property="status" />
+    </resultMap>
+
+</mapper>
