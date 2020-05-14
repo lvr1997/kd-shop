@@ -8,7 +8,6 @@
         <result column="phone" property="phone" />
         <result column="username" property="username" />
         <result column="password" property="password" />
-        <result column="QQ" property="QQ" />
         <result column="create_at" property="create_at" />
         <result column="goods_num" property="goods_num" />
         <result column="power" property="power" />
@@ -21,8 +20,4 @@
         <result column="signature" property="signature" />
     </resultMap>
 
-    <!-- 编写一个普通 list 查询，mybatis-plus 自动替你分页 -->
-    <select id="selectUserByPage" resultType="com.lvr.kdshop.entity.User">
-        select * from user where status = #{status}
-    </select>
 </mapper>

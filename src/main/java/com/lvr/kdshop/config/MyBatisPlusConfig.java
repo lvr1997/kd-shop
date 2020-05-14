@@ -1,7 +1,6 @@
 package com.lvr.kdshop.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +18,8 @@ public class MyBatisPlusConfig {
      * @return
      */
     @Bean
-    public PaginationInterceptor pageinationInterceptor() {
-        // 开启 count 的 join 优化,只针对 left join !!!
-        return new PaginationInterceptor().setCountSqlParser(new JsqlParserCountOptimize());
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
     }
+
 }

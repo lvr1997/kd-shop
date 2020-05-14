@@ -1,5 +1,8 @@
+#项目配置
 server:
   port: 8088
+  servlet:
+    context-path: /kdshop
 # datasource config
 spring:
   datasource:
@@ -8,12 +11,12 @@ spring:
     username: root
     password: root
     tomcat:
-      initial-size: 5
-      min-idle: 5
-      max-active: 20
-      max-wait: 60000
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
+      initial-size: 5 #初始化连接池大小
+      min-idle: 5 #连接池最小连接数
+      max-active: 20 #连接池最大连接数
+      max-wait: 60000 #获取连接等待超时时间
+      time-between-eviction-runs-millis: 60000 #间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000 #配置一个连接在池中最小生存的时间，单位是毫秒
   #文件上传大小设置
   servlet:
     multipart:
@@ -22,3 +25,9 @@ spring:
 # logback
 logging:
   config: classpath:logback-spring.xml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
