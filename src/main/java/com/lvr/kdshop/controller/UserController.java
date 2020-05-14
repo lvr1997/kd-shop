@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lvr.kdshop.entity.User;
 import com.lvr.kdshop.service.IUserService;
+import com.lvr.kdshop.util.MD5;
 import com.lvr.kdshop.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,7 +48,7 @@ public class UserController {
             //根据用户名密码查询用户
             QueryWrapper queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("username", userName);
-            queryWrapper.eq("password", password);
+            queryWrapper.eq("password", MD5.md5(password));
             User user = userService.getOne(queryWrapper);
 
             //验证用户
