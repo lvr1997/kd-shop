@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -21,7 +22,7 @@ import java.util.concurrent.Executors;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Autowired
+    @Resource
     private TokenInterceptor tokenInterceptor;
 
     /**
@@ -54,16 +55,16 @@ public class WebConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        List<String> excludePath = new ArrayList<>();
+        /*List<String> excludePath = new ArrayList<>();
         //排除拦截，除了注册登录(此时还没token)，其他都拦截
-        excludePath.add("/register");  //登录
-        excludePath.add("/login");     //注册
+        excludePath.add("/register");  //注册
+        excludePath.add("/kdshop/user/login"); //登录
         excludePath.add("/static/**");  //静态资源
         excludePath.add("/assets/**");  //静态资源
         registry.addInterceptor(tokenInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePath);
-        WebMvcConfigurer.super.addInterceptors(registry);
+        WebMvcConfigurer.super.addInterceptors(registry);*/
 
     }
 
