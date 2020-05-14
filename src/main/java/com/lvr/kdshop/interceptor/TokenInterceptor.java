@@ -24,6 +24,10 @@ public class TokenInterceptor implements HandlerInterceptor {
             response.setStatus(HttpServletResponse.SC_OK);
             return true;
         }
+        if (request.getRequestURI().contains("/login")) {
+            return true;
+        }
+        System.out.println(request.getRequestURI());
         response.setCharacterEncoding("utf-8");
         String token = request.getHeader("token");
         if (token!=null){

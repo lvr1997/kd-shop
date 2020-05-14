@@ -36,7 +36,7 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestBody String params, HttpServletRequest request) {
+    public JSONObject login(@RequestBody String params, HttpServletRequest request) {
         //用来返回结果的jsonObject对象
         JSONObject result = new JSONObject();
         if(StringUtils.isNotBlank(params)) {
@@ -57,6 +57,7 @@ public class UserController {
                 String token = TokenUtil.sign(user);
                 result.put("user", user);
                 result.put("token", token);
+                result.put("message", "登录成功！");
             } else {
                 result.put("message", "登录失败，用户名或密码错误！");
             }
@@ -65,7 +66,7 @@ public class UserController {
             result.put("message", "参数不可以为空！");
         }
 
-        return result.toJSONString();
+        return result;
     }
 
     @RequestMapping("/findUsers")
