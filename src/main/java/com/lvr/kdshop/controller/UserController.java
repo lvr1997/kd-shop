@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lvr.kdshop.entity.User;
 import com.lvr.kdshop.service.IUserService;
+import com.lvr.kdshop.util.JSONResult;
 import com.lvr.kdshop.util.MD5;
 import com.lvr.kdshop.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -69,8 +70,14 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 查找用户接口
+     * @param params
+     * @return
+     */
     @RequestMapping("/findUsers")
-    public IPage<User> selectUserByPage(@RequestBody String params) {
+    public JSONResult selectUserByPage(@RequestBody String params) {
+        JSONResult result=new JSONResult();
         if(StringUtils.isNotBlank(params)) {
             JSONObject obj = JSON.parseObject(params);
             Integer pageNum = obj.getInteger("pageNum");
@@ -79,10 +86,12 @@ public class UserController {
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("username", userName);
             IPage<User> page = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
-            return page;
-        }
+            result.setData(page);
+            result.setMessage("请求成功");
+            result.setCode("200");
 
-        return null;
+        }
+        return result;
     }
 
 }
