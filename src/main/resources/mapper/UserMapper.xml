@@ -20,4 +20,8 @@
         <result column="signature" property="signature" />
     </resultMap>
 
+    <select id="findUser" resultMap="BaseResultMap">
+        select * from USER
+    </select>
+
 </mapper>

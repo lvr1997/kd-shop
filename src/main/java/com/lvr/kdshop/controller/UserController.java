@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -92,6 +93,12 @@ public class UserController {
 
         }
         return result;
+    }
+
+    @RequestMapping("/list")
+    public List<User> findUser() {
+
+        return userService.findUser();
     }
 
 }
