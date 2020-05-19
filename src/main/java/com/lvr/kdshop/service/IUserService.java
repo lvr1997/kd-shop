@@ -14,5 +14,5 @@ import java.util.List;
  * @since 2020-05-13
  */
 public interface IUserService extends IService<User> {
-    List<User> findUser();
+
 }

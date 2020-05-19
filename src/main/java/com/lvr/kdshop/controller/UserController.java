@@ -95,11 +95,5 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping("/list")
-    public List<User> findUser() {
-
-        return userService.findUser();
-    }
-
 }
 
