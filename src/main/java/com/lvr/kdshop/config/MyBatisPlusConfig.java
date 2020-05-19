@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author lvr
  * @version 1.0 2020/5/13
  */
+@EnableTransactionManagement
 @Configuration
 @MapperScan("com.lvr.kdshop.mapper")
 public class MyBatisPlusConfig {

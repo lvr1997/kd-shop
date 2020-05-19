@@ -1,19 +1,15 @@
 package com.lvr.kdshop.mapper;
 
-import com.lvr.kdshop.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lvr.kdshop.entity.Menus;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
- *
  * @author lvr
- * @since 2020-05-13
+ * @version 1.0 2020/5/18
  */
-public interface UserMapper extends BaseMapper<User> {
-
+public interface MenusMapper extends BaseMapper<Menus> {
+    List<Menus> getMenusByPid(Integer pid);
 }
