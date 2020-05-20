@@ -55,7 +55,7 @@ public class WebConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        /*List<String> excludePath = new ArrayList<>();
+        List<String> excludePath = new ArrayList<>();
         //排除拦截，除了注册登录(此时还没token)，其他都拦截
         excludePath.add("/register");  //注册
         excludePath.add("/kdshop/user/login"); //登录
@@ -64,7 +64,7 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addInterceptor(tokenInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePath);
-        WebMvcConfigurer.super.addInterceptors(registry);*/
+        WebMvcConfigurer.super.addInterceptors(registry);
 
     }
 
