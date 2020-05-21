@@ -84,9 +84,11 @@ public class UserController {
             JSONObject obj = JSON.parseObject(params);
             Integer pageNum = obj.getInteger("pageNum");
             Integer pageSize = obj.getInteger("pageSize");
-//            String userName = obj.getString("userName");
+            String userName = obj.getString("userName");
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-//            queryWrapper.eq("username", userName);
+            if(userName != null && userName != "") {
+                queryWrapper.eq("username", userName);
+            }
             IPage<User> page = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
             result.setData(page);
             result.setMessage("请求成功");
