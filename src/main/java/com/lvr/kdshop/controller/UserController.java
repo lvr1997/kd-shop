@@ -61,6 +61,7 @@ public class UserController {
                 result.put("token", token);
                 result.put("message", "登录成功！");
             } else {
+                result.put("code", "-1");
                 result.put("message", "登录失败，用户名或密码错误！");
             }
 
@@ -83,9 +84,9 @@ public class UserController {
             JSONObject obj = JSON.parseObject(params);
             Integer pageNum = obj.getInteger("pageNum");
             Integer pageSize = obj.getInteger("pageSize");
-            String userName = obj.getString("userName");
+//            String userName = obj.getString("userName");
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("username", userName);
+//            queryWrapper.eq("username", userName);
             IPage<User> page = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
             result.setData(page);
             result.setMessage("请求成功");
