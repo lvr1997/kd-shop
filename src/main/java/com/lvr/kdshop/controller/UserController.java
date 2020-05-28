@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lvr.kdshop.entity.User;
+import com.lvr.kdshop.entity.vo.UserVo;
 import com.lvr.kdshop.service.IUserService;
 import com.lvr.kdshop.util.JSONResult;
 import com.lvr.kdshop.util.MD5;
@@ -85,11 +86,13 @@ public class UserController {
             Integer pageNum = obj.getInteger("pageNum");
             Integer pageSize = obj.getInteger("pageSize");
             String userName = obj.getString("userName");
-            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-            if(userName != null && userName != "") {
-                queryWrapper.eq("username", userName);
-            }
-            IPage<User> page = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
+
+            Page<UserVo> page = userService.getUsersList(new Page<>(pageNum, pageSize), userName);
+//            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//            if(userName != null && userName != "") {
+//                queryWrapper.like("username", userName);
+//            }
+//            IPage<User> page = userService.page(new Page<>(pageNum, pageSize), queryWrapper);
             result.setData(page);
             result.setMessage("请求成功");
             result.setCode("200");
