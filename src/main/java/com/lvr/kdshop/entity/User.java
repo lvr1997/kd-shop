@@ -9,14 +9,14 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lvr
  * @since 2020-05-13
  */
 @Data
-public class User extends Model<User> {
+public class User extends Model<User> implements Serializable {
 
     private static final long serialVersionUID=1L;
 

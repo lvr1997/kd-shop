@@ -22,9 +22,9 @@ import java.util.concurrent.Executors;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Resource
-    private TokenInterceptor tokenInterceptor;
-
+//    @Resource
+//    private TokenInterceptor tokenInterceptor;
+//
     /**
      * 解决跨域请求
      * @param registry
@@ -35,37 +35,38 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .allowedOrigins("*")
-                .allowCredentials(true);
+                .allowCredentials(true)
+                .maxAge(3600);
     }
-
-    /**
-     * 异步请求配置
-     * @param configurer
-     */
-    @Override
-    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
-        configurer.setTaskExecutor(new ConcurrentTaskExecutor(Executors.newFixedThreadPool(3)));
-        configurer.setDefaultTimeout(30000);
-    }
-
-    /**
-     * 配置拦截器、拦截路径
-     * 每次请求到拦截的路径，就会去执行拦截器中的方法
-     * @param
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        List<String> excludePath = new ArrayList<>();
-        //排除拦截，除了注册登录(此时还没token)，其他都拦截
-        excludePath.add("/register");  //注册
-        excludePath.add("/kdshop/user/login"); //登录
-        excludePath.add("/static/**");  //静态资源
-        excludePath.add("/assets/**");  //静态资源
-        registry.addInterceptor(tokenInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePath);
-        WebMvcConfigurer.super.addInterceptors(registry);
-
-    }
+//
+//    /**
+//     * 异步请求配置
+//     * @param configurer
+//     */
+//    @Override
+//    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+//        configurer.setTaskExecutor(new ConcurrentTaskExecutor(Executors.newFixedThreadPool(3)));
+//        configurer.setDefaultTimeout(30000);
+//    }
+//
+//    /**
+//     * 配置拦截器、拦截路径
+//     * 每次请求到拦截的路径，就会去执行拦截器中的方法
+//     * @param
+//     */
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        List<String> excludePath = new ArrayList<>();
+//        //排除拦截，除了注册登录(此时还没token)，其他都拦截
+//        excludePath.add("/register");  //注册
+//        excludePath.add("/kdshop/user/login"); //登录
+//        excludePath.add("/static/**");  //静态资源
+//        excludePath.add("/assets/**");  //静态资源
+//        registry.addInterceptor(tokenInterceptor)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns(excludePath);
+//        WebMvcConfigurer.super.addInterceptors(registry);
+//
+//    }
 
 }
