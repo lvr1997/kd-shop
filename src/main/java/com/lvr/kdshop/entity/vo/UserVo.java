@@ -3,6 +3,7 @@ package com.lvr.kdshop.entity.vo;
 import com.lvr.kdshop.entity.Role;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,9 @@ import java.util.List;
  * @date: 2020/5/27
  */
 @Data
-public class UserVo {
+public class UserVo implements Serializable {
+
+    private static final long serialVersionUID = -4610905995688416358L;
 
     private Integer id;
 
