@@ -19,15 +19,7 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select({"<script>",
-                "select user.*, role.role_name as roleName from user ",
-                "left join user_role on user.id=user_role.user_id ",
-                "left join role on role.id=user_role.role_id ",
-                "<when test='username != null'>",
-                   "where username=#{username}",
-                "</when>",
-             "</script>"
-            })
+
     List<UserVo> getUsersList(Page<?> page, @Param("username") String username);
 
 }

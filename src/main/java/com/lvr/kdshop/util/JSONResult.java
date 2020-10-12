@@ -1,35 +1,40 @@
 package com.lvr.kdshop.util;
 
+import lombok.Data;
+
 /**
  * @author lvr
  * @version 1.0 2020/5/15
  */
+@Data
 public class JSONResult {
 
     private String code;//结果编码
     private String message;//结果描述
     private Object data;
 
-    public String getCode() {
-        return code;
-    }
-    public void setCode(String code) {
-        this.code = code;
-        this.message = code;
-    }
-    public String getMessage() {
-        return message;
-    }
-    public void setMessage(String message) {
-        this.message = message;
+    public static JSONResult success(Object data) {
+        JSONResult result = new JSONResult();
+        result.setCode("200");
+        result.setData(data);
+        result.setMessage("success");
+        return result;
     }
 
-    public Object getData() {
-        return data;
+    public static JSONResult fail(String message) {
+        JSONResult result = new JSONResult();
+        result.setCode("-1");
+        result.setData(null);
+        result.setMessage(message);
+        return result;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public static JSONResult fail(String code, String message) {
+        JSONResult result = new JSONResult();
+        result.setCode(code);
+        result.setData(null);
+        result.setMessage(message);
+        return result;
     }
 
     @Override
