@@ -42,6 +42,12 @@ public class UserController {
     @Resource
     private IUserService userService;
 
+    /**
+     * 请求登录接口
+     * @param params
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public JSONObject login(@RequestBody String params, HttpServletRequest request) {
         //用来返回结果的jsonObject对象

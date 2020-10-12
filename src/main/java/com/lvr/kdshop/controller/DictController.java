@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 @RequestMapping("/kdshop/dict_areas")
-public class Dict_areasController {
+public class DictController {
 
 }
 
