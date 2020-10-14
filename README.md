@@ -1,4 +1,4 @@
-![images](src/main/resources/images/kdmall-logo.png)
+![images](./src/main/resources/images/kdmall-logo.png)
 
 后端
 
