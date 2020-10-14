@@ -1,4 +1,4 @@
-![images](./src/main/resources/images/kdmall-logo.png)
+![images](https://bunalien.oss-cn-beijing.aliyuncs.com/logo/kdmall-logo.png?Expires=1602643334&OSSAccessKeyId=TMP.3KhASHyzw5jwRBrowtV5Z2H5K351Ad1rVnrR6ANMhVSoX1ieGVvC8X1HnTRxxMDB3A33yHAq3tsCdjb7aLwm6BnvjKXrbx&Signature=mW9rKDRScR8vSICXRdQVDGtQE6s%3D)
 
 后端
 
