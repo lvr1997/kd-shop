@@ -1,4 +1,4 @@
-![images](https://kdmall.oss-cn-beijing.aliyuncs.com/logo/kdmall-logo.png)
+![images](https://gitee.com/lvr1997/PicGioRepository/raw/master/img/kdmall-logo.png)
 
 后端
 
