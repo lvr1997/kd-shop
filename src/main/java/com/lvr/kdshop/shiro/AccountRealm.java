@@ -3,7 +3,7 @@ package com.lvr.kdshop.shiro;
 import cn.hutool.core.bean.BeanUtil;
 import com.lvr.kdshop.entity.User;
 import com.lvr.kdshop.service.IUserService;
-import com.lvr.kdshop.util.JWTUtil;
+import com.lvr.kdshop.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 public class AccountRealm extends AuthorizingRealm {
 
     @Autowired
-    JWTUtil jwtUtil;
+    JwtUtils jwtUtils;
     @Autowired
     IUserService userService;
 
@@ -56,7 +56,7 @@ public class AccountRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         JwtToken jwt = (JwtToken) token;
         log.info("jwt------->", jwt);
-        String userId = jwtUtil.getClaimByToken((String) jwt.getPrincipal()).getSubject();
+        String userId = jwtUtils.getClaimByToken((String) jwt.getPrincipal()).getSubject();
         User user = userService.getById(Long.parseLong(userId));
         if(user == null) {
             throw new UnknownAccountException("账户不存在");

@@ -18,7 +18,7 @@ import java.util.Date;
 @Slf4j
 @Data
 @Component
-public class JWTUtil {
+public class JwtUtils {
 
     private String secret = "f4e2e52034348f86b67cde581c0f9eb5"; // 加密秘钥
     private long expire = 30*60*1000; // token有效时长，30分钟

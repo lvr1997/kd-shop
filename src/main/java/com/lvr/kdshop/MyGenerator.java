@@ -1,4 +1,4 @@
-package com.lvr.kdshop.util;
+package com.lvr.kdshop;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;

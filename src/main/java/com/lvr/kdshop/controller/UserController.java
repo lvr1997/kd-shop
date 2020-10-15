@@ -4,15 +4,13 @@ package com.lvr.kdshop.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lvr.kdshop.entity.User;
 import com.lvr.kdshop.entity.vo.UserVo;
 import com.lvr.kdshop.service.IUserService;
 import com.lvr.kdshop.util.JSONResult;
-import com.lvr.kdshop.util.JWTUtil;
+import com.lvr.kdshop.util.JwtUtils;
 import com.lvr.kdshop.util.MD5;
-import com.lvr.kdshop.util.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * <p>
@@ -37,7 +34,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    JWTUtil jwtUtil;
+    JwtUtils jwtUtils;
 
     @Resource
     private IUserService userService;
@@ -72,7 +69,7 @@ public class UserController {
             }
             //如果用户存在就生成token并将用户信息和token一起返回给前台
 //                String token = TokenUtil.sign(user);
-            String token = jwtUtil.generateToken(user.getId());
+            String token = jwtUtils.generateToken(user.getId());
             result.put("user", user);
             result.put("token", token);
             result.put("message", "登录成功！");
