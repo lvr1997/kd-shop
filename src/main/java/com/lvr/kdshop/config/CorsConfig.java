@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 配置拦截器
+ * 配置跨域
  * @author lvr
  * @version 1.0 2020/5/14
  */
