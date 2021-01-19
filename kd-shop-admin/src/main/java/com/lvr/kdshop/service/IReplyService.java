@@ -7,7 +7,7 @@ import com.lvr.kdshop.domain.Reply;
  * 评论回复Service接口
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public interface IReplyService 
 {

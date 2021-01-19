@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询收件地址列表
+// 查询收货地址列表
 export function listAddress(query) {
   return request({
     url: '/kdshop/address/list',
@@ -9,7 +9,7 @@ export function listAddress(query) {
   })
 }
 
-// 查询收件地址详细
+// 查询收货地址详细
 export function getAddress(id) {
   return request({
     url: '/kdshop/address/' + id,
@@ -17,7 +17,7 @@ export function getAddress(id) {
   })
 }
 
-// 新增收件地址
+// 新增收货地址
 export function addAddress(data) {
   return request({
     url: '/kdshop/address',
@@ -26,7 +26,7 @@ export function addAddress(data) {
   })
 }
 
-// 修改收件地址
+// 修改收货地址
 export function updateAddress(data) {
   return request({
     url: '/kdshop/address',
@@ -35,7 +35,7 @@ export function updateAddress(data) {
   })
 }
 
-// 删除收件地址
+// 删除收货地址
 export function delAddress(id) {
   return request({
     url: '/kdshop/address/' + id,
@@ -43,7 +43,7 @@ export function delAddress(id) {
   })
 }
 
-// 导出收件地址
+// 导出收货地址
 export function exportAddress(query) {
   return request({
     url: '/kdshop/address/export',

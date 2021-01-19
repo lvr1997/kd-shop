@@ -4,57 +4,57 @@ import java.util.List;
 import com.lvr.kdshop.domain.Notice;
 
 /**
- * 系统通知Service接口
+ * 系统公告Service接口
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public interface INoticeService 
 {
     /**
-     * 查询系统通知
+     * 查询系统公告
      * 
-     * @param id 系统通知ID
-     * @return 系统通知
+     * @param id 系统公告ID
+     * @return 系统公告
      */
     public Notice selectNoticeById(Long id);
 
     /**
-     * 查询系统通知列表
+     * 查询系统公告列表
      * 
-     * @param notice 系统通知
-     * @return 系统通知集合
+     * @param notice 系统公告
+     * @return 系统公告集合
      */
     public List<Notice> selectNoticeList(Notice notice);
 
     /**
-     * 新增系统通知
+     * 新增系统公告
      * 
-     * @param notice 系统通知
+     * @param notice 系统公告
      * @return 结果
      */
     public int insertNotice(Notice notice);
 
     /**
-     * 修改系统通知
+     * 修改系统公告
      * 
-     * @param notice 系统通知
+     * @param notice 系统公告
      * @return 结果
      */
     public int updateNotice(Notice notice);
 
     /**
-     * 批量删除系统通知
+     * 批量删除系统公告
      * 
-     * @param ids 需要删除的系统通知ID
+     * @param ids 需要删除的系统公告ID
      * @return 结果
      */
     public int deleteNoticeByIds(Long[] ids);
 
     /**
-     * 删除系统通知信息
+     * 删除系统公告信息
      * 
-     * @param id 系统通知ID
+     * @param id 系统公告ID
      * @return 结果
      */
     public int deleteNoticeById(Long id);

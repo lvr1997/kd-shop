@@ -1,34 +1,37 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 收藏对象 kd_wanted
+ * 闲置收藏对象 kd_wanted
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Wanted extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** 收藏id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 收藏人 */
+    @Excel(name = "收藏人")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置id */
+    @Excel(name = "闲置id")
     private Long goodId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String createAt;
+    /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createAt;
 
     public void setId(Long id) 
     {
@@ -57,12 +60,12 @@ public class Wanted extends BaseEntity
     {
         return goodId;
     }
-    public void setCreateAt(String createAt) 
+    public void setCreateAt(Date createAt) 
     {
         this.createAt = createAt;
     }
 
-    public String getCreateAt() 
+    public Date getCreateAt() 
     {
         return createAt;
     }

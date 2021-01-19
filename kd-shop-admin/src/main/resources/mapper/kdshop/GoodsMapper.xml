@@ -11,23 +11,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="name"    column="name"    />
         <result property="price"    column="price"    />
         <result property="realPrice"    column="real_price"    />
-        <result property="startTime"    column="start_time"    />
         <result property="polishTime"    column="polish_time"    />
-        <result property="endTime"    column="end_time"    />
-        <result property="commetNum"    column="commet_num"    />
+        <result property="buyUrl"    column="buy_url"    />
         <result property="phoneNumber"    column="phone_number"    />
         <result property="qqNumber"    column="qq_number"    />
         <result property="wxNumber"    column="wx_number"    />
-        <result property="goodCity"    column="good_city"    />
-        <result property="goodBuyMethod"    column="good_buy_method"    />
-        <result property="goodAddress"    column="good_address"    />
-        <result property="viewcount"    column="viewCount"    />
+        <result property="buyMethod"    column="buy_method"    />
+        <result property="address"    column="address"    />
+        <result property="viewCount"    column="view_count"    />
         <result property="describle"    column="describle"    />
         <result property="status"    column="status"    />
     </resultMap>
 
     <sql id="selectGoodsVo">
-        select id, catelog_id, user_id, name, price, real_price, start_time, polish_time, end_time, commet_num, phone_number, qq_number, wx_number, good_city, good_buy_method, good_address, viewCount, describle, status from kd_goods
+        select id, catelog_id, user_id, name, price, real_price, polish_time, buy_url, phone_number, qq_number, wx_number, buy_method, address, view_count, describle, status from kd_goods
     </sql>
 
     <select id="selectGoodsList" parameterType="Goods" resultMap="GoodsResult">
@@ -38,17 +35,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="price != null "> and price = #{price}</if>
             <if test="realPrice != null "> and real_price = #{realPrice}</if>
-            <if test="startTime != null  and startTime != ''"> and start_time = #{startTime}</if>
-            <if test="polishTime != null  and polishTime != ''"> and polish_time = #{polishTime}</if>
-            <if test="endTime != null  and endTime != ''"> and end_time = #{endTime}</if>
-            <if test="commetNum != null "> and commet_num = #{commetNum}</if>
+            <if test="polishTime != null "> and polish_time = #{polishTime}</if>
+            <if test="buyUrl != null  and buyUrl != ''"> and buy_url = #{buyUrl}</if>
             <if test="phoneNumber != null  and phoneNumber != ''"> and phone_number = #{phoneNumber}</if>
             <if test="qqNumber != null  and qqNumber != ''"> and qq_number = #{qqNumber}</if>
             <if test="wxNumber != null  and wxNumber != ''"> and wx_number = #{wxNumber}</if>
-            <if test="goodCity != null  and goodCity != ''"> and good_city = #{goodCity}</if>
-            <if test="goodBuyMethod != null  and goodBuyMethod != ''"> and good_buy_method = #{goodBuyMethod}</if>
-            <if test="goodAddress != null  and goodAddress != ''"> and good_address = #{goodAddress}</if>
-            <if test="viewcount != null "> and viewCount = #{viewcount}</if>
+            <if test="buyMethod != null "> and buy_method = #{buyMethod}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="viewCount != null "> and view_count = #{viewCount}</if>
             <if test="describle != null  and describle != ''"> and describle = #{describle}</if>
             <if test="status != null "> and status = #{status}</if>
         </where>
@@ -67,17 +61,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null and name != ''">name,</if>
             <if test="price != null">price,</if>
             <if test="realPrice != null">real_price,</if>
-            <if test="startTime != null">start_time,</if>
             <if test="polishTime != null">polish_time,</if>
-            <if test="endTime != null">end_time,</if>
-            <if test="commetNum != null">commet_num,</if>
-            <if test="phoneNumber != null">phone_number,</if>
+            <if test="buyUrl != null">buy_url,</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number,</if>
             <if test="qqNumber != null">qq_number,</if>
             <if test="wxNumber != null">wx_number,</if>
-            <if test="goodCity != null">good_city,</if>
-            <if test="goodBuyMethod != null">good_buy_method,</if>
-            <if test="goodAddress != null">good_address,</if>
-            <if test="viewcount != null">viewCount,</if>
+            <if test="buyMethod != null">buy_method,</if>
+            <if test="address != null">address,</if>
+            <if test="viewCount != null">view_count,</if>
             <if test="describle != null">describle,</if>
             <if test="status != null">status,</if>
          </trim>
@@ -87,17 +78,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null and name != ''">#{name},</if>
             <if test="price != null">#{price},</if>
             <if test="realPrice != null">#{realPrice},</if>
-            <if test="startTime != null">#{startTime},</if>
             <if test="polishTime != null">#{polishTime},</if>
-            <if test="endTime != null">#{endTime},</if>
-            <if test="commetNum != null">#{commetNum},</if>
-            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="buyUrl != null">#{buyUrl},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
             <if test="qqNumber != null">#{qqNumber},</if>
             <if test="wxNumber != null">#{wxNumber},</if>
-            <if test="goodCity != null">#{goodCity},</if>
-            <if test="goodBuyMethod != null">#{goodBuyMethod},</if>
-            <if test="goodAddress != null">#{goodAddress},</if>
-            <if test="viewcount != null">#{viewcount},</if>
+            <if test="buyMethod != null">#{buyMethod},</if>
+            <if test="address != null">#{address},</if>
+            <if test="viewCount != null">#{viewCount},</if>
             <if test="describle != null">#{describle},</if>
             <if test="status != null">#{status},</if>
          </trim>
@@ -111,17 +99,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="name != null and name != ''">name = #{name},</if>
             <if test="price != null">price = #{price},</if>
             <if test="realPrice != null">real_price = #{realPrice},</if>
-            <if test="startTime != null">start_time = #{startTime},</if>
             <if test="polishTime != null">polish_time = #{polishTime},</if>
-            <if test="endTime != null">end_time = #{endTime},</if>
-            <if test="commetNum != null">commet_num = #{commetNum},</if>
-            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="buyUrl != null">buy_url = #{buyUrl},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
             <if test="qqNumber != null">qq_number = #{qqNumber},</if>
             <if test="wxNumber != null">wx_number = #{wxNumber},</if>
-            <if test="goodCity != null">good_city = #{goodCity},</if>
-            <if test="goodBuyMethod != null">good_buy_method = #{goodBuyMethod},</if>
-            <if test="goodAddress != null">good_address = #{goodAddress},</if>
-            <if test="viewcount != null">viewCount = #{viewcount},</if>
+            <if test="buyMethod != null">buy_method = #{buyMethod},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="viewCount != null">view_count = #{viewCount},</if>
             <if test="describle != null">describle = #{describle},</if>
             <if test="status != null">status = #{status},</if>
         </trim>

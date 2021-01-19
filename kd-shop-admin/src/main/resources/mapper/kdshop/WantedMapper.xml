@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <where>  
             <if test="userId != null "> and user_id = #{userId}</if>
             <if test="goodId != null "> and good_id = #{goodId}</if>
-            <if test="createAt != null  and createAt != ''"> and create_at = #{createAt}</if>
+            <if test="createAt != null "> and create_at = #{createAt}</if>
         </where>
     </select>
     

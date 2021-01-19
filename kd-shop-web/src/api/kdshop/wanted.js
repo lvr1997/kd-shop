@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询收藏列表
+// 查询闲置收藏列表
 export function listWanted(query) {
   return request({
     url: '/kdshop/wanted/list',
@@ -9,7 +9,7 @@ export function listWanted(query) {
   })
 }
 
-// 查询收藏详细
+// 查询闲置收藏详细
 export function getWanted(id) {
   return request({
     url: '/kdshop/wanted/' + id,
@@ -17,7 +17,7 @@ export function getWanted(id) {
   })
 }
 
-// 新增收藏
+// 新增闲置收藏
 export function addWanted(data) {
   return request({
     url: '/kdshop/wanted',
@@ -26,7 +26,7 @@ export function addWanted(data) {
   })
 }
 
-// 修改收藏
+// 修改闲置收藏
 export function updateWanted(data) {
   return request({
     url: '/kdshop/wanted',
@@ -35,7 +35,7 @@ export function updateWanted(data) {
   })
 }
 
-// 删除收藏
+// 删除闲置收藏
 export function delWanted(id) {
   return request({
     url: '/kdshop/wanted/' + id,
@@ -43,7 +43,7 @@ export function delWanted(id) {
   })
 }
 
-// 导出收藏
+// 导出闲置收藏
 export function exportWanted(query) {
   return request({
     url: '/kdshop/wanted/export',

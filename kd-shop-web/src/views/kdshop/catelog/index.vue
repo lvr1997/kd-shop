@@ -1,26 +1,26 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="1是可用" prop="name">
+      <el-form-item label="分类名称" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入1是可用"
+          placeholder="请输入分类名称"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="1是可用" prop="number">
+      <el-form-item label="闲置数量" prop="number">
         <el-input
           v-model="queryParams.number"
-          placeholder="请输入1是可用"
+          placeholder="请输入闲置数量"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="1是可用" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择1是可用" clearable size="small">
+      <el-form-item label="状态：1是可用 2不可用" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择状态：1是可用 2不可用" clearable size="small">
           <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
@@ -74,10 +74,10 @@
 
     <el-table v-loading="loading" :data="catelogList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="1是可用" align="center" prop="id" />
-      <el-table-column label="1是可用" align="center" prop="name" />
-      <el-table-column label="1是可用" align="center" prop="number" />
-      <el-table-column label="1是可用" align="center" prop="status" />
+      <el-table-column label="id" align="center" prop="id" />
+      <el-table-column label="分类名称" align="center" prop="name" />
+      <el-table-column label="闲置数量" align="center" prop="number" />
+      <el-table-column label="状态：1是可用 2不可用" align="center" prop="status" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -106,16 +106,16 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改分类对话框 -->
+    <!-- 添加或修改闲置分类对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="1是可用" prop="name">
-          <el-input v-model="form.name" placeholder="请输入1是可用" />
+        <el-form-item label="分类名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入分类名称" />
         </el-form-item>
-        <el-form-item label="1是可用" prop="number">
-          <el-input v-model="form.number" placeholder="请输入1是可用" />
+        <el-form-item label="闲置数量" prop="number">
+          <el-input v-model="form.number" placeholder="请输入闲置数量" />
         </el-form-item>
-        <el-form-item label="1是可用">
+        <el-form-item label="状态：1是可用 2不可用">
           <el-radio-group v-model="form.status">
             <el-radio label="1">请选择字典生成</el-radio>
           </el-radio-group>
@@ -150,7 +150,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 分类表格数据
+      // 闲置分类表格数据
       catelogList: [],
       // 弹出层标题
       title: "",
@@ -169,10 +169,10 @@ export default {
       // 表单校验
       rules: {
         name: [
-          { required: true, message: "1是可用不能为空", trigger: "blur" }
+          { required: true, message: "分类名称不能为空", trigger: "blur" }
         ],
         number: [
-          { required: true, message: "1是可用不能为空", trigger: "blur" }
+          { required: true, message: "闲置数量不能为空", trigger: "blur" }
         ],
       }
     };
@@ -181,7 +181,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询分类列表 */
+    /** 查询闲置分类列表 */
     getList() {
       this.loading = true;
       listCatelog(this.queryParams).then(response => {
@@ -225,7 +225,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加分类";
+      this.title = "添加闲置分类";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -234,7 +234,7 @@ export default {
       getCatelog(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改分类";
+        this.title = "修改闲置分类";
       });
     },
     /** 提交按钮 */
@@ -260,7 +260,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$confirm('是否确认删除分类编号为"' + ids + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除闲置分类编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -274,7 +274,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有分类数据项?', "警告", {
+      this.$confirm('是否确认导出所有闲置分类数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

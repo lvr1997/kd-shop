@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询商品图片列表
+// 查询闲置图片列表
 export function listImage(query) {
   return request({
     url: '/kdshop/image/list',
@@ -9,7 +9,7 @@ export function listImage(query) {
   })
 }
 
-// 查询商品图片详细
+// 查询闲置图片详细
 export function getImage(id) {
   return request({
     url: '/kdshop/image/' + id,
@@ -17,7 +17,7 @@ export function getImage(id) {
   })
 }
 
-// 新增商品图片
+// 新增闲置图片
 export function addImage(data) {
   return request({
     url: '/kdshop/image',
@@ -26,7 +26,7 @@ export function addImage(data) {
   })
 }
 
-// 修改商品图片
+// 修改闲置图片
 export function updateImage(data) {
   return request({
     url: '/kdshop/image',
@@ -35,7 +35,7 @@ export function updateImage(data) {
   })
 }
 
-// 删除商品图片
+// 删除闲置图片
 export function delImage(id) {
   return request({
     url: '/kdshop/image/' + id,
@@ -43,7 +43,7 @@ export function delImage(id) {
   })
 }
 
-// 导出商品图片
+// 导出闲置图片
 export function exportImage(query) {
   return request({
     url: '/kdshop/image/export',

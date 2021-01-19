@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 收件地址Controller
+ * 收货地址Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/address")
@@ -34,7 +34,7 @@ public class AddressController extends BaseController
     private IAddressService addressService;
 
     /**
-     * 查询收件地址列表
+     * 查询收货地址列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class AddressController extends BaseController
     }
 
     /**
-     * 导出收件地址列表
+     * 导出收货地址列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:export')")
-    @Log(title = "收件地址", businessType = BusinessType.EXPORT)
+    @Log(title = "收货地址", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Address address)
     {
@@ -59,7 +59,7 @@ public class AddressController extends BaseController
     }
 
     /**
-     * 获取收件地址详细信息
+     * 获取收货地址详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class AddressController extends BaseController
     }
 
     /**
-     * 新增收件地址
+     * 新增收货地址
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:add')")
-    @Log(title = "收件地址", businessType = BusinessType.INSERT)
+    @Log(title = "收货地址", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Address address)
     {
@@ -80,10 +80,10 @@ public class AddressController extends BaseController
     }
 
     /**
-     * 修改收件地址
+     * 修改收货地址
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:edit')")
-    @Log(title = "收件地址", businessType = BusinessType.UPDATE)
+    @Log(title = "收货地址", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Address address)
     {
@@ -91,10 +91,10 @@ public class AddressController extends BaseController
     }
 
     /**
-     * 删除收件地址
+     * 删除收货地址
      */
     @PreAuthorize("@ss.hasPermi('kdshop:address:remove')")
-    @Log(title = "收件地址", businessType = BusinessType.DELETE)
+    @Log(title = "收货地址", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

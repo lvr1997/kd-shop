@@ -9,33 +9,33 @@ import com.lvr.common.core.domain.BaseEntity;
  * 评论回复对象 kd_reply
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Reply extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 评论人 */
+    @Excel(name = "评论人")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 被评论人 */
+    @Excel(name = "被评论人")
     private Long atuserId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 回复人 */
+    @Excel(name = "回复人")
     private Long commetId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 回复时间 */
+    @Excel(name = "回复时间")
     private String createAt;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 回复内容 */
+    @Excel(name = "回复内容")
     private String content;
 
     public void setId(Long id) 

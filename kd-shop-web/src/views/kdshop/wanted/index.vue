@@ -1,32 +1,31 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="userId">
+      <el-form-item label="收藏人" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入${comment}"
+          placeholder="请输入收藏人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodId">
+      <el-form-item label="闲置id" prop="goodId">
         <el-input
           v-model="queryParams.goodId"
-          placeholder="请输入${comment}"
+          placeholder="请输入闲置id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="createAt">
-        <el-input
+      <el-form-item label="创建时间" prop="createAt">
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.createAt"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择创建时间">
+        </el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -78,10 +77,14 @@
 
     <el-table v-loading="loading" :data="wantedList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="userId" />
-      <el-table-column label="${comment}" align="center" prop="goodId" />
-      <el-table-column label="${comment}" align="center" prop="createAt" />
+      <el-table-column label="收藏id" align="center" prop="id" />
+      <el-table-column label="收藏人" align="center" prop="userId" />
+      <el-table-column label="闲置id" align="center" prop="goodId" />
+      <el-table-column label="创建时间" align="center" prop="createAt" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createAt, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -110,17 +113,22 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改收藏对话框 -->
+    <!-- 添加或修改闲置收藏对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入${comment}" />
+        <el-form-item label="收藏人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入收藏人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodId">
-          <el-input v-model="form.goodId" placeholder="请输入${comment}" />
+        <el-form-item label="闲置id" prop="goodId">
+          <el-input v-model="form.goodId" placeholder="请输入闲置id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="createAt">
-          <el-input v-model="form.createAt" placeholder="请输入${comment}" />
+        <el-form-item label="创建时间" prop="createAt">
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.createAt"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择创建时间">
+          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -152,7 +160,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 收藏表格数据
+      // 闲置收藏表格数据
       wantedList: [],
       // 弹出层标题
       title: "",
@@ -177,7 +185,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询收藏列表 */
+    /** 查询闲置收藏列表 */
     getList() {
       this.loading = true;
       listWanted(this.queryParams).then(response => {
@@ -221,7 +229,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加收藏";
+      this.title = "添加闲置收藏";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -230,7 +238,7 @@ export default {
       getWanted(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改收藏";
+        this.title = "修改闲置收藏";
       });
     },
     /** 提交按钮 */
@@ -256,7 +264,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$confirm('是否确认删除收藏编号为"' + ids + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除闲置收藏编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -270,7 +278,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有收藏数据项?', "警告", {
+      this.$confirm('是否确认导出所有闲置收藏数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

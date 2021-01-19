@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询投诉列表
+// 查询闲置举报列表
 export function listReport(query) {
   return request({
     url: '/kdshop/report/list',
@@ -9,7 +9,7 @@ export function listReport(query) {
   })
 }
 
-// 查询投诉详细
+// 查询闲置举报详细
 export function getReport(id) {
   return request({
     url: '/kdshop/report/' + id,
@@ -17,7 +17,7 @@ export function getReport(id) {
   })
 }
 
-// 新增投诉
+// 新增闲置举报
 export function addReport(data) {
   return request({
     url: '/kdshop/report',
@@ -26,7 +26,7 @@ export function addReport(data) {
   })
 }
 
-// 修改投诉
+// 修改闲置举报
 export function updateReport(data) {
   return request({
     url: '/kdshop/report',
@@ -35,7 +35,7 @@ export function updateReport(data) {
   })
 }
 
-// 删除投诉
+// 删除闲置举报
 export function delReport(id) {
   return request({
     url: '/kdshop/report/' + id,
@@ -43,7 +43,7 @@ export function delReport(id) {
   })
 }
 
-// 导出投诉
+// 导出闲置举报
 export function exportReport(query) {
   return request({
     url: '/kdshop/report/export',

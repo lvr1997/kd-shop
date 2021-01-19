@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="goodId != null "> and good_id = #{goodId}</if>
             <if test="addressId != null "> and address_id = #{addressId}</if>
             <if test="payId != null  and payId != ''"> and pay_id = #{payId}</if>
-            <if test="createAt != null  and createAt != ''"> and create_at = #{createAt}</if>
+            <if test="createAt != null "> and create_at = #{createAt}</if>
             <if test="status != null "> and status = #{status}</if>
         </where>
     </select>

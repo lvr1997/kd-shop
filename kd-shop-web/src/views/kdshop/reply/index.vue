@@ -1,37 +1,37 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="userId">
+      <el-form-item label="评论人" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入${comment}"
+          placeholder="请输入评论人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="atuserId">
+      <el-form-item label="被评论人" prop="atuserId">
         <el-input
           v-model="queryParams.atuserId"
-          placeholder="请输入${comment}"
+          placeholder="请输入被评论人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="commetId">
+      <el-form-item label="回复人" prop="commetId">
         <el-input
           v-model="queryParams.commetId"
-          placeholder="请输入${comment}"
+          placeholder="请输入回复人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="createAt">
+      <el-form-item label="回复时间" prop="createAt">
         <el-input
           v-model="queryParams.createAt"
-          placeholder="请输入${comment}"
+          placeholder="请输入回复时间"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -87,12 +87,12 @@
 
     <el-table v-loading="loading" :data="replyList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="userId" />
-      <el-table-column label="${comment}" align="center" prop="atuserId" />
-      <el-table-column label="${comment}" align="center" prop="commetId" />
-      <el-table-column label="${comment}" align="center" prop="createAt" />
-      <el-table-column label="${comment}" align="center" prop="content" />
+      <el-table-column label="id" align="center" prop="id" />
+      <el-table-column label="评论人" align="center" prop="userId" />
+      <el-table-column label="被评论人" align="center" prop="atuserId" />
+      <el-table-column label="回复人" align="center" prop="commetId" />
+      <el-table-column label="回复时间" align="center" prop="createAt" />
+      <el-table-column label="回复内容" align="center" prop="content" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -124,19 +124,19 @@
     <!-- 添加或修改评论回复对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入${comment}" />
+        <el-form-item label="评论人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入评论人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="atuserId">
-          <el-input v-model="form.atuserId" placeholder="请输入${comment}" />
+        <el-form-item label="被评论人" prop="atuserId">
+          <el-input v-model="form.atuserId" placeholder="请输入被评论人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="commetId">
-          <el-input v-model="form.commetId" placeholder="请输入${comment}" />
+        <el-form-item label="回复人" prop="commetId">
+          <el-input v-model="form.commetId" placeholder="请输入回复人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="createAt">
-          <el-input v-model="form.createAt" placeholder="请输入${comment}" />
+        <el-form-item label="回复时间" prop="createAt">
+          <el-input v-model="form.createAt" placeholder="请输入回复时间" />
         </el-form-item>
-        <el-form-item label="${comment}">
+        <el-form-item label="回复内容">
           <editor v-model="form.content" :min-height="192"/>
         </el-form-item>
       </el-form>

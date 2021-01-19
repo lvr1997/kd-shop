@@ -1,51 +1,41 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="title">
+      <el-form-item label="轮播图标题" prop="title">
         <el-input
           v-model="queryParams.title"
-          placeholder="请输入${comment}"
+          placeholder="请输入轮播图标题"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="createAt">
-        <el-input
+      <el-form-item label="创建时间" prop="createAt">
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.createAt"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择创建时间">
+        </el-date-picker>
       </el-form-item>
-      <el-form-item label="${comment}" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择${comment}" clearable size="small">
+      <el-form-item label="状态1：显示2：不显示3：已删除" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择状态1：显示2：不显示3：已删除" clearable size="small">
           <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
-      <el-form-item label="${comment}" prop="descript">
+      <el-form-item label="描述" prop="descript">
         <el-input
           v-model="queryParams.descript"
-          placeholder="请输入${comment}"
+          placeholder="请输入描述"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="url">
-        <el-input
-          v-model="queryParams.url"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="${comment}" prop="imgUrl">
+      <el-form-item label="图片路径" prop="imgUrl">
         <el-input
           v-model="queryParams.imgUrl"
-          placeholder="请输入${comment}"
+          placeholder="请输入图片路径"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -101,13 +91,16 @@
 
     <el-table v-loading="loading" :data="carouselList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="title" />
-      <el-table-column label="${comment}" align="center" prop="createAt" />
-      <el-table-column label="${comment}" align="center" prop="status" />
-      <el-table-column label="${comment}" align="center" prop="descript" />
-      <el-table-column label="${comment}" align="center" prop="url" />
-      <el-table-column label="${comment}" align="center" prop="imgUrl" />
+      <el-table-column label="id" align="center" prop="id" />
+      <el-table-column label="轮播图标题" align="center" prop="title" />
+      <el-table-column label="创建时间" align="center" prop="createAt" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createAt, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="状态1：显示2：不显示3：已删除" align="center" prop="status" />
+      <el-table-column label="描述" align="center" prop="descript" />
+      <el-table-column label="图片路径" align="center" prop="imgUrl" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -139,25 +132,27 @@
     <!-- 添加或修改轮播图对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="title">
-          <el-input v-model="form.title" placeholder="请输入${comment}" />
+        <el-form-item label="轮播图标题" prop="title">
+          <el-input v-model="form.title" placeholder="请输入轮播图标题" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="createAt">
-          <el-input v-model="form.createAt" placeholder="请输入${comment}" />
+        <el-form-item label="创建时间" prop="createAt">
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.createAt"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择创建时间">
+          </el-date-picker>
         </el-form-item>
-        <el-form-item label="${comment}">
+        <el-form-item label="状态1：显示2：不显示3：已删除">
           <el-radio-group v-model="form.status">
             <el-radio label="1">请选择字典生成</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="${comment}" prop="descript">
-          <el-input v-model="form.descript" placeholder="请输入${comment}" />
+        <el-form-item label="描述" prop="descript">
+          <el-input v-model="form.descript" placeholder="请输入描述" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="url">
-          <el-input v-model="form.url" placeholder="请输入${comment}" />
-        </el-form-item>
-        <el-form-item label="${comment}" prop="imgUrl">
-          <el-input v-model="form.imgUrl" placeholder="请输入${comment}" />
+        <el-form-item label="图片路径" prop="imgUrl">
+          <el-input v-model="form.imgUrl" placeholder="请输入图片路径" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -203,7 +198,6 @@ export default {
         createAt: null,
         status: null,
         descript: null,
-        url: null,
         imgUrl: null
       },
       // 表单参数
@@ -239,7 +233,6 @@ export default {
         createAt: null,
         status: 0,
         descript: null,
-        url: null,
         imgUrl: null
       };
       this.resetForm("form");

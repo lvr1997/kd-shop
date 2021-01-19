@@ -1,93 +1,84 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 商品对象 kd_goods
+ * 闲置物品对象 kd_goods
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Goods extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** 闲置id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 分类id */
+    @Excel(name = "分类id")
     private Long catelogId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 发布人 */
+    @Excel(name = "发布人")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置名称 */
+    @Excel(name = "闲置名称")
     private String name;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 出售价格 */
+    @Excel(name = "出售价格")
     private Long price;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 原购买价格 */
+    @Excel(name = "原购买价格")
     private Long realPrice;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String startTime;
+    /** 发布时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "发布时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date polishTime;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String polishTime;
+    /** 原购买链接 */
+    @Excel(name = "原购买链接")
+    private String buyUrl;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String endTime;
-
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Long commetNum;
-
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 手机号 */
+    @Excel(name = "手机号")
     private String phoneNumber;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** qq号 */
+    @Excel(name = "qq号")
     private String qqNumber;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 微信号 */
+    @Excel(name = "微信号")
     private String wxNumber;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String goodCity;
+    /** 购买方式1：在线交易2：线下交易3：线上/线下交易 */
+    @Excel(name = "购买方式1：在线交易2：线下交易3：线上/线下交易")
+    private Integer buyMethod;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String goodBuyMethod;
+    /** 交易地址 */
+    @Excel(name = "交易地址")
+    private String address;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String goodAddress;
+    /** 显示数量 */
+    @Excel(name = "显示数量")
+    private Long viewCount;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Long viewcount;
-
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置描述 */
+    @Excel(name = "闲置描述")
     private String describle;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除 */
+    @Excel(name = "闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除")
     private Integer status;
 
     public void setId(Long id) 
@@ -144,41 +135,23 @@ public class Goods extends BaseEntity
     {
         return realPrice;
     }
-    public void setStartTime(String startTime) 
-    {
-        this.startTime = startTime;
-    }
-
-    public String getStartTime() 
-    {
-        return startTime;
-    }
-    public void setPolishTime(String polishTime) 
+    public void setPolishTime(Date polishTime) 
     {
         this.polishTime = polishTime;
     }
 
-    public String getPolishTime() 
+    public Date getPolishTime() 
     {
         return polishTime;
     }
-    public void setEndTime(String endTime) 
+    public void setBuyUrl(String buyUrl) 
     {
-        this.endTime = endTime;
+        this.buyUrl = buyUrl;
     }
 
-    public String getEndTime() 
+    public String getBuyUrl() 
     {
-        return endTime;
-    }
-    public void setCommetNum(Long commetNum) 
-    {
-        this.commetNum = commetNum;
-    }
-
-    public Long getCommetNum() 
-    {
-        return commetNum;
+        return buyUrl;
     }
     public void setPhoneNumber(String phoneNumber) 
     {
@@ -207,41 +180,32 @@ public class Goods extends BaseEntity
     {
         return wxNumber;
     }
-    public void setGoodCity(String goodCity) 
+    public void setBuyMethod(Integer buyMethod) 
     {
-        this.goodCity = goodCity;
+        this.buyMethod = buyMethod;
     }
 
-    public String getGoodCity() 
+    public Integer getBuyMethod() 
     {
-        return goodCity;
+        return buyMethod;
     }
-    public void setGoodBuyMethod(String goodBuyMethod) 
+    public void setAddress(String address) 
     {
-        this.goodBuyMethod = goodBuyMethod;
-    }
-
-    public String getGoodBuyMethod() 
-    {
-        return goodBuyMethod;
-    }
-    public void setGoodAddress(String goodAddress) 
-    {
-        this.goodAddress = goodAddress;
+        this.address = address;
     }
 
-    public String getGoodAddress() 
+    public String getAddress() 
     {
-        return goodAddress;
+        return address;
     }
-    public void setViewcount(Long viewcount) 
+    public void setViewCount(Long viewCount) 
     {
-        this.viewcount = viewcount;
+        this.viewCount = viewCount;
     }
 
-    public Long getViewcount() 
+    public Long getViewCount() 
     {
-        return viewcount;
+        return viewCount;
     }
     public void setDescrible(String describle) 
     {
@@ -271,17 +235,14 @@ public class Goods extends BaseEntity
             .append("name", getName())
             .append("price", getPrice())
             .append("realPrice", getRealPrice())
-            .append("startTime", getStartTime())
             .append("polishTime", getPolishTime())
-            .append("endTime", getEndTime())
-            .append("commetNum", getCommetNum())
+            .append("buyUrl", getBuyUrl())
             .append("phoneNumber", getPhoneNumber())
             .append("qqNumber", getQqNumber())
             .append("wxNumber", getWxNumber())
-            .append("goodCity", getGoodCity())
-            .append("goodBuyMethod", getGoodBuyMethod())
-            .append("goodAddress", getGoodAddress())
-            .append("viewcount", getViewcount())
+            .append("buyMethod", getBuyMethod())
+            .append("address", getAddress())
+            .append("viewCount", getViewCount())
             .append("describle", getDescrible())
             .append("status", getStatus())
             .toString();

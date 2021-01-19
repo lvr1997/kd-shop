@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 分类Controller
+ * 闲置分类Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/catelog")
@@ -34,7 +34,7 @@ public class CatelogController extends BaseController
     private ICatelogService catelogService;
 
     /**
-     * 查询分类列表
+     * 查询闲置分类列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class CatelogController extends BaseController
     }
 
     /**
-     * 导出分类列表
+     * 导出闲置分类列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:export')")
-    @Log(title = "分类", businessType = BusinessType.EXPORT)
+    @Log(title = "闲置分类", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Catelog catelog)
     {
@@ -59,7 +59,7 @@ public class CatelogController extends BaseController
     }
 
     /**
-     * 获取分类详细信息
+     * 获取闲置分类详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class CatelogController extends BaseController
     }
 
     /**
-     * 新增分类
+     * 新增闲置分类
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:add')")
-    @Log(title = "分类", businessType = BusinessType.INSERT)
+    @Log(title = "闲置分类", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Catelog catelog)
     {
@@ -80,10 +80,10 @@ public class CatelogController extends BaseController
     }
 
     /**
-     * 修改分类
+     * 修改闲置分类
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:edit')")
-    @Log(title = "分类", businessType = BusinessType.UPDATE)
+    @Log(title = "闲置分类", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Catelog catelog)
     {
@@ -91,10 +91,10 @@ public class CatelogController extends BaseController
     }
 
     /**
-     * 删除分类
+     * 删除闲置分类
      */
     @PreAuthorize("@ss.hasPermi('kdshop:catelog:remove')")
-    @Log(title = "分类", businessType = BusinessType.DELETE)
+    @Log(title = "闲置分类", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

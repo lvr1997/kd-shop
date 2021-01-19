@@ -1,32 +1,31 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="userId">
+      <el-form-item label="评论人" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入${comment}"
+          placeholder="请输入评论人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodsId">
+      <el-form-item label="评论的闲置" prop="goodsId">
         <el-input
           v-model="queryParams.goodsId"
-          placeholder="请输入${comment}"
+          placeholder="请输入评论的闲置"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="createAt">
-        <el-input
+      <el-form-item label="评论时间" prop="createAt">
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.createAt"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择评论时间">
+        </el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -78,11 +77,15 @@
 
     <el-table v-loading="loading" :data="commentsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="userId" />
-      <el-table-column label="${comment}" align="center" prop="goodsId" />
-      <el-table-column label="${comment}" align="center" prop="createAt" />
-      <el-table-column label="${comment}" align="center" prop="content" />
+      <el-table-column label="评论id" align="center" prop="id" />
+      <el-table-column label="评论人" align="center" prop="userId" />
+      <el-table-column label="评论的闲置" align="center" prop="goodsId" />
+      <el-table-column label="评论时间" align="center" prop="createAt" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createAt, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="评论内容" align="center" prop="content" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -114,16 +117,21 @@
     <!-- 添加或修改评论对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入${comment}" />
+        <el-form-item label="评论人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入评论人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodsId">
-          <el-input v-model="form.goodsId" placeholder="请输入${comment}" />
+        <el-form-item label="评论的闲置" prop="goodsId">
+          <el-input v-model="form.goodsId" placeholder="请输入评论的闲置" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="createAt">
-          <el-input v-model="form.createAt" placeholder="请输入${comment}" />
+        <el-form-item label="评论时间" prop="createAt">
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.createAt"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择评论时间">
+          </el-date-picker>
         </el-form-item>
-        <el-form-item label="${comment}">
+        <el-form-item label="评论内容">
           <editor v-model="form.content" :min-height="192"/>
         </el-form-item>
       </el-form>
@@ -178,10 +186,10 @@ export default {
       // 表单校验
       rules: {
         userId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "评论人不能为空", trigger: "blur" }
         ],
         goodsId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "评论的闲置不能为空", trigger: "blur" }
         ],
       }
     };

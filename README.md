@@ -34,6 +34,13 @@ jwt做登录token校验
 
 调用支付宝/微信支付接口支付
 
+<dependency>
+    <groupId>com.alipay.sdk</groupId>
+    <artifactId>alipay-easysdk</artifactId>
+    <version>2.1.2</version>
+</dependency>
+
+
 ...
 
 ## 更新记录

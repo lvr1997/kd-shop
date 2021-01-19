@@ -1,5 +1,7 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
@@ -9,37 +11,34 @@ import com.lvr.common.core.domain.BaseEntity;
  * 轮播图对象 kd_carousel
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Carousel extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 轮播图标题 */
+    @Excel(name = "轮播图标题")
     private String title;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String createAt;
+    /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createAt;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 状态1：显示2：不显示3：已删除 */
+    @Excel(name = "状态1：显示2：不显示3：已删除")
     private Integer status;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 描述 */
+    @Excel(name = "描述")
     private String descript;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String url;
-
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 图片路径 */
+    @Excel(name = "图片路径")
     private String imgUrl;
 
     public void setId(Long id) 
@@ -60,12 +59,12 @@ public class Carousel extends BaseEntity
     {
         return title;
     }
-    public void setCreateAt(String createAt) 
+    public void setCreateAt(Date createAt) 
     {
         this.createAt = createAt;
     }
 
-    public String getCreateAt() 
+    public Date getCreateAt() 
     {
         return createAt;
     }
@@ -87,15 +86,6 @@ public class Carousel extends BaseEntity
     {
         return descript;
     }
-    public void setUrl(String url) 
-    {
-        this.url = url;
-    }
-
-    public String getUrl() 
-    {
-        return url;
-    }
     public void setImgUrl(String imgUrl) 
     {
         this.imgUrl = imgUrl;
@@ -114,7 +104,6 @@ public class Carousel extends BaseEntity
             .append("createAt", getCreateAt())
             .append("status", getStatus())
             .append("descript", getDescript())
-            .append("url", getUrl())
             .append("imgUrl", getImgUrl())
             .toString();
     }

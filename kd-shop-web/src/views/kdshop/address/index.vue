@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="修改时间" prop="uid">
+      <el-form-item label="所属人" prop="userId">
         <el-input
-          v-model="queryParams.uid"
-          placeholder="请输入修改时间"
+          v-model="queryParams.userId"
+          placeholder="请输入所属人"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -20,31 +20,19 @@
         />
       </el-form-item>
       <el-form-item label="收件人省份" prop="recvProvince">
-        <el-input
-          v-model="queryParams.recvProvince"
-          placeholder="请输入收件人省份"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.recvProvince" placeholder="请选择收件人省份" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
       </el-form-item>
       <el-form-item label="收件人城市" prop="recvCity">
-        <el-input
-          v-model="queryParams.recvCity"
-          placeholder="请输入收件人城市"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.recvCity" placeholder="请选择收件人城市" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
       </el-form-item>
       <el-form-item label="收件人所在区" prop="recvArea">
-        <el-input
-          v-model="queryParams.recvArea"
-          placeholder="请输入收件人所在区"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.recvArea" placeholder="请选择收件人所在区" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
       </el-form-item>
       <el-form-item label="收件人地名" prop="recvDistrict">
         <el-input
@@ -73,15 +61,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="收件人固定电话" prop="recvTel">
-        <el-input
-          v-model="queryParams.recvTel"
-          placeholder="请输入收件人固定电话"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="邮编" prop="recvZip">
         <el-input
           v-model="queryParams.recvZip"
@@ -100,50 +79,26 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="是否默认" prop="isDefault">
-        <el-input
-          v-model="queryParams.isDefault"
-          placeholder="请输入是否默认"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="创建人" prop="createdUser">
-        <el-input
-          v-model="queryParams.createdUser"
-          placeholder="请输入创建人"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="是否默认1：是 2：否" prop="isDefault">
+        <el-select v-model="queryParams.isDefault" placeholder="请选择是否默认1：是 2：否" clearable size="small">
+          <el-option label="请选择字典生成" value="" />
+        </el-select>
       </el-form-item>
       <el-form-item label="创建时间" prop="createdTime">
-        <el-input
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.createdTime"
-          placeholder="请输入创建时间"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="修改人" prop="modifiedUser">
-        <el-input
-          v-model="queryParams.modifiedUser"
-          placeholder="请输入修改人"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择创建时间">
+        </el-date-picker>
       </el-form-item>
       <el-form-item label="修改时间" prop="modifiedTime">
-        <el-input
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.modifiedTime"
-          placeholder="请输入修改时间"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择修改时间">
+        </el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -195,8 +150,7 @@
 
     <el-table v-loading="loading" :data="addressList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="修改时间" align="center" prop="id" />
-      <el-table-column label="修改时间" align="center" prop="uid" />
+      <el-table-column label="id" align="center" prop="id" />
       <el-table-column label="收件人姓名" align="center" prop="recvName" />
       <el-table-column label="收件人省份" align="center" prop="recvProvince" />
       <el-table-column label="收件人城市" align="center" prop="recvCity" />
@@ -204,14 +158,19 @@
       <el-table-column label="收件人地名" align="center" prop="recvDistrict" />
       <el-table-column label="收件人地址" align="center" prop="recvAddr" />
       <el-table-column label="收件人电话" align="center" prop="recvPhone" />
-      <el-table-column label="收件人固定电话" align="center" prop="recvTel" />
       <el-table-column label="邮编" align="center" prop="recvZip" />
       <el-table-column label="标签" align="center" prop="recvTag" />
-      <el-table-column label="是否默认" align="center" prop="isDefault" />
-      <el-table-column label="创建人" align="center" prop="createdUser" />
-      <el-table-column label="创建时间" align="center" prop="createdTime" />
-      <el-table-column label="修改人" align="center" prop="modifiedUser" />
-      <el-table-column label="修改时间" align="center" prop="modifiedTime" />
+      <el-table-column label="是否默认1：是 2：否" align="center" prop="isDefault" />
+      <el-table-column label="创建时间" align="center" prop="createdTime" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createdTime, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="修改时间" align="center" prop="modifiedTime" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.modifiedTime, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -240,23 +199,29 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改收件地址对话框 -->
+    <!-- 添加或修改收货地址对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="修改时间" prop="uid">
-          <el-input v-model="form.uid" placeholder="请输入修改时间" />
+        <el-form-item label="所属人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入所属人" />
         </el-form-item>
         <el-form-item label="收件人姓名" prop="recvName">
           <el-input v-model="form.recvName" placeholder="请输入收件人姓名" />
         </el-form-item>
         <el-form-item label="收件人省份" prop="recvProvince">
-          <el-input v-model="form.recvProvince" placeholder="请输入收件人省份" />
+          <el-select v-model="form.recvProvince" placeholder="请选择收件人省份">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
         </el-form-item>
         <el-form-item label="收件人城市" prop="recvCity">
-          <el-input v-model="form.recvCity" placeholder="请输入收件人城市" />
+          <el-select v-model="form.recvCity" placeholder="请选择收件人城市">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
         </el-form-item>
         <el-form-item label="收件人所在区" prop="recvArea">
-          <el-input v-model="form.recvArea" placeholder="请输入收件人所在区" />
+          <el-select v-model="form.recvArea" placeholder="请选择收件人所在区">
+            <el-option label="请选择字典生成" value="" />
+          </el-select>
         </el-form-item>
         <el-form-item label="收件人地名" prop="recvDistrict">
           <el-input v-model="form.recvDistrict" placeholder="请输入收件人地名" />
@@ -267,29 +232,32 @@
         <el-form-item label="收件人电话" prop="recvPhone">
           <el-input v-model="form.recvPhone" placeholder="请输入收件人电话" />
         </el-form-item>
-        <el-form-item label="收件人固定电话" prop="recvTel">
-          <el-input v-model="form.recvTel" placeholder="请输入收件人固定电话" />
-        </el-form-item>
         <el-form-item label="邮编" prop="recvZip">
           <el-input v-model="form.recvZip" placeholder="请输入邮编" />
         </el-form-item>
         <el-form-item label="标签" prop="recvTag">
           <el-input v-model="form.recvTag" placeholder="请输入标签" />
         </el-form-item>
-        <el-form-item label="是否默认" prop="isDefault">
-          <el-input v-model="form.isDefault" placeholder="请输入是否默认" />
-        </el-form-item>
-        <el-form-item label="创建人" prop="createdUser">
-          <el-input v-model="form.createdUser" placeholder="请输入创建人" />
+        <el-form-item label="是否默认1：是 2：否">
+          <el-radio-group v-model="form.isDefault">
+            <el-radio label="1">请选择字典生成</el-radio>
+          </el-radio-group>
         </el-form-item>
         <el-form-item label="创建时间" prop="createdTime">
-          <el-input v-model="form.createdTime" placeholder="请输入创建时间" />
-        </el-form-item>
-        <el-form-item label="修改人" prop="modifiedUser">
-          <el-input v-model="form.modifiedUser" placeholder="请输入修改人" />
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.createdTime"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择创建时间">
+          </el-date-picker>
         </el-form-item>
         <el-form-item label="修改时间" prop="modifiedTime">
-          <el-input v-model="form.modifiedTime" placeholder="请输入修改时间" />
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.modifiedTime"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择修改时间">
+          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -321,7 +289,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 收件地址表格数据
+      // 收货地址表格数据
       addressList: [],
       // 弹出层标题
       title: "",
@@ -331,7 +299,7 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        uid: null,
+        userId: null,
         recvName: null,
         recvProvince: null,
         recvCity: null,
@@ -339,13 +307,10 @@ export default {
         recvDistrict: null,
         recvAddr: null,
         recvPhone: null,
-        recvTel: null,
         recvZip: null,
         recvTag: null,
         isDefault: null,
-        createdUser: null,
         createdTime: null,
-        modifiedUser: null,
         modifiedTime: null
       },
       // 表单参数
@@ -359,7 +324,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询收件地址列表 */
+    /** 查询收货地址列表 */
     getList() {
       this.loading = true;
       listAddress(this.queryParams).then(response => {
@@ -377,7 +342,7 @@ export default {
     reset() {
       this.form = {
         id: null,
-        uid: null,
+        userId: null,
         recvName: null,
         recvProvince: null,
         recvCity: null,
@@ -385,13 +350,10 @@ export default {
         recvDistrict: null,
         recvAddr: null,
         recvPhone: null,
-        recvTel: null,
         recvZip: null,
         recvTag: null,
-        isDefault: null,
-        createdUser: null,
+        isDefault: 0,
         createdTime: null,
-        modifiedUser: null,
         modifiedTime: null
       };
       this.resetForm("form");
@@ -416,7 +378,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加收件地址";
+      this.title = "添加收货地址";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -425,7 +387,7 @@ export default {
       getAddress(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改收件地址";
+        this.title = "修改收货地址";
       });
     },
     /** 提交按钮 */
@@ -451,7 +413,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$confirm('是否确认删除收件地址编号为"' + ids + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除收货地址编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -465,7 +427,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有收件地址数据项?', "警告", {
+      this.$confirm('是否确认导出所有收货地址数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

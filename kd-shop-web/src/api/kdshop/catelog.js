@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询分类列表
+// 查询闲置分类列表
 export function listCatelog(query) {
   return request({
     url: '/kdshop/catelog/list',
@@ -9,7 +9,7 @@ export function listCatelog(query) {
   })
 }
 
-// 查询分类详细
+// 查询闲置分类详细
 export function getCatelog(id) {
   return request({
     url: '/kdshop/catelog/' + id,
@@ -17,7 +17,7 @@ export function getCatelog(id) {
   })
 }
 
-// 新增分类
+// 新增闲置分类
 export function addCatelog(data) {
   return request({
     url: '/kdshop/catelog',
@@ -26,7 +26,7 @@ export function addCatelog(data) {
   })
 }
 
-// 修改分类
+// 修改闲置分类
 export function updateCatelog(data) {
   return request({
     url: '/kdshop/catelog',
@@ -35,7 +35,7 @@ export function updateCatelog(data) {
   })
 }
 
-// 删除分类
+// 删除闲置分类
 export function delCatelog(id) {
   return request({
     url: '/kdshop/catelog/' + id,
@@ -43,7 +43,7 @@ export function delCatelog(id) {
   })
 }
 
-// 导出分类
+// 导出闲置分类
 export function exportCatelog(query) {
   return request({
     url: '/kdshop/catelog/export',

@@ -6,24 +6,24 @@ import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 商品图片对象 kd_image
+ * 闲置图片对象 kd_image
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Image extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** 图片id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置id */
+    @Excel(name = "闲置id")
     private Long goodsId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 图片路径 */
+    @Excel(name = "图片路径")
     private String imgUrl;
 
     public void setId(Long id) 

@@ -8,10 +8,10 @@ import com.lvr.kdshop.domain.Wanted;
 import com.lvr.kdshop.service.IWantedService;
 
 /**
- * 收藏Service业务层处理
+ * 闲置收藏Service业务层处理
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @Service
 public class WantedServiceImpl implements IWantedService 
@@ -20,10 +20,10 @@ public class WantedServiceImpl implements IWantedService
     private WantedMapper wantedMapper;
 
     /**
-     * 查询收藏
+     * 查询闲置收藏
      * 
-     * @param id 收藏ID
-     * @return 收藏
+     * @param id 闲置收藏ID
+     * @return 闲置收藏
      */
     @Override
     public Wanted selectWantedById(Long id)
@@ -32,10 +32,10 @@ public class WantedServiceImpl implements IWantedService
     }
 
     /**
-     * 查询收藏列表
+     * 查询闲置收藏列表
      * 
-     * @param wanted 收藏
-     * @return 收藏
+     * @param wanted 闲置收藏
+     * @return 闲置收藏
      */
     @Override
     public List<Wanted> selectWantedList(Wanted wanted)
@@ -44,9 +44,9 @@ public class WantedServiceImpl implements IWantedService
     }
 
     /**
-     * 新增收藏
+     * 新增闲置收藏
      * 
-     * @param wanted 收藏
+     * @param wanted 闲置收藏
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class WantedServiceImpl implements IWantedService
     }
 
     /**
-     * 修改收藏
+     * 修改闲置收藏
      * 
-     * @param wanted 收藏
+     * @param wanted 闲置收藏
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class WantedServiceImpl implements IWantedService
     }
 
     /**
-     * 批量删除收藏
+     * 批量删除闲置收藏
      * 
-     * @param ids 需要删除的收藏ID
+     * @param ids 需要删除的闲置收藏ID
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class WantedServiceImpl implements IWantedService
     }
 
     /**
-     * 删除收藏信息
+     * 删除闲置收藏信息
      * 
-     * @param id 收藏ID
+     * @param id 闲置收藏ID
      * @return 结果
      */
     @Override

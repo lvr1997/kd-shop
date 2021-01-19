@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 收藏Controller
+ * 闲置收藏Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/wanted")
@@ -34,7 +34,7 @@ public class WantedController extends BaseController
     private IWantedService wantedService;
 
     /**
-     * 查询收藏列表
+     * 查询闲置收藏列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class WantedController extends BaseController
     }
 
     /**
-     * 导出收藏列表
+     * 导出闲置收藏列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:export')")
-    @Log(title = "收藏", businessType = BusinessType.EXPORT)
+    @Log(title = "闲置收藏", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Wanted wanted)
     {
@@ -59,7 +59,7 @@ public class WantedController extends BaseController
     }
 
     /**
-     * 获取收藏详细信息
+     * 获取闲置收藏详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class WantedController extends BaseController
     }
 
     /**
-     * 新增收藏
+     * 新增闲置收藏
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:add')")
-    @Log(title = "收藏", businessType = BusinessType.INSERT)
+    @Log(title = "闲置收藏", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Wanted wanted)
     {
@@ -80,10 +80,10 @@ public class WantedController extends BaseController
     }
 
     /**
-     * 修改收藏
+     * 修改闲置收藏
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:edit')")
-    @Log(title = "收藏", businessType = BusinessType.UPDATE)
+    @Log(title = "闲置收藏", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Wanted wanted)
     {
@@ -91,10 +91,10 @@ public class WantedController extends BaseController
     }
 
     /**
-     * 删除收藏
+     * 删除闲置收藏
      */
     @PreAuthorize("@ss.hasPermi('kdshop:wanted:remove')")
-    @Log(title = "收藏", businessType = BusinessType.DELETE)
+    @Log(title = "闲置收藏", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Address" id="AddressResult">
         <result property="id"    column="id"    />
-        <result property="uid"    column="uid"    />
+        <result property="userId"    column="user_id"    />
         <result property="recvName"    column="recv_name"    />
         <result property="recvProvince"    column="recv_province"    />
         <result property="recvCity"    column="recv_city"    />
@@ -14,24 +14,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="recvDistrict"    column="recv_district"    />
         <result property="recvAddr"    column="recv_addr"    />
         <result property="recvPhone"    column="recv_phone"    />
-        <result property="recvTel"    column="recv_tel"    />
         <result property="recvZip"    column="recv_zip"    />
         <result property="recvTag"    column="recv_tag"    />
         <result property="isDefault"    column="is_default"    />
-        <result property="createdUser"    column="created_user"    />
         <result property="createdTime"    column="created_time"    />
-        <result property="modifiedUser"    column="modified_user"    />
         <result property="modifiedTime"    column="modified_time"    />
     </resultMap>
 
     <sql id="selectAddressVo">
-        select id, uid, recv_name, recv_province, recv_city, recv_area, recv_district, recv_addr, recv_phone, recv_tel, recv_zip, recv_tag, is_default, created_user, created_time, modified_user, modified_time from kd_address
+        select id, user_id, recv_name, recv_province, recv_city, recv_area, recv_district, recv_addr, recv_phone, recv_zip, recv_tag, is_default, created_time, modified_time from kd_address
     </sql>
 
     <select id="selectAddressList" parameterType="Address" resultMap="AddressResult">
         <include refid="selectAddressVo"/>
         <where>  
-            <if test="uid != null "> and uid = #{uid}</if>
+            <if test="userId != null "> and user_id = #{userId}</if>
             <if test="recvName != null  and recvName != ''"> and recv_name like concat('%', #{recvName}, '%')</if>
             <if test="recvProvince != null  and recvProvince != ''"> and recv_province = #{recvProvince}</if>
             <if test="recvCity != null  and recvCity != ''"> and recv_city = #{recvCity}</if>
@@ -39,14 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="recvDistrict != null  and recvDistrict != ''"> and recv_district = #{recvDistrict}</if>
             <if test="recvAddr != null  and recvAddr != ''"> and recv_addr = #{recvAddr}</if>
             <if test="recvPhone != null  and recvPhone != ''"> and recv_phone = #{recvPhone}</if>
-            <if test="recvTel != null  and recvTel != ''"> and recv_tel = #{recvTel}</if>
             <if test="recvZip != null  and recvZip != ''"> and recv_zip = #{recvZip}</if>
             <if test="recvTag != null  and recvTag != ''"> and recv_tag = #{recvTag}</if>
             <if test="isDefault != null "> and is_default = #{isDefault}</if>
-            <if test="createdUser != null  and createdUser != ''"> and created_user = #{createdUser}</if>
-            <if test="createdTime != null  and createdTime != ''"> and created_time = #{createdTime}</if>
-            <if test="modifiedUser != null  and modifiedUser != ''"> and modified_user = #{modifiedUser}</if>
-            <if test="modifiedTime != null  and modifiedTime != ''"> and modified_time = #{modifiedTime}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="modifiedTime != null "> and modified_time = #{modifiedTime}</if>
         </where>
     </select>
     
@@ -58,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertAddress" parameterType="Address" useGeneratedKeys="true" keyProperty="id">
         insert into kd_address
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="uid != null">uid,</if>
+            <if test="userId != null">user_id,</if>
             <if test="recvName != null">recv_name,</if>
             <if test="recvProvince != null">recv_province,</if>
             <if test="recvCity != null">recv_city,</if>
@@ -66,17 +60,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="recvDistrict != null">recv_district,</if>
             <if test="recvAddr != null">recv_addr,</if>
             <if test="recvPhone != null">recv_phone,</if>
-            <if test="recvTel != null">recv_tel,</if>
             <if test="recvZip != null">recv_zip,</if>
             <if test="recvTag != null">recv_tag,</if>
             <if test="isDefault != null">is_default,</if>
-            <if test="createdUser != null">created_user,</if>
             <if test="createdTime != null">created_time,</if>
-            <if test="modifiedUser != null">modified_user,</if>
             <if test="modifiedTime != null">modified_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="uid != null">#{uid},</if>
+            <if test="userId != null">#{userId},</if>
             <if test="recvName != null">#{recvName},</if>
             <if test="recvProvince != null">#{recvProvince},</if>
             <if test="recvCity != null">#{recvCity},</if>
@@ -84,13 +75,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="recvDistrict != null">#{recvDistrict},</if>
             <if test="recvAddr != null">#{recvAddr},</if>
             <if test="recvPhone != null">#{recvPhone},</if>
-            <if test="recvTel != null">#{recvTel},</if>
             <if test="recvZip != null">#{recvZip},</if>
             <if test="recvTag != null">#{recvTag},</if>
             <if test="isDefault != null">#{isDefault},</if>
-            <if test="createdUser != null">#{createdUser},</if>
             <if test="createdTime != null">#{createdTime},</if>
-            <if test="modifiedUser != null">#{modifiedUser},</if>
             <if test="modifiedTime != null">#{modifiedTime},</if>
          </trim>
     </insert>
@@ -98,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateAddress" parameterType="Address">
         update kd_address
         <trim prefix="SET" suffixOverrides=",">
-            <if test="uid != null">uid = #{uid},</if>
+            <if test="userId != null">user_id = #{userId},</if>
             <if test="recvName != null">recv_name = #{recvName},</if>
             <if test="recvProvince != null">recv_province = #{recvProvince},</if>
             <if test="recvCity != null">recv_city = #{recvCity},</if>
@@ -106,13 +94,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="recvDistrict != null">recv_district = #{recvDistrict},</if>
             <if test="recvAddr != null">recv_addr = #{recvAddr},</if>
             <if test="recvPhone != null">recv_phone = #{recvPhone},</if>
-            <if test="recvTel != null">recv_tel = #{recvTel},</if>
             <if test="recvZip != null">recv_zip = #{recvZip},</if>
             <if test="recvTag != null">recv_tag = #{recvTag},</if>
             <if test="isDefault != null">is_default = #{isDefault},</if>
-            <if test="createdUser != null">created_user = #{createdUser},</if>
             <if test="createdTime != null">created_time = #{createdTime},</if>
-            <if test="modifiedUser != null">modified_user = #{modifiedUser},</if>
             <if test="modifiedTime != null">modified_time = #{modifiedTime},</if>
         </trim>
         where id = #{id}

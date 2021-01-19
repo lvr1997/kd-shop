@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 投诉Controller
+ * 闲置举报Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/report")
@@ -34,7 +34,7 @@ public class ReportController extends BaseController
     private IReportService reportService;
 
     /**
-     * 查询投诉列表
+     * 查询闲置举报列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class ReportController extends BaseController
     }
 
     /**
-     * 导出投诉列表
+     * 导出闲置举报列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:export')")
-    @Log(title = "投诉", businessType = BusinessType.EXPORT)
+    @Log(title = "闲置举报", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Report report)
     {
@@ -59,7 +59,7 @@ public class ReportController extends BaseController
     }
 
     /**
-     * 获取投诉详细信息
+     * 获取闲置举报详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class ReportController extends BaseController
     }
 
     /**
-     * 新增投诉
+     * 新增闲置举报
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:add')")
-    @Log(title = "投诉", businessType = BusinessType.INSERT)
+    @Log(title = "闲置举报", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Report report)
     {
@@ -80,10 +80,10 @@ public class ReportController extends BaseController
     }
 
     /**
-     * 修改投诉
+     * 修改闲置举报
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:edit')")
-    @Log(title = "投诉", businessType = BusinessType.UPDATE)
+    @Log(title = "闲置举报", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Report report)
     {
@@ -91,10 +91,10 @@ public class ReportController extends BaseController
     }
 
     /**
-     * 删除投诉
+     * 删除闲置举报
      */
     @PreAuthorize("@ss.hasPermi('kdshop:report:remove')")
-    @Log(title = "投诉", businessType = BusinessType.DELETE)
+    @Log(title = "闲置举报", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

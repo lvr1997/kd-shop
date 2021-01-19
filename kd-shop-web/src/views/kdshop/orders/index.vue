@@ -1,62 +1,61 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="orderId">
+      <el-form-item label="订单编号" prop="orderId">
         <el-input
           v-model="queryParams.orderId"
-          placeholder="请输入${comment}"
+          placeholder="请输入订单编号"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="userId">
+      <el-form-item label="卖方id" prop="userId">
         <el-input
           v-model="queryParams.userId"
-          placeholder="请输入${comment}"
+          placeholder="请输入卖方id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodId">
+      <el-form-item label="闲置id" prop="goodId">
         <el-input
           v-model="queryParams.goodId"
-          placeholder="请输入${comment}"
+          placeholder="请输入闲置id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="addressId">
+      <el-form-item label="收件地址" prop="addressId">
         <el-input
           v-model="queryParams.addressId"
-          placeholder="请输入${comment}"
+          placeholder="请输入收件地址"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="payId">
+      <el-form-item label="买方id" prop="payId">
         <el-input
           v-model="queryParams.payId"
-          placeholder="请输入${comment}"
+          placeholder="请输入买方id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="createAt">
-        <el-input
+      <el-form-item label="创建时间" prop="createAt">
+        <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.createAt"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="选择创建时间">
+        </el-date-picker>
       </el-form-item>
-      <el-form-item label="${comment}" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择${comment}" clearable size="small">
+      <el-form-item label="订单状态" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择订单状态" clearable size="small">
           <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
@@ -110,14 +109,18 @@
 
     <el-table v-loading="loading" :data="ordersList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="orderId" />
-      <el-table-column label="${comment}" align="center" prop="userId" />
-      <el-table-column label="${comment}" align="center" prop="goodId" />
-      <el-table-column label="${comment}" align="center" prop="addressId" />
-      <el-table-column label="${comment}" align="center" prop="payId" />
-      <el-table-column label="${comment}" align="center" prop="createAt" />
-      <el-table-column label="${comment}" align="center" prop="status" />
+      <el-table-column label="订单id" align="center" prop="id" />
+      <el-table-column label="订单编号" align="center" prop="orderId" />
+      <el-table-column label="卖方id" align="center" prop="userId" />
+      <el-table-column label="闲置id" align="center" prop="goodId" />
+      <el-table-column label="收件地址" align="center" prop="addressId" />
+      <el-table-column label="买方id" align="center" prop="payId" />
+      <el-table-column label="创建时间" align="center" prop="createAt" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createAt, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="订单状态" align="center" prop="status" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -149,25 +152,30 @@
     <!-- 添加或修改订单对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="orderId">
-          <el-input v-model="form.orderId" placeholder="请输入${comment}" />
+        <el-form-item label="订单编号" prop="orderId">
+          <el-input v-model="form.orderId" placeholder="请输入订单编号" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="userId">
-          <el-input v-model="form.userId" placeholder="请输入${comment}" />
+        <el-form-item label="卖方id" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入卖方id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodId">
-          <el-input v-model="form.goodId" placeholder="请输入${comment}" />
+        <el-form-item label="闲置id" prop="goodId">
+          <el-input v-model="form.goodId" placeholder="请输入闲置id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="addressId">
-          <el-input v-model="form.addressId" placeholder="请输入${comment}" />
+        <el-form-item label="收件地址" prop="addressId">
+          <el-input v-model="form.addressId" placeholder="请输入收件地址" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="payId">
-          <el-input v-model="form.payId" placeholder="请输入${comment}" />
+        <el-form-item label="买方id" prop="payId">
+          <el-input v-model="form.payId" placeholder="请输入买方id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="createAt">
-          <el-input v-model="form.createAt" placeholder="请输入${comment}" />
+        <el-form-item label="创建时间" prop="createAt">
+          <el-date-picker clearable size="small" style="width: 200px"
+            v-model="form.createAt"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择创建时间">
+          </el-date-picker>
         </el-form-item>
-        <el-form-item label="${comment}">
+        <el-form-item label="订单状态">
           <el-radio-group v-model="form.status">
             <el-radio label="1">请选择字典生成</el-radio>
           </el-radio-group>
@@ -225,19 +233,19 @@ export default {
       // 表单校验
       rules: {
         orderId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "订单编号不能为空", trigger: "blur" }
         ],
         userId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "卖方id不能为空", trigger: "blur" }
         ],
         goodId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "闲置id不能为空", trigger: "blur" }
         ],
         addressId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "收件地址不能为空", trigger: "blur" }
         ],
         payId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "买方id不能为空", trigger: "blur" }
         ],
       }
     };

@@ -1,23 +1,35 @@
 package com.lvr.web.controller.common;
 
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.common.utils.BinaryUtil;
+import com.aliyun.oss.model.CannedAccessControlList;
+import com.aliyun.oss.model.MatchMode;
+import com.aliyun.oss.model.PolicyConditions;
 import com.lvr.common.config.KdShopConfig;
 import com.lvr.common.constant.Constants;
 import com.lvr.common.core.domain.AjaxResult;
 import com.lvr.common.utils.StringUtils;
 import com.lvr.common.utils.file.FileUploadUtils;
 import com.lvr.common.utils.file.FileUtils;
+import com.lvr.common.utils.uuid.UUID;
 import com.lvr.framework.config.ServerConfig;
+import com.lvr.common.utils.file.ConstantPropertiesUtil;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
 
 /**
  * 通用请求处理
@@ -86,6 +98,66 @@ public class CommonController
         {
             return AjaxResult.error(e.getMessage());
         }
+    }
+
+    /**
+     * 通用oss上传请求
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/common/oss/upload/policy")
+    public AjaxResult uploadFileOss(MultipartFile file) throws Exception {
+        //获取阿里云存储相关常量
+        String endPoint = ConstantPropertiesUtil.END_POINT;
+        String accessKeyId = ConstantPropertiesUtil.ACCESS_KEY_ID;
+        String accessKeySecret = ConstantPropertiesUtil.ACCESS_KEY_SECRET;
+        String bucketName = ConstantPropertiesUtil.BUCKET_NAME;
+
+        String host = "http://" + bucketName + "." + endPoint;
+
+        try {
+            //判断oss实例是否存在：如果不存在则创建，如果存在则获取
+            OSSClient ossClient = new OSSClient(endPoint, accessKeyId,
+                    accessKeySecret);
+            if (!ossClient.doesBucketExist(bucketName)) {
+                //创建bucket
+                ossClient.createBucket(bucketName);
+                //设置oss实例的访问权限：私有
+                ossClient.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);
+            }
+
+            //构建日期路径：avatar/2019/02/26/文件名
+            String filePath = new DateTime().toString("yyyy/MM/dd") + "/";
+
+            long expireTime = 30;
+            long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
+            Date expiration = new Date(expireEndTime);
+            PolicyConditions policyConditions = new PolicyConditions();
+            policyConditions.addConditionItem(PolicyConditions.COND_CONTENT_LENGTH_RANGE, 0, 1048576000);
+            policyConditions.addConditionItem(MatchMode.StartWith, PolicyConditions.COND_KEY, filePath);
+
+            String postPolicy = ossClient.generatePostPolicy(expiration, policyConditions);
+            byte[] binaryData = postPolicy.getBytes("utf-8");
+            String encodedPolicy = BinaryUtil.toBase64String(binaryData);
+            String postSignature = ossClient.calculatePostSignature(postPolicy);
+            String uuid = UUID.randomUUID().toString();
+
+            AjaxResult ajax = AjaxResult.success();
+            ajax.put("accessKeyId", accessKeyId);
+            ajax.put("policy", encodedPolicy);
+            ajax.put("signature", postSignature);
+            ajax.put("filePath", filePath);
+            ajax.put("uuid", uuid);
+            ajax.put("host", host);
+            ajax.put("expire", String.valueOf(expireEndTime / 1000));
+
+            return ajax;
+
+        } catch (IOException e) {
+            return AjaxResult.error(e.getMessage());
+        }
+
     }
 
     /**

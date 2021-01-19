@@ -1,5 +1,7 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
@@ -9,41 +11,42 @@ import com.lvr.common.core.domain.BaseEntity;
  * 订单对象 kd_orders
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Orders extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** 订单id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 订单编号 */
+    @Excel(name = "订单编号")
     private String orderId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 卖方id */
+    @Excel(name = "卖方id")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置id */
+    @Excel(name = "闲置id")
     private Long goodId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 收件地址 */
+    @Excel(name = "收件地址")
     private Long addressId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 买方id */
+    @Excel(name = "买方id")
     private String payId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String createAt;
+    /** 创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createAt;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 订单状态 */
+    @Excel(name = "订单状态")
     private Integer status;
 
     public void setId(Long id) 
@@ -100,12 +103,12 @@ public class Orders extends BaseEntity
     {
         return payId;
     }
-    public void setCreateAt(String createAt) 
+    public void setCreateAt(Date createAt) 
     {
         this.createAt = createAt;
     }
 
-    public String getCreateAt() 
+    public Date getCreateAt() 
     {
         return createAt;
     }

@@ -8,10 +8,10 @@ import com.lvr.kdshop.domain.Report;
 import com.lvr.kdshop.service.IReportService;
 
 /**
- * 投诉Service业务层处理
+ * 闲置举报Service业务层处理
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @Service
 public class ReportServiceImpl implements IReportService 
@@ -20,10 +20,10 @@ public class ReportServiceImpl implements IReportService
     private ReportMapper reportMapper;
 
     /**
-     * 查询投诉
+     * 查询闲置举报
      * 
-     * @param id 投诉ID
-     * @return 投诉
+     * @param id 闲置举报ID
+     * @return 闲置举报
      */
     @Override
     public Report selectReportById(Long id)
@@ -32,10 +32,10 @@ public class ReportServiceImpl implements IReportService
     }
 
     /**
-     * 查询投诉列表
+     * 查询闲置举报列表
      * 
-     * @param report 投诉
-     * @return 投诉
+     * @param report 闲置举报
+     * @return 闲置举报
      */
     @Override
     public List<Report> selectReportList(Report report)
@@ -44,9 +44,9 @@ public class ReportServiceImpl implements IReportService
     }
 
     /**
-     * 新增投诉
+     * 新增闲置举报
      * 
-     * @param report 投诉
+     * @param report 闲置举报
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class ReportServiceImpl implements IReportService
     }
 
     /**
-     * 修改投诉
+     * 修改闲置举报
      * 
-     * @param report 投诉
+     * @param report 闲置举报
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class ReportServiceImpl implements IReportService
     }
 
     /**
-     * 批量删除投诉
+     * 批量删除闲置举报
      * 
-     * @param ids 需要删除的投诉ID
+     * @param ids 需要删除的闲置举报ID
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class ReportServiceImpl implements IReportService
     }
 
     /**
-     * 删除投诉信息
+     * 删除闲置举报信息
      * 
-     * @param id 投诉ID
+     * @param id 闲置举报ID
      * @return 结果
      */
     @Override

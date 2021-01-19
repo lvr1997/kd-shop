@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 商品Controller
+ * 闲置物品Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/goods")
@@ -34,7 +34,7 @@ public class GoodsController extends BaseController
     private IGoodsService goodsService;
 
     /**
-     * 查询商品列表
+     * 查询闲置物品列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class GoodsController extends BaseController
     }
 
     /**
-     * 导出商品列表
+     * 导出闲置物品列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:export')")
-    @Log(title = "商品", businessType = BusinessType.EXPORT)
+    @Log(title = "闲置物品", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Goods goods)
     {
@@ -59,7 +59,7 @@ public class GoodsController extends BaseController
     }
 
     /**
-     * 获取商品详细信息
+     * 获取闲置物品详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class GoodsController extends BaseController
     }
 
     /**
-     * 新增商品
+     * 新增闲置物品
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:add')")
-    @Log(title = "商品", businessType = BusinessType.INSERT)
+    @Log(title = "闲置物品", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Goods goods)
     {
@@ -80,10 +80,10 @@ public class GoodsController extends BaseController
     }
 
     /**
-     * 修改商品
+     * 修改闲置物品
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:edit')")
-    @Log(title = "商品", businessType = BusinessType.UPDATE)
+    @Log(title = "闲置物品", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Goods goods)
     {
@@ -91,10 +91,10 @@ public class GoodsController extends BaseController
     }
 
     /**
-     * 删除商品
+     * 删除闲置物品
      */
     @PreAuthorize("@ss.hasPermi('kdshop:goods:remove')")
-    @Log(title = "商品", businessType = BusinessType.DELETE)
+    @Log(title = "闲置物品", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

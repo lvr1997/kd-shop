@@ -1,19 +1,19 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="goodsId">
+      <el-form-item label="闲置id" prop="goodsId">
         <el-input
           v-model="queryParams.goodsId"
-          placeholder="请输入${comment}"
+          placeholder="请输入闲置id"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="imgUrl">
+      <el-form-item label="图片路径" prop="imgUrl">
         <el-input
           v-model="queryParams.imgUrl"
-          placeholder="请输入${comment}"
+          placeholder="请输入图片路径"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
@@ -69,9 +69,9 @@
 
     <el-table v-loading="loading" :data="imageList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="goodsId" />
-      <el-table-column label="${comment}" align="center" prop="imgUrl" />
+      <el-table-column label="图片id" align="center" prop="id" />
+      <el-table-column label="闲置id" align="center" prop="goodsId" />
+      <el-table-column label="图片路径" align="center" prop="imgUrl" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -100,14 +100,14 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改商品图片对话框 -->
+    <!-- 添加或修改闲置图片对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="goodsId">
-          <el-input v-model="form.goodsId" placeholder="请输入${comment}" />
+        <el-form-item label="闲置id" prop="goodsId">
+          <el-input v-model="form.goodsId" placeholder="请输入闲置id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="imgUrl">
-          <el-input v-model="form.imgUrl" placeholder="请输入${comment}" />
+        <el-form-item label="图片路径" prop="imgUrl">
+          <el-input v-model="form.imgUrl" placeholder="请输入图片路径" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -139,7 +139,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 商品图片表格数据
+      // 闲置图片表格数据
       imageList: [],
       // 弹出层标题
       title: "",
@@ -157,7 +157,7 @@ export default {
       // 表单校验
       rules: {
         goodsId: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "闲置id不能为空", trigger: "blur" }
         ],
       }
     };
@@ -166,7 +166,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询商品图片列表 */
+    /** 查询闲置图片列表 */
     getList() {
       this.loading = true;
       listImage(this.queryParams).then(response => {
@@ -209,7 +209,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加商品图片";
+      this.title = "添加闲置图片";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -218,7 +218,7 @@ export default {
       getImage(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改商品图片";
+        this.title = "修改闲置图片";
       });
     },
     /** 提交按钮 */
@@ -244,7 +244,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$confirm('是否确认删除商品图片编号为"' + ids + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除闲置图片编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -258,7 +258,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有商品图片数据项?', "警告", {
+      this.$confirm('是否确认导出所有闲置图片数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

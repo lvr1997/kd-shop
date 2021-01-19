@@ -1,5 +1,7 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
@@ -9,29 +11,30 @@ import com.lvr.common.core.domain.BaseEntity;
  * 评论对象 kd_comments
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Comments extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** 评论id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 评论人 */
+    @Excel(name = "评论人")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 评论的闲置 */
+    @Excel(name = "评论的闲置")
     private Long goodsId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private String createAt;
+    /** 评论时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "评论时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createAt;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 评论内容 */
+    @Excel(name = "评论内容")
     private String content;
 
     public void setId(Long id) 
@@ -61,12 +64,12 @@ public class Comments extends BaseEntity
     {
         return goodsId;
     }
-    public void setCreateAt(String createAt) 
+    public void setCreateAt(Date createAt) 
     {
         this.createAt = createAt;
     }
 
-    public String getCreateAt() 
+    public Date getCreateAt() 
     {
         return createAt;
     }

@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 系统通知Controller
+ * 系统公告Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/notice")
@@ -34,7 +34,7 @@ public class NoticeController extends BaseController
     private INoticeService noticeService;
 
     /**
-     * 查询系统通知列表
+     * 查询系统公告列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class NoticeController extends BaseController
     }
 
     /**
-     * 导出系统通知列表
+     * 导出系统公告列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:export')")
-    @Log(title = "系统通知", businessType = BusinessType.EXPORT)
+    @Log(title = "系统公告", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Notice notice)
     {
@@ -59,7 +59,7 @@ public class NoticeController extends BaseController
     }
 
     /**
-     * 获取系统通知详细信息
+     * 获取系统公告详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class NoticeController extends BaseController
     }
 
     /**
-     * 新增系统通知
+     * 新增系统公告
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:add')")
-    @Log(title = "系统通知", businessType = BusinessType.INSERT)
+    @Log(title = "系统公告", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Notice notice)
     {
@@ -80,10 +80,10 @@ public class NoticeController extends BaseController
     }
 
     /**
-     * 修改系统通知
+     * 修改系统公告
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:edit')")
-    @Log(title = "系统通知", businessType = BusinessType.UPDATE)
+    @Log(title = "系统公告", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Notice notice)
     {
@@ -91,10 +91,10 @@ public class NoticeController extends BaseController
     }
 
     /**
-     * 删除系统通知
+     * 删除系统公告
      */
     @PreAuthorize("@ss.hasPermi('kdshop:notice:remove')")
-    @Log(title = "系统通知", businessType = BusinessType.DELETE)
+    @Log(title = "系统公告", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

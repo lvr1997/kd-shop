@@ -10,22 +10,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="createAt"    column="create_at"    />
         <result property="status"    column="status"    />
         <result property="descript"    column="descript"    />
-        <result property="url"    column="url"    />
         <result property="imgUrl"    column="img_url"    />
     </resultMap>
 
     <sql id="selectCarouselVo">
-        select id, title, create_at, status, descript, url, img_url from kd_carousel
+        select id, title, create_at, status, descript, img_url from kd_carousel
     </sql>
 
     <select id="selectCarouselList" parameterType="Carousel" resultMap="CarouselResult">
         <include refid="selectCarouselVo"/>
         <where>  
             <if test="title != null  and title != ''"> and title = #{title}</if>
-            <if test="createAt != null  and createAt != ''"> and create_at = #{createAt}</if>
+            <if test="createAt != null "> and create_at = #{createAt}</if>
             <if test="status != null "> and status = #{status}</if>
             <if test="descript != null  and descript != ''"> and descript = #{descript}</if>
-            <if test="url != null  and url != ''"> and url = #{url}</if>
             <if test="imgUrl != null  and imgUrl != ''"> and img_url = #{imgUrl}</if>
         </where>
     </select>
@@ -42,7 +40,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createAt != null">create_at,</if>
             <if test="status != null">status,</if>
             <if test="descript != null">descript,</if>
-            <if test="url != null">url,</if>
             <if test="imgUrl != null">img_url,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -50,7 +47,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createAt != null">#{createAt},</if>
             <if test="status != null">#{status},</if>
             <if test="descript != null">#{descript},</if>
-            <if test="url != null">#{url},</if>
             <if test="imgUrl != null">#{imgUrl},</if>
          </trim>
     </insert>
@@ -62,7 +58,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="createAt != null">create_at = #{createAt},</if>
             <if test="status != null">status = #{status},</if>
             <if test="descript != null">descript = #{descript},</if>
-            <if test="url != null">url = #{url},</if>
             <if test="imgUrl != null">img_url = #{imgUrl},</if>
         </trim>
         where id = #{id}

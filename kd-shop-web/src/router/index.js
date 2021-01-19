@@ -54,14 +54,23 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/home',
-    component: resolve => require(['@/views/index'], resolve),
+    path: '/',
+    redirect: 'home',
     hidden: true
   },
   {
-    path: '',
+    path: '/home',
+    component: (resolve => require(['@/views/index'], resolve)),
+    hidden: true
+  },
+  {
+    path: '/publish',
+    component: (resolve => require(['@/views/kdshop/publish'], resolve)),
+    hidden: true
+  },
+  {
+    path: '/admin',
     component: Layout,
-    redirect: 'admin',
     children: [
       {
         path: 'admin',

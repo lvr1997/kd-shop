@@ -58,5 +58,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{id}
         </foreach>
     </delete>
+
+    <select id="selectImagesByGoodId" parameterType="Long" resultMap="ImageResult">
+        select img_url from kd_image where goods_id = #{id}
+    </select>
     
 </mapper>

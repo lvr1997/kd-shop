@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询商品列表
+// 查询闲置物品列表
 export function listGoods(query) {
   return request({
     url: '/kdshop/goods/list',
@@ -9,7 +9,7 @@ export function listGoods(query) {
   })
 }
 
-// 查询商品详细
+// 查询闲置物品详细
 export function getGoods(id) {
   return request({
     url: '/kdshop/goods/' + id,
@@ -17,7 +17,7 @@ export function getGoods(id) {
   })
 }
 
-// 新增商品
+// 新增闲置物品
 export function addGoods(data) {
   return request({
     url: '/kdshop/goods',
@@ -26,7 +26,7 @@ export function addGoods(data) {
   })
 }
 
-// 修改商品
+// 修改闲置物品
 export function updateGoods(data) {
   return request({
     url: '/kdshop/goods',
@@ -35,7 +35,7 @@ export function updateGoods(data) {
   })
 }
 
-// 删除商品
+// 删除闲置物品
 export function delGoods(id) {
   return request({
     url: '/kdshop/goods/' + id,
@@ -43,7 +43,7 @@ export function delGoods(id) {
   })
 }
 
-// 导出商品
+// 导出闲置物品
 export function exportGoods(query) {
   return request({
     url: '/kdshop/goods/export',

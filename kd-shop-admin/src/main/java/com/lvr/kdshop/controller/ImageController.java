@@ -21,10 +21,10 @@ import com.lvr.common.utils.poi.ExcelUtil;
 import com.lvr.common.core.page.TableDataInfo;
 
 /**
- * 商品图片Controller
+ * 闲置图片Controller
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @RestController
 @RequestMapping("/kdshop/image")
@@ -34,7 +34,7 @@ public class ImageController extends BaseController
     private IImageService imageService;
 
     /**
-     * 查询商品图片列表
+     * 查询闲置图片列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:list')")
     @GetMapping("/list")
@@ -46,10 +46,10 @@ public class ImageController extends BaseController
     }
 
     /**
-     * 导出商品图片列表
+     * 导出闲置图片列表
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:export')")
-    @Log(title = "商品图片", businessType = BusinessType.EXPORT)
+    @Log(title = "闲置图片", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(Image image)
     {
@@ -59,7 +59,7 @@ public class ImageController extends BaseController
     }
 
     /**
-     * 获取商品图片详细信息
+     * 获取闲置图片详细信息
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:query')")
     @GetMapping(value = "/{id}")
@@ -69,10 +69,10 @@ public class ImageController extends BaseController
     }
 
     /**
-     * 新增商品图片
+     * 新增闲置图片
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:add')")
-    @Log(title = "商品图片", businessType = BusinessType.INSERT)
+    @Log(title = "闲置图片", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody Image image)
     {
@@ -80,10 +80,10 @@ public class ImageController extends BaseController
     }
 
     /**
-     * 修改商品图片
+     * 修改闲置图片
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:edit')")
-    @Log(title = "商品图片", businessType = BusinessType.UPDATE)
+    @Log(title = "闲置图片", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody Image image)
     {
@@ -91,10 +91,10 @@ public class ImageController extends BaseController
     }
 
     /**
-     * 删除商品图片
+     * 删除闲置图片
      */
     @PreAuthorize("@ss.hasPermi('kdshop:image:remove')")
-    @Log(title = "商品图片", businessType = BusinessType.DELETE)
+    @Log(title = "闲置图片", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {

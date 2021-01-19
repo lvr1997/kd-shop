@@ -6,32 +6,32 @@ import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 投诉对象 kd_report
+ * 闲置举报对象 kd_report
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Report extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 举报的闲置 */
+    @Excel(name = "举报的闲置")
     private Long goodId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 举报人 */
+    @Excel(name = "举报人")
     private Long userId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 举报内容 */
+    @Excel(name = "举报内容")
     private String content;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 状态1：待审核2：已审核 */
+    @Excel(name = "状态1：待审核2：已审核")
     private Integer status;
 
     public void setId(Long id) 

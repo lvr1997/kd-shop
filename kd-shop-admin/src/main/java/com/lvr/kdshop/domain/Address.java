@@ -1,26 +1,27 @@
 package com.lvr.kdshop.domain;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 收件地址对象 kd_address
+ * 收货地址对象 kd_address
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Address extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Long uid;
+    /** 所属人 */
+    private Long userId;
 
     /** 收件人姓名 */
     @Excel(name = "收件人姓名")
@@ -50,10 +51,6 @@ public class Address extends BaseEntity
     @Excel(name = "收件人电话")
     private String recvPhone;
 
-    /** 收件人固定电话 */
-    @Excel(name = "收件人固定电话")
-    private String recvTel;
-
     /** 邮编 */
     @Excel(name = "邮编")
     private String recvZip;
@@ -62,25 +59,19 @@ public class Address extends BaseEntity
     @Excel(name = "标签")
     private String recvTag;
 
-    /** 是否默认 */
-    @Excel(name = "是否默认")
+    /** 是否默认1：是 2：否 */
+    @Excel(name = "是否默认1：是 2：否")
     private Long isDefault;
 
-    /** 创建人 */
-    @Excel(name = "创建人")
-    private String createdUser;
-
     /** 创建时间 */
-    @Excel(name = "创建时间")
-    private String createdTime;
-
-    /** 修改人 */
-    @Excel(name = "修改人")
-    private String modifiedUser;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date createdTime;
 
     /** 修改时间 */
-    @Excel(name = "修改时间")
-    private String modifiedTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "修改时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date modifiedTime;
 
     public void setId(Long id) 
     {
@@ -91,14 +82,14 @@ public class Address extends BaseEntity
     {
         return id;
     }
-    public void setUid(Long uid) 
+    public void setUserId(Long userId) 
     {
-        this.uid = uid;
+        this.userId = userId;
     }
 
-    public Long getUid() 
+    public Long getUserId() 
     {
-        return uid;
+        return userId;
     }
     public void setRecvName(String recvName) 
     {
@@ -163,15 +154,6 @@ public class Address extends BaseEntity
     {
         return recvPhone;
     }
-    public void setRecvTel(String recvTel) 
-    {
-        this.recvTel = recvTel;
-    }
-
-    public String getRecvTel() 
-    {
-        return recvTel;
-    }
     public void setRecvZip(String recvZip) 
     {
         this.recvZip = recvZip;
@@ -199,39 +181,21 @@ public class Address extends BaseEntity
     {
         return isDefault;
     }
-    public void setCreatedUser(String createdUser) 
-    {
-        this.createdUser = createdUser;
-    }
-
-    public String getCreatedUser() 
-    {
-        return createdUser;
-    }
-    public void setCreatedTime(String createdTime) 
+    public void setCreatedTime(Date createdTime) 
     {
         this.createdTime = createdTime;
     }
 
-    public String getCreatedTime() 
+    public Date getCreatedTime() 
     {
         return createdTime;
     }
-    public void setModifiedUser(String modifiedUser) 
-    {
-        this.modifiedUser = modifiedUser;
-    }
-
-    public String getModifiedUser() 
-    {
-        return modifiedUser;
-    }
-    public void setModifiedTime(String modifiedTime) 
+    public void setModifiedTime(Date modifiedTime) 
     {
         this.modifiedTime = modifiedTime;
     }
 
-    public String getModifiedTime() 
+    public Date getModifiedTime() 
     {
         return modifiedTime;
     }
@@ -240,7 +204,7 @@ public class Address extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("id", getId())
-            .append("uid", getUid())
+            .append("userId", getUserId())
             .append("recvName", getRecvName())
             .append("recvProvince", getRecvProvince())
             .append("recvCity", getRecvCity())
@@ -248,13 +212,10 @@ public class Address extends BaseEntity
             .append("recvDistrict", getRecvDistrict())
             .append("recvAddr", getRecvAddr())
             .append("recvPhone", getRecvPhone())
-            .append("recvTel", getRecvTel())
             .append("recvZip", getRecvZip())
             .append("recvTag", getRecvTag())
             .append("isDefault", getIsDefault())
-            .append("createdUser", getCreatedUser())
             .append("createdTime", getCreatedTime())
-            .append("modifiedUser", getModifiedUser())
             .append("modifiedTime", getModifiedTime())
             .toString();
     }

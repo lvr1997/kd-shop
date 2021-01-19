@@ -4,57 +4,57 @@ import java.util.List;
 import com.lvr.kdshop.domain.Catelog;
 
 /**
- * 分类Service接口
+ * 闲置分类Service接口
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public interface ICatelogService 
 {
     /**
-     * 查询分类
+     * 查询闲置分类
      * 
-     * @param id 分类ID
-     * @return 分类
+     * @param id 闲置分类ID
+     * @return 闲置分类
      */
     public Catelog selectCatelogById(Long id);
 
     /**
-     * 查询分类列表
+     * 查询闲置分类列表
      * 
-     * @param catelog 分类
-     * @return 分类集合
+     * @param catelog 闲置分类
+     * @return 闲置分类集合
      */
     public List<Catelog> selectCatelogList(Catelog catelog);
 
     /**
-     * 新增分类
+     * 新增闲置分类
      * 
-     * @param catelog 分类
+     * @param catelog 闲置分类
      * @return 结果
      */
     public int insertCatelog(Catelog catelog);
 
     /**
-     * 修改分类
+     * 修改闲置分类
      * 
-     * @param catelog 分类
+     * @param catelog 闲置分类
      * @return 结果
      */
     public int updateCatelog(Catelog catelog);
 
     /**
-     * 批量删除分类
+     * 批量删除闲置分类
      * 
-     * @param ids 需要删除的分类ID
+     * @param ids 需要删除的闲置分类ID
      * @return 结果
      */
     public int deleteCatelogByIds(Long[] ids);
 
     /**
-     * 删除分类信息
+     * 删除闲置分类信息
      * 
-     * @param id 分类ID
+     * @param id 闲置分类ID
      * @return 结果
      */
     public int deleteCatelogById(Long id);

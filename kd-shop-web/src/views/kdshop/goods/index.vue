@@ -1,150 +1,133 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="catelogId">
-        <el-select v-model="queryParams.catelogId" placeholder="请选择${comment}" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
+      <el-form-item label="分类id" prop="catelogId">
+        <el-input
+          v-model="queryParams.catelogId"
+          placeholder="请输入分类id"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
       </el-form-item>
-      <el-form-item label="${comment}" prop="userId">
-        <el-select v-model="queryParams.userId" placeholder="请选择${comment}" clearable size="small">
-          <el-option label="请选择字典生成" value="" />
-        </el-select>
+      <el-form-item label="发布人" prop="userId">
+        <el-input
+          v-model="queryParams.userId"
+          placeholder="请输入发布人"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
       </el-form-item>
-      <el-form-item label="${comment}" prop="name">
+      <el-form-item label="闲置名称" prop="name">
         <el-input
           v-model="queryParams.name"
-          placeholder="请输入${comment}"
+          placeholder="请输入闲置名称"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="price">
+      <el-form-item label="出售价格" prop="price">
         <el-input
           v-model="queryParams.price"
-          placeholder="请输入${comment}"
+          placeholder="请输入出售价格"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="realPrice">
+      <el-form-item label="原购买价格" prop="realPrice">
         <el-input
           v-model="queryParams.realPrice"
-          placeholder="请输入${comment}"
+          placeholder="请输入原购买价格"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="startTime">
-        <el-date-picker clearable size="small" style="width: 200px"
-          v-model="queryParams.startTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="选择${comment}">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="${comment}" prop="polishTime">
+      <el-form-item label="发布时间" prop="polishTime">
         <el-date-picker clearable size="small" style="width: 200px"
           v-model="queryParams.polishTime"
           type="date"
           value-format="yyyy-MM-dd"
-          placeholder="选择${comment}">
+          placeholder="选择发布时间">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="${comment}" prop="endTime">
-        <el-date-picker clearable size="small" style="width: 200px"
-          v-model="queryParams.endTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="选择${comment}">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="${comment}" prop="commetNum">
+      <el-form-item label="原购买链接" prop="buyUrl">
         <el-input
-          v-model="queryParams.commetNum"
-          placeholder="请输入${comment}"
+          v-model="queryParams.buyUrl"
+          placeholder="请输入原购买链接"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="phoneNumber">
+      <el-form-item label="手机号" prop="phoneNumber">
         <el-input
           v-model="queryParams.phoneNumber"
-          placeholder="请输入${comment}"
+          placeholder="请输入手机号"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="qqNumber">
+      <el-form-item label="qq号" prop="qqNumber">
         <el-input
           v-model="queryParams.qqNumber"
-          placeholder="请输入${comment}"
+          placeholder="请输入qq号"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="wxNumber">
+      <el-form-item label="微信号" prop="wxNumber">
         <el-input
           v-model="queryParams.wxNumber"
-          placeholder="请输入${comment}"
+          placeholder="请输入微信号"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodCity">
+      <el-form-item label="购买方式1：在线交易2：线下交易3：线上/线下交易" prop="buyMethod">
         <el-input
-          v-model="queryParams.goodCity"
-          placeholder="请输入${comment}"
+          v-model="queryParams.buyMethod"
+          placeholder="请输入购买方式1：在线交易2：线下交易3：线上/线下交易"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodBuyMethod">
+      <el-form-item label="交易地址" prop="address">
         <el-input
-          v-model="queryParams.goodBuyMethod"
-          placeholder="请输入${comment}"
+          v-model="queryParams.address"
+          placeholder="请输入交易地址"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="goodAddress">
+      <el-form-item label="显示数量" prop="viewCount">
         <el-input
-          v-model="queryParams.goodAddress"
-          placeholder="请输入${comment}"
+          v-model="queryParams.viewCount"
+          placeholder="请输入显示数量"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="viewcount">
-        <el-input
-          v-model="queryParams.viewcount"
-          placeholder="请输入${comment}"
-          clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="${comment}" prop="describle">
+      <el-form-item label="闲置描述" prop="describle">
         <el-input
           v-model="queryParams.describle"
-          placeholder="请输入${comment}"
+          placeholder="请输入闲置描述"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="${comment}" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择${comment}" clearable size="small">
+      <el-form-item label="闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除" prop="status">
+        <el-select v-model="queryParams.status" placeholder="请选择闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除" clearable size="small">
           <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
@@ -198,37 +181,26 @@
 
     <el-table v-loading="loading" :data="goodsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="id" />
-      <el-table-column label="${comment}" align="center" prop="catelogId" />
-      <el-table-column label="${comment}" align="center" prop="userId" />
-      <el-table-column label="${comment}" align="center" prop="name" />
-      <el-table-column label="${comment}" align="center" prop="price" />
-      <el-table-column label="${comment}" align="center" prop="realPrice" />
-      <el-table-column label="${comment}" align="center" prop="startTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.startTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="${comment}" align="center" prop="polishTime" width="180">
+      <el-table-column label="闲置id" align="center" prop="id" />
+      <el-table-column label="分类id" align="center" prop="catelogId" />
+      <el-table-column label="发布人" align="center" prop="userId" />
+      <el-table-column label="闲置名称" align="center" prop="name" />
+      <el-table-column label="出售价格" align="center" prop="price" />
+      <el-table-column label="原购买价格" align="center" prop="realPrice" />
+      <el-table-column label="发布时间" align="center" prop="polishTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.polishTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="${comment}" align="center" prop="endTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="${comment}" align="center" prop="commetNum" />
-      <el-table-column label="${comment}" align="center" prop="phoneNumber" />
-      <el-table-column label="${comment}" align="center" prop="qqNumber" />
-      <el-table-column label="${comment}" align="center" prop="wxNumber" />
-      <el-table-column label="${comment}" align="center" prop="goodCity" />
-      <el-table-column label="${comment}" align="center" prop="goodBuyMethod" />
-      <el-table-column label="${comment}" align="center" prop="goodAddress" />
-      <el-table-column label="${comment}" align="center" prop="viewcount" />
-      <el-table-column label="${comment}" align="center" prop="describle" />
-      <el-table-column label="${comment}" align="center" prop="status" />
+      <el-table-column label="原购买链接" align="center" prop="buyUrl" />
+      <el-table-column label="手机号" align="center" prop="phoneNumber" />
+      <el-table-column label="qq号" align="center" prop="qqNumber" />
+      <el-table-column label="微信号" align="center" prop="wxNumber" />
+      <el-table-column label="购买方式1：在线交易2：线下交易3：线上/线下交易" align="center" prop="buyMethod" />
+      <el-table-column label="交易地址" align="center" prop="address" />
+      <el-table-column label="显示数量" align="center" prop="viewCount" />
+      <el-table-column label="闲置描述" align="center" prop="describle" />
+      <el-table-column label="闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除" align="center" prop="status" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -257,80 +229,57 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改商品对话框 -->
+    <!-- 添加或修改闲置物品对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="${comment}" prop="catelogId">
-          <el-select v-model="form.catelogId" placeholder="请选择${comment}">
-            <el-option label="请选择字典生成" value="" />
-          </el-select>
+        <el-form-item label="分类id" prop="catelogId">
+          <el-input v-model="form.catelogId" placeholder="请输入分类id" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="userId">
-          <el-select v-model="form.userId" placeholder="请选择${comment}">
-            <el-option label="请选择字典生成" value="" />
-          </el-select>
+        <el-form-item label="发布人" prop="userId">
+          <el-input v-model="form.userId" placeholder="请输入发布人" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="name">
-          <el-input v-model="form.name" placeholder="请输入${comment}" />
+        <el-form-item label="闲置名称" prop="name">
+          <el-input v-model="form.name" placeholder="请输入闲置名称" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="price">
-          <el-input v-model="form.price" placeholder="请输入${comment}" />
+        <el-form-item label="出售价格" prop="price">
+          <el-input v-model="form.price" placeholder="请输入出售价格" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="realPrice">
-          <el-input v-model="form.realPrice" placeholder="请输入${comment}" />
+        <el-form-item label="原购买价格" prop="realPrice">
+          <el-input v-model="form.realPrice" placeholder="请输入原购买价格" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="startTime">
-          <el-date-picker clearable size="small" style="width: 200px"
-            v-model="form.startTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="选择${comment}">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="${comment}" prop="polishTime">
+        <el-form-item label="发布时间" prop="polishTime">
           <el-date-picker clearable size="small" style="width: 200px"
             v-model="form.polishTime"
             type="date"
             value-format="yyyy-MM-dd"
-            placeholder="选择${comment}">
+            placeholder="选择发布时间">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="${comment}" prop="endTime">
-          <el-date-picker clearable size="small" style="width: 200px"
-            v-model="form.endTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="选择${comment}">
-          </el-date-picker>
+        <el-form-item label="原购买链接" prop="buyUrl">
+          <el-input v-model="form.buyUrl" placeholder="请输入原购买链接" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="commetNum">
-          <el-input v-model="form.commetNum" placeholder="请输入${comment}" />
+        <el-form-item label="手机号" prop="phoneNumber">
+          <el-input v-model="form.phoneNumber" placeholder="请输入手机号" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="phoneNumber">
-          <el-input v-model="form.phoneNumber" placeholder="请输入${comment}" />
+        <el-form-item label="qq号" prop="qqNumber">
+          <el-input v-model="form.qqNumber" placeholder="请输入qq号" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="qqNumber">
-          <el-input v-model="form.qqNumber" placeholder="请输入${comment}" />
+        <el-form-item label="微信号" prop="wxNumber">
+          <el-input v-model="form.wxNumber" placeholder="请输入微信号" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="wxNumber">
-          <el-input v-model="form.wxNumber" placeholder="请输入${comment}" />
+        <el-form-item label="购买方式1：在线交易2：线下交易3：线上/线下交易" prop="buyMethod">
+          <el-input v-model="form.buyMethod" placeholder="请输入购买方式1：在线交易2：线下交易3：线上/线下交易" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodCity">
-          <el-input v-model="form.goodCity" placeholder="请输入${comment}" />
+        <el-form-item label="交易地址" prop="address">
+          <el-input v-model="form.address" placeholder="请输入交易地址" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodBuyMethod">
-          <el-input v-model="form.goodBuyMethod" placeholder="请输入${comment}" />
+        <el-form-item label="显示数量" prop="viewCount">
+          <el-input v-model="form.viewCount" placeholder="请输入显示数量" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="goodAddress">
-          <el-input v-model="form.goodAddress" placeholder="请输入${comment}" />
+        <el-form-item label="闲置描述" prop="describle">
+          <el-input v-model="form.describle" placeholder="请输入闲置描述" />
         </el-form-item>
-        <el-form-item label="${comment}" prop="viewcount">
-          <el-input v-model="form.viewcount" placeholder="请输入${comment}" />
-        </el-form-item>
-        <el-form-item label="${comment}" prop="describle">
-          <el-input v-model="form.describle" placeholder="请输入${comment}" />
-        </el-form-item>
-        <el-form-item label="${comment}">
+        <el-form-item label="闲置状态1：发布成功2：未发布3：已出售4：发布待审核5：已下架6：已删除">
           <el-radio-group v-model="form.status">
             <el-radio label="1">请选择字典生成</el-radio>
           </el-radio-group>
@@ -365,7 +314,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 商品表格数据
+      // 闲置物品表格数据
       goodsList: [],
       // 弹出层标题
       title: "",
@@ -380,17 +329,14 @@ export default {
         name: null,
         price: null,
         realPrice: null,
-        startTime: null,
         polishTime: null,
-        endTime: null,
-        commetNum: null,
+        buyUrl: null,
         phoneNumber: null,
         qqNumber: null,
         wxNumber: null,
-        goodCity: null,
-        goodBuyMethod: null,
-        goodAddress: null,
-        viewcount: null,
+        buyMethod: null,
+        address: null,
+        viewCount: null,
         describle: null,
         status: null
       },
@@ -399,16 +345,25 @@ export default {
       // 表单校验
       rules: {
         catelogId: [
-          { required: true, message: "$comment不能为空", trigger: "change" }
+          { required: true, message: "分类id不能为空", trigger: "blur" }
         ],
         userId: [
-          { required: true, message: "$comment不能为空", trigger: "change" }
+          { required: true, message: "发布人不能为空", trigger: "blur" }
         ],
         name: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "闲置名称不能为空", trigger: "blur" }
         ],
         price: [
-          { required: true, message: "$comment不能为空", trigger: "blur" }
+          { required: true, message: "出售价格不能为空", trigger: "blur" }
+        ],
+        realPrice: [
+          { required: true, message: "原购买价格不能为空", trigger: "blur" }
+        ],
+        polishTime: [
+          { required: true, message: "发布时间不能为空", trigger: "blur" }
+        ],
+        phoneNumber: [
+          { required: true, message: "手机号不能为空", trigger: "blur" }
         ],
       }
     };
@@ -417,7 +372,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询商品列表 */
+    /** 查询闲置物品列表 */
     getList() {
       this.loading = true;
       listGoods(this.queryParams).then(response => {
@@ -440,17 +395,14 @@ export default {
         name: null,
         price: null,
         realPrice: null,
-        startTime: null,
         polishTime: null,
-        endTime: null,
-        commetNum: null,
+        buyUrl: null,
         phoneNumber: null,
         qqNumber: null,
         wxNumber: null,
-        goodCity: null,
-        goodBuyMethod: null,
-        goodAddress: null,
-        viewcount: null,
+        buyMethod: null,
+        address: null,
+        viewCount: null,
         describle: null,
         status: 0
       };
@@ -476,7 +428,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加商品";
+      this.title = "添加闲置物品";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -485,7 +437,7 @@ export default {
       getGoods(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改商品";
+        this.title = "修改闲置物品";
       });
     },
     /** 提交按钮 */
@@ -511,7 +463,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$confirm('是否确认删除商品编号为"' + ids + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除闲置物品编号为"' + ids + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -525,7 +477,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认导出所有商品数据项?', "警告", {
+      this.$confirm('是否确认导出所有闲置物品数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

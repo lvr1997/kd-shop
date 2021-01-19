@@ -6,28 +6,28 @@ import com.lvr.common.annotation.Excel;
 import com.lvr.common.core.domain.BaseEntity;
 
 /**
- * 分类对象 kd_catelog
+ * 闲置分类对象 kd_catelog
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 public class Catelog extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
+    /** id */
     private Long id;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 分类名称 */
+    @Excel(name = "分类名称")
     private String name;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /** 闲置数量 */
+    @Excel(name = "闲置数量")
     private Long number;
 
-    /** 1是可用 */
-    @Excel(name = "1是可用")
+    /** 状态：1是可用 2不可用 */
+    @Excel(name = "状态：1是可用 2不可用")
     private Integer status;
 
     public void setId(Long id) 

@@ -196,6 +196,8 @@
         <module>kd-shop-framework</module>
         <module>kd-shop-quartz</module>
         <module>kd-shop-system</module>
+        <module>kd-shop-oss</module>
+        <module>kd-shop-oss</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -8,10 +8,10 @@ import com.lvr.kdshop.domain.Goods;
 import com.lvr.kdshop.service.IGoodsService;
 
 /**
- * 商品Service业务层处理
+ * 闲置物品Service业务层处理
  * 
  * @author lvr1997
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @Service
 public class GoodsServiceImpl implements IGoodsService 
@@ -20,10 +20,10 @@ public class GoodsServiceImpl implements IGoodsService
     private GoodsMapper goodsMapper;
 
     /**
-     * 查询商品
+     * 查询闲置物品
      * 
-     * @param id 商品ID
-     * @return 商品
+     * @param id 闲置物品ID
+     * @return 闲置物品
      */
     @Override
     public Goods selectGoodsById(Long id)
@@ -32,10 +32,10 @@ public class GoodsServiceImpl implements IGoodsService
     }
 
     /**
-     * 查询商品列表
+     * 查询闲置物品列表
      * 
-     * @param goods 商品
-     * @return 商品
+     * @param goods 闲置物品
+     * @return 闲置物品
      */
     @Override
     public List<Goods> selectGoodsList(Goods goods)
@@ -44,9 +44,9 @@ public class GoodsServiceImpl implements IGoodsService
     }
 
     /**
-     * 新增商品
+     * 新增闲置物品
      * 
-     * @param goods 商品
+     * @param goods 闲置物品
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class GoodsServiceImpl implements IGoodsService
     }
 
     /**
-     * 修改商品
+     * 修改闲置物品
      * 
-     * @param goods 商品
+     * @param goods 闲置物品
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class GoodsServiceImpl implements IGoodsService
     }
 
     /**
-     * 批量删除商品
+     * 批量删除闲置物品
      * 
-     * @param ids 需要删除的商品ID
+     * @param ids 需要删除的闲置物品ID
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class GoodsServiceImpl implements IGoodsService
     }
 
     /**
-     * 删除商品信息
+     * 删除闲置物品信息
      * 
-     * @param id 商品ID
+     * @param id 闲置物品ID
      * @return 结果
      */
     @Override

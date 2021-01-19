@@ -24,7 +24,8 @@ export default {
   components: {},
   data() {
     return {
-      uploadImgUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传的图片服务器地址
+      uploadImgUrl: process.env.VUE_APP_BASE_API + "/common/upload", // 上传至本地 上传的图片服务器地址
+      // uploadImgUrl: process.env.VUE_APP_BASE_API + "/common/oss/upload", // 上传至oss
       headers: {
         Authorization: "Bearer " + getToken(),
       },
