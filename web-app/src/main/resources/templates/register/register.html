@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    <main th:fragment="registerPage">
+        <!-- breadcrumb-area-start -->
+        <section class="breadcrumb-area" data-background="img/bg/page-title.png">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-text text-center">
+                            <h1>Register</h1>
+                            <ul class="breadcrumb-menu">
+                                <li><a href="index1.html">home</a></li>
+                                <li><span>Register</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb-area-end -->
+
+        <!-- 注册-->
+        <section class="login-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="basic-login">
+                            <h3 class="text-center mb-60">注册</h3>
+                            <form action="#">
+                                <label for="name">用户名 <span>**</span></label>
+                                <input id="name" type="text" placeholder="Enter Username or Email address...">
+                                <label for="email-id">邮箱 <span>**</span></label>
+                                <input id="email-id" type="text" placeholder="Enter Username or Email address...">
+                                <label for="pass">密码 <span>**</span></label>
+                                <input id="pass" type="password" placeholder="Enter password...">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="verifyCode">验证码 <span>**</span></label>
+                                        <input id="verifyCode" type="text" placeholder="请输入图片验证码">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+                                <div class="mt-10"></div>
+                                <button class="btn theme-btn-2 w-100">立即注册</button>
+                                <div class="or-divide"><span>或</span></div>
+                                <a class="btn theme-btn w-100" th:href="@{/login}">登录</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 注册 End-->
+    </main>
+</body>
+</html>

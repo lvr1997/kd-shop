@@ -1,0 +1,429 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : localhost_3306
+ Source Server Type    : MySQL
+ Source Server Version : 50724
+ Source Host           : localhost:3306
+ Source Schema         : kd-shop
+
+ Target Server Type    : MySQL
+ Target Server Version : 50724
+ File Encoding         : 65001
+
+ Date: 03/03/2022 16:37:24
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for address
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NULL DEFAULT NULL,
+  `recv_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_province` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_city` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_area` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_district` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_addr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_tel` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_zip` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recv_tag` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `is_default` int(11) NULL DEFAULT NULL,
+  `created_user` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_time` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `modified_user` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `modified_time` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
+INSERT INTO `address` VALUES (1, 1, '西瓜', '23', '01', '09', '黑龙江省哈尔滨市松北区', '黑龙江科技大学9#421', '15124680346', '', '150022', '宿舍', 1, NULL, NULL, NULL, NULL);
+INSERT INTO `address` VALUES (2, 3, 'lr', '23', '01', '09', '黑龙江省哈尔滨市松北区', '宿舍', '17645653758', '', '150022', '宿舍', 1, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for carousel
+-- ----------------------------
+DROP TABLE IF EXISTS `carousel`;
+CREATE TABLE `carousel`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` tinyint(4) NULL DEFAULT NULL,
+  `descript` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `url` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `img_url` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of carousel
+-- ----------------------------
+INSERT INTO `carousel` VALUES (1, '毕业季', '2019-05-23', 1, '毕业季，二手随心发', '#', 'banner1.png');
+INSERT INTO `carousel` VALUES (2, '新概念图书', '2019-05-23', 1, '欢迎各位发布一些闲置的书籍', '#', 'banner1.jpg');
+INSERT INTO `carousel` VALUES (3, '毕业季毕业季', '2019-05-23', 1, '毕业季', '#', 'banner2.png');
+
+-- ----------------------------
+-- Table structure for catelog
+-- ----------------------------
+DROP TABLE IF EXISTS `catelog`;
+CREATE TABLE `catelog`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `number` int(11) NOT NULL,
+  `status` tinyint(4) NULL DEFAULT 1 COMMENT '1是可用',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of catelog
+-- ----------------------------
+INSERT INTO `catelog` VALUES (1, '电子数码', 2, 1);
+INSERT INTO `catelog` VALUES (2, '棋牌休闲', 0, 1);
+INSERT INTO `catelog` VALUES (3, '服装衣物', 0, 1);
+INSERT INTO `catelog` VALUES (4, '书籍刊物', 0, 1);
+INSERT INTO `catelog` VALUES (5, '其他', 0, 0);
+
+-- ----------------------------
+-- Table structure for comments
+-- ----------------------------
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `create_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of comments
+-- ----------------------------
+INSERT INTO `comments` VALUES (1, 1, 1, '2019-05-19', '图片不足，稍后上传');
+INSERT INTO `comments` VALUES (2, 1, 1, '2019-05-19', '图片不足稍后上传');
+
+-- ----------------------------
+-- Table structure for dict_areas
+-- ----------------------------
+DROP TABLE IF EXISTS `dict_areas`;
+CREATE TABLE `dict_areas`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `city_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `area_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `area_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of dict_areas
+-- ----------------------------
+INSERT INTO `dict_areas` VALUES (1, '01', '09', '松北区');
+
+-- ----------------------------
+-- Table structure for dict_cities
+-- ----------------------------
+DROP TABLE IF EXISTS `dict_cities`;
+CREATE TABLE `dict_cities`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `province_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `city_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `city_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of dict_cities
+-- ----------------------------
+INSERT INTO `dict_cities` VALUES (1, '23', '01', '哈尔滨市');
+
+-- ----------------------------
+-- Table structure for dict_provinces
+-- ----------------------------
+DROP TABLE IF EXISTS `dict_provinces`;
+CREATE TABLE `dict_provinces`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `province_code` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `province_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of dict_provinces
+-- ----------------------------
+INSERT INTO `dict_provinces` VALUES (1, '23', '黑龙江省');
+
+-- ----------------------------
+-- Table structure for goods
+-- ----------------------------
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `catelog_id` int(11) NOT NULL COMMENT '所属分类',
+  `user_id` int(11) NOT NULL COMMENT '发布人',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
+  `price` double NOT NULL COMMENT '出售价格',
+  `real_price` double NULL DEFAULT NULL COMMENT '原购买价格',
+  `start_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上架时间',
+  `polish_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发布时间',
+  `end_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '下架时间',
+  `first_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品首图',
+  `phone_number` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系人手机号',
+  `good_buy_method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '交易方式',
+  `good_address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '交易地址',
+  `view_count` int(11) NULL DEFAULT NULL COMMENT '商品发布数量',
+  `describle` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '商品描述',
+  `status` tinyint(4) NULL DEFAULT 1 COMMENT '商品状态',
+  `seller_note` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品备注（仅发布者自己可见）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of goods
+-- ----------------------------
+INSERT INTO `goods` VALUES (1, 1, 1, 'Lenovo笔记本', 1000, 3999, '2019-05-19', '2019-05-20', NULL, NULL, '15124680346', '3', '9舍', 13, 'Lenovo笔记本  固态硬盘128', 0, NULL);
+INSERT INTO `goods` VALUES (2, 1, 3, 'oppor9s手机', 800, 1399, '2019-05-23', '2019-05-23', NULL, NULL, '13019711506', '3', '学生公寓', 8, 'oppor9s手机，用了一年', 3, NULL);
+
+-- ----------------------------
+-- Table structure for image
+-- ----------------------------
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE `image`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL,
+  `img_url` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of image
+-- ----------------------------
+INSERT INTO `image` VALUES (1, 1, '14dad59a-4ff8-4ad9-a556-bb92ffecb90b.png');
+INSERT INTO `image` VALUES (2, 2, '17f7fb26-e785-4a5b-b82a-6c7d2c8d345f.jpg');
+
+-- ----------------------------
+-- Table structure for notice
+-- ----------------------------
+DROP TABLE IF EXISTS `notice`;
+CREATE TABLE `notice`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `create_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` tinyint(4) NULL DEFAULT 1,
+  `context` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of notice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `good_id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
+  `pay_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `create_at` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `status` tinyint(4) NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, '20190528172406559', 1, 2, 1, '20190528172308624', '2019-05-28', 1);
+
+-- ----------------------------
+-- Table structure for purse
+-- ----------------------------
+DROP TABLE IF EXISTS `purse`;
+CREATE TABLE `purse`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键编号',
+  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '用户id',
+  `balance` double(16, 2) NOT NULL COMMENT '余额',
+  `state` int(11) NOT NULL DEFAULT 1 COMMENT '状态：1：可用，2：不可用',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of purse
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for reply
+-- ----------------------------
+DROP TABLE IF EXISTS `reply`;
+CREATE TABLE `reply`  (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `atuser_id` int(11) NULL DEFAULT NULL,
+  `commet_id` int(11) NULL DEFAULT NULL,
+  `create_at` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of reply
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for report
+-- ----------------------------
+DROP TABLE IF EXISTS `report`;
+CREATE TABLE `report`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键 编号',
+  `type` int(11) NOT NULL COMMENT '类型：1投诉，2反馈建议',
+  `good_id` int(11) NULL DEFAULT NULL COMMENT '商品id',
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '内容',
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '状态：0未处理，1已处理，-1已删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of report
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for roles
+-- ----------------------------
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles`  (
+  `id` int(11) NOT NULL COMMENT 'id',
+  `role_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色标识',
+  `role_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色名称',
+  `commet` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '备注',
+  `create_date` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `role_id`(`role_id`) USING BTREE COMMENT '角色id唯一'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of roles
+-- ----------------------------
+INSERT INTO `roles` VALUES (1, 'STUDENT', '学生用户', '学生角色，用登录学生端系统', '20220222');
+INSERT INTO `roles` VALUES (2, 'ADMIN', '系统管理员', '配置学校信息', '20220222');
+INSERT INTO `roles` VALUES (3, 'AUDITOR', '审核员', '用户审核学生发布的物品信息', '20220222');
+INSERT INTO `roles` VALUES (4, 'SUPERMANAGER', '超级管理员', '具有全部操作权限', '20220222');
+
+-- ----------------------------
+-- Table structure for school
+-- ----------------------------
+DROP TABLE IF EXISTS `school`;
+CREATE TABLE `school`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `school_id` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '学校编码（系统随机生成8位字符串）',
+  `school_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '学校名称',
+  `create_at` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `school_id`(`school_id`) USING BTREE COMMENT '学校编码唯一'
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of school
+-- ----------------------------
+INSERT INTO `school` VALUES (1, '00120000', '黑龙江科技大学', '20220222');
+INSERT INTO `school` VALUES (2, '00120001', '哈尔滨工程大学', '20220222');
+INSERT INTO `school` VALUES (3, '00120002', '哈尔滨理工大学', '20220222');
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id，主键，系统自动生成',
+  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户手机号',
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
+  `create_at` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建时间',
+  `last_login` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上次登录时间',
+  `status` tinyint(4) NULL DEFAULT 1 COMMENT '用户状态',
+  `birthday` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '生日',
+  `sex` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
+  `img_url` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '头像',
+  `residence` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '简介',
+  `signature` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '个性签名',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', '15124680346', '测试用户AAA', '900150983CD24FB0D6963F7D28E17F72', '2019-05-19', '2019-06-03', 1, '', '女', 'default.png', '', '');
+INSERT INTO `user` VALUES ('2', '17611056916', '测试用户bbbb', '47BCE5C74F589F4867DBD57E9CA9F808', '2019-05-19', '2020-10-12', 1, '2019-05-19', '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES ('3', '13019711506', '西瓜味的小仙', 'E10ADC3949BA59ABBE56E057F20F883E', '2019-05-23', '2019-05-23', 1, '1989-05-26', '男', 'default.png', '黑龙江-哈尔滨市-松北区', '');
+INSERT INTO `user` VALUES ('4', '15232103749', 'AlineSerily', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-04-14', '2021-12-05', 1, '1998-04-09', '男', 'default.png', '黑龙江-哈尔滨市-南岗区', '');
+INSERT INTO `user` VALUES ('5', '13703111234', '詹三_审核员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, '1998-07-12', '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES ('6', '17765432111', '张三_系统管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-22', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES ('7', '13207111234', '李四_超级管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '用户id',
+  `role_id` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '角色id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_role
+-- ----------------------------
+INSERT INTO `user_role` VALUES (1, '1', 'STUDENT');
+INSERT INTO `user_role` VALUES (2, '2', 'STUDENT');
+INSERT INTO `user_role` VALUES (3, '3', 'STUDENT');
+INSERT INTO `user_role` VALUES (4, '4', 'STUDENT');
+
+-- ----------------------------
+-- Table structure for user_school
+-- ----------------------------
+DROP TABLE IF EXISTS `user_school`;
+CREATE TABLE `user_school`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'user_id',
+  `school_id` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'school_id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_school
+-- ----------------------------
+INSERT INTO `user_school` VALUES (1, '1', '00120000');
+INSERT INTO `user_school` VALUES (2, '2', '00120000');
+INSERT INTO `user_school` VALUES (3, '3', '00120001');
+INSERT INTO `user_school` VALUES (4, '4', '00120002');
+
+-- ----------------------------
+-- Table structure for wanted
+-- ----------------------------
+DROP TABLE IF EXISTS `wanted`;
+CREATE TABLE `wanted`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `good_id` int(11) NULL DEFAULT NULL,
+  `create_at` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wanted
+-- ----------------------------
+INSERT INTO `wanted` VALUES (1, 4, 1, '2020-09-20');
+
+SET FOREIGN_KEY_CHECKS = 1;

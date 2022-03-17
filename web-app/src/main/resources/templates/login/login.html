@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>登录</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+
+    <main th:fragment="loginPage">
+
+        <!-- breadcrumb-area-start -->
+        <section class="breadcrumb-area" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-text text-center">
+                            <h1>Login</h1>
+                            <ul class="breadcrumb-menu">
+                                <li><a href="index1.html">home</a></li>
+                                <li><span>Login</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb-area-end -->
+
+
+        <!-- login Area Strat-->
+        <section class="login-area pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="basic-login">
+                            <h3 class="text-center mb-60">登录</h3>
+                            <form action="#">
+                                <label for="name">手机号 <span>**</span></label>
+                                <input id="name" type="text" placeholder="Enter Username or Email address...">
+                                <label for="pass">密码 <span>**</span></label>
+                                <input id="pass" type="password" placeholder="Enter password...">
+                                <div class="login-action mb-20 fix">
+                                        <span class="log-rem f-left">
+                                            <input id="remember" type="checkbox">
+                                            <label for="remember">记住我！</label>
+                                        </span>
+                                    <span class="forgot-login f-right">
+                                            <a href="#">忘记密码？</a>
+                                        </span>
+                                </div>
+                                <button class="btn theme-btn-2 w-100">立即登录</button>
+                                <div class="or-divide"><span>或</span></div>
+                                <a class="btn theme-btn w-100" th:href="@{/register}">注册</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- login Area End-->
+
+    </main>
+
+
+    </body>
+</html>

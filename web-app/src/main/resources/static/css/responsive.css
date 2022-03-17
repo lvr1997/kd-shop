@@ -1,0 +1,64 @@
+/* Normal desktop :1200px. */
+@media (min-width: 1200px) and (max-width: 1500px) {
+
+
+}
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+.demo-area {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+}
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.md-full {
+  max-width: 100%;
+}
+.features-wrapper {
+  height: 100%;
+}
+.intro-wrapper h2 {
+  font-size: 40px;
+}
+.demo-area {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.page-title-area {
+	padding-top: 200px;
+	padding-bottom: 200px;
+}
+
+}
+
+
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.intro-wrapper h2 {
+  font-size: 35px;
+}
+.demo-area {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.page-title-area {
+	padding-top: 200px;
+	padding-bottom: 200px;
+}
+.ready-wrapper > h4 {
+	font-size: 35px;
+}
+
+}
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+
+}

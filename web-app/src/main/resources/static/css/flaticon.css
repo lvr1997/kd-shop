@@ -1,0 +1,96 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 25/01/2019 07:00
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../font/Flaticon.eot");
+  src: url("../font/Flaticon.eot#iefix") format("embedded-opentype"),
+       url("../font/Flaticon.woff2") format("woff2"),
+       url("../font/Flaticon.woff") format("woff"),
+       url("../font/Flaticon.ttf") format("truetype"),
+       url("http://themepure.net/template/vue/vue/fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("http://themepure.net/template/vue/vue/fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-family: Flaticon;
+font-style: normal;
+}
+
+.flaticon-shopping-cart:before { content: "\f100"; }
+.flaticon-magnifying-glass:before { content: "\f101"; }
+.flaticon-right-arrow:before { content: "\f102"; }
+.flaticon-left-arrow:before { content: "\f103"; }
+.flaticon-download-arrow:before { content: "\f104"; }
+.flaticon-up-arrow:before { content: "\f105"; }
+.flaticon-eye:before { content: "\f106"; }
+.flaticon-compare:before { content: "\f107"; }
+.flaticon-like:before { content: "\f108"; }
+.flaticon-favorite-heart-button:before { content: "\f109"; }
+.flaticon-add:before { content: "\f10a"; }
+.flaticon-substract:before { content: "\f10b"; }
+.flaticon-layers:before { content: "\f10c"; }
+.flaticon-employee:before { content: "\f10d"; }
+.flaticon-archive:before { content: "\f10e"; }
+.flaticon-small-calendar:before { content: "\f10f"; }
+.flaticon-chat:before { content: "\f110"; }
+.flaticon-email:before { content: "\f111"; }
+.flaticon-24-hours:before { content: "\f112"; }
+.flaticon-facebook-logo:before { content: "\f113"; }
+.flaticon-twitter-logo-silhouette:before { content: "\f114"; }
+.flaticon-whatsapp:before { content: "\f115"; }
+.flaticon-youtube:before { content: "\f116"; }
+.flaticon-linkedin-logo:before { content: "\f117"; }
+.flaticon-google-plus:before { content: "\f118"; }
+.flaticon-shopping-cart-1:before { content: "\f119"; }
+.flaticon-blog:before { content: "\f11a"; }
+.flaticon-recommendation:before { content: "\f11b"; }
+.flaticon-good:before { content: "\f11c"; }
+.flaticon-return:before { content: "\f11d"; }
+.flaticon-return-1:before { content: "\f11e"; }
+.flaticon-customer-service:before { content: "\f11f"; }
+.flaticon-instagram:before { content: "\f120"; }
+.flaticon-apple:before { content: "\f121"; }
+.flaticon-tomato:before { content: "\f122"; }
+.flaticon-juice:before { content: "\f123"; }
+.flaticon-lotion:before { content: "\f124"; }
+.flaticon-home:before { content: "\f125"; }
+.flaticon-couch:before { content: "\f126"; }
+.flaticon-armchair:before { content: "\f127"; }
+.flaticon-table:before { content: "\f128"; }
+.flaticon-bed:before { content: "\f129"; }
+.flaticon-bedside-table:before { content: "\f12a"; }
+.flaticon-lamp:before { content: "\f12b"; }
+.flaticon-chair:before { content: "\f12c"; }
+.flaticon-stage:before { content: "\f12d"; }
+.flaticon-bathroom:before { content: "\f12e"; }
+.flaticon-tshirt:before { content: "\f12f"; }
+.flaticon-dress:before { content: "\f130"; }
+.flaticon-dress-1:before { content: "\f131"; }
+.flaticon-underwear:before { content: "\f132"; }
+.flaticon-underwear-1:before { content: "\f133"; }
+.flaticon-milk-bottle:before { content: "\f134"; }
+.flaticon-meat:before { content: "\f135"; }
+.flaticon-hamburger:before { content: "\f136"; }
+.flaticon-peanut:before { content: "\f137"; }
+.flaticon-fruit:before { content: "\f138"; }
+.flaticon-coffee-cup:before { content: "\f139"; }
+.flaticon-coffee:before { content: "\f13a"; }
+.flaticon-juice-1:before { content: "\f13b"; }
+.flaticon-diet:before { content: "\f13c"; }
+.flaticon-orange:before { content: "\f13d"; }
+.flaticon-carrot:before { content: "\f13e"; }
+.flaticon-star:before { content: "\f13f"; }
+.flaticon-list:before { content: "\f140"; }
+.flaticon-menu:before { content: "\f141"; }

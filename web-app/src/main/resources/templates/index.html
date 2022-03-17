@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>『I have』校园二手交易平台</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min1.css" th:href="@{/css/bootstrap.min1.css}">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="../static/css/animate.min.css" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="../static/css/fontawesome-all.min.css" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" href="../static/css/flaticon.css" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" href="../static/css/meanmenu.css" th:href="@{/css/meanmenu.css}">
+    <link rel="stylesheet" href="../static/css/meanmenu.css" th:href="@{/css/meanmenu.css}">
+    <link rel="stylesheet" href="../static/css/slick.css" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" href="../static/css/default1.css" th:href="@{/css/default1.css}">
+    <link rel="stylesheet" href="../static/css/style1.css" th:href="@{/css/style1.css}">
+    <link rel="stylesheet" href="../static/css/responsive1.css" th:href="@{/css/responsive1.css}">
+    <link rel="stylesheet" href="../static/css/upload-img.css" th:href="@{/css/upload-img.css}">
+    <link rel="stylesheet" href="../static/css/layerMsg.css" th:href="@{/css/layerMsg.css}">
+    <script src="../static/js/vue.js" th:src="@{/js/vue.js}"></script>
+</head>
+<body>
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- preloader end  -->
+
+    <div id="app">
+        <header th:replace="~{common/common :: pageHeader}"></header>
+
+        <main th:replace="${viewPath} :: ${view}"></main>
+
+        <footer th:replace="~{common/common :: pageFooter}"></footer>
+    </div>
+
+    <!-- Fullscreen search -->
+    <div class="search-wrap">
+        <div class="search-inner">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <div class="search-cell">
+                <form method="get">
+                    <div class="search-field-holder">
+                        <label>
+                            <input type="search" class="main-search-input" placeholder="搜点什么..."/>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> <!-- end fullscreen search -->
+
+    <!-- JS here -->
+    <script src="../static/index.js" th:src="@{/index.js}"></script>
+    <script src="../static/js/jquery-1.12.4.min.js" th:src="@{/js/jquery-1.12.4.min.js}"></script>
+    <script src="../static/js/layerMsg.js" th:src="@{/js/layerMsg.js}"></script>
+    <script src="../static/js/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../static/js/owl.carousel.min.js" th:src="@{/js/owl.carousel.min.js}"></script>
+    <script src="../static/js/isotope.pkgd.min.js" th:src="@{/js/isotope.pkgd.min.js}"></script>
+    <script src="../static/js/one-page-nav-min.js" th:src="@{/js/one-page-nav-min.js}"></script>
+    <script src="../static/js/slick.min.js" th:src="@{/js/slick.min.js}"></script>
+    <script src="../static/js/jquery.meanmenu.min.js" th:src="@{/js/jquery.meanmenu.min.js}"></script>
+    <script src="../static/js/ajax-form.js" th:src="@{/js/ajax-form.js}"></script>
+    <script src="../static/js/wow.min.js" th:src="@{/js/wow.min.js}"></script>
+    <script src="../static/js/jquery.scrollUp.min.js" th:src="@{/js/jquery.scrollUp.min.js}"></script>
+    <script src="../static/js/jquery.final-countdown.min.js" th:src="@{/js/jquery.final-countdown.min.js}"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js" th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+    <script src="../static/js/plugins.js" th:src="@{/js/plugins.js}"></script>
+    <script src="../static/js/main1.js" th:src="@{/js/main1.js}"></script>
+
+</body>
+</html>
