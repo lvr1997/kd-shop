@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../static/css/upload-img.css" th:href="@{/css/upload-img.css}">
     <link rel="stylesheet" href="../static/css/layerMsg.css" th:href="@{/css/layerMsg.css}">
     <script src="../static/js/vue.js" th:src="@{/js/vue.js}"></script>
+    <script src="../static/js/vue-router.js" th:src="@{/js/vue-router.js}"></script>
 </head>
 <body>
     <!-- preloader -->
@@ -37,7 +38,8 @@
     <div id="app">
         <header th:replace="~{common/common :: pageHeader}"></header>
 
-        <main th:replace="${viewPath} :: ${view}"></main>
+<!--        <main th:replace="${viewPath} :: ${view}"></main>-->
+        <router-view></router-view>
 
         <footer th:replace="~{common/common :: pageFooter}"></footer>
     </div>
@@ -59,7 +61,10 @@
     </div> <!-- end fullscreen search -->
 
     <!-- JS here -->
+    <script src="../static/js/routes/home.js" th:src="@{/js/routes/home.js}"></script>
+    <script src="../static/js/routes/publish.js" th:src="@{/js/routes/publish.js}"></script>
     <script src="../static/index.js" th:src="@{/index.js}"></script>
+
     <script src="../static/js/jquery-1.12.4.min.js" th:src="@{/js/jquery-1.12.4.min.js}"></script>
     <script src="../static/js/layerMsg.js" th:src="@{/js/layerMsg.js}"></script>
     <script src="../static/js/popper.min.js" th:src="@{/js/popper.min.js}"></script>

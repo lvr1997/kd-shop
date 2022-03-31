@@ -34,8 +34,8 @@ public class PageController {
     @PassToken
     @GetMapping("/index")
     public String index(Model model) {
-        model.addAttribute("viewPath", "home/home");
-        model.addAttribute("view", "main");
+//        model.addAttribute("viewPath", "home/home");
+//        model.addAttribute("view", "main");
         return "index";
     }
 
@@ -59,12 +59,12 @@ public class PageController {
 
     //闲置发布页
 //    @UserLoginToken
-    @GetMapping("/product/publish")
-    public String publish(Model model) {
-        model.addAttribute("viewPath", "product/publish");
-        model.addAttribute("view", "publish");
-        return "index";
-    }
+//    @GetMapping("/product/publish")
+//    public String publish(Model model) {
+//        model.addAttribute("viewPath", "product/publish");
+//        model.addAttribute("view", "publish");
+//        return "index";
+//    }
 
     //小铺
 //    @UserLoginToken

@@ -1,8 +1,3 @@
-/**
- * 组件注册
- *
- */
-//商品组件
 var productInfo =  {
     template: `
         <div class="product-wrapper mb-50">
@@ -53,9 +48,25 @@ var productInfo =  {
     }
 };
 
+//路由
+const routes = [
+    { path: '/home', component: Home},
+    { path: '/publish', component: productPublish }
+];
+
+const router = new VueRouter({
+    routes
+});
+
 //整个vue根实例
 const app = new Vue({
+    routes,
     components: {
         productInfo
+    },
+    data() {
+        return {
+            showBuyLink: false
+        }
     }
 }).$mount('#app');

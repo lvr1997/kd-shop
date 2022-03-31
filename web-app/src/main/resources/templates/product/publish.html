@@ -106,15 +106,15 @@
                                             <label>原购买价格 <span class="required">*</span></label>
                                             <input type="text" placeholder="">
 
-                                            <button class="btn buy-link-btn">
+                                            <button v-show="showBuyLink" class="btn buy-link-btn" @click="showBuyLink=!showBuyLink">
                                                 <i class="fas fa-plus-circle"></i>
                                                 添加原购买链接</button>
-                                            <button class="btn buy-link-btn" style="display:none;color: #721c24">
+                                            <button v-show="!showBuyLink" class="btn buy-link-btn" style="color: #721c24">
                                                 <i class="fas fa-minus-circle"></i>
                                                 关闭原购买链接</button>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" v-show="!showBuyLink">
                                         <div class="publish-form-list">
                                             <label>原购买链接</label>
                                             <input type="text" placeholder="http://">
