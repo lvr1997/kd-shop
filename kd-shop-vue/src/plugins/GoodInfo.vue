@@ -25,8 +25,8 @@
         <a href="shop.html">分类名称, </a>
         <!--<a href="shop.html">家具</a>-->
       </div>
-      <h4><!-- query:{goodId:goodInfo.id} -->
-        <router-link :to="{path: '/goods/detail'}">闲置名称</router-link>
+      <h4>
+        <router-link to="/goods/detail">闲置名称</router-link>
       </h4>
       <div class="product-meta">
         <div class="pro-price">
@@ -44,7 +44,6 @@
 <script>
 import { HeartOutlined,EyeOutlined,TransactionOutlined } from '@ant-design/icons-vue';
 export default {
-	props: ['goodInfo'],
 	components: {
 		HeartOutlined,
 		EyeOutlined,
