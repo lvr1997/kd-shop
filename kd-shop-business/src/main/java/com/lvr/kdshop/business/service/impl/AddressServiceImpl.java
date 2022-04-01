@@ -1,7 +1,6 @@
 package com.lvr.kdshop.business.service.impl;
 
 import com.lvr.kdshop.business.mapper.AddressMapper;
-import com.lvr.kdshop.business.mapper.DictMapper;
 import com.lvr.kdshop.business.service.AddressService;
 import com.lvr.kdshop.pojo.Address;
 import org.springframework.stereotype.Service;
@@ -11,9 +10,6 @@ import java.util.List;
 
 @Service("addressService")
 public class AddressServiceImpl implements AddressService {
-
-    @Resource
-    private DictMapper dictMapper;
 
     @Resource
     private AddressMapper addressMapper;
