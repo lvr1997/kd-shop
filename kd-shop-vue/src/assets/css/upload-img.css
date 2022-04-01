@@ -1,0 +1,133 @@
+.publish-form-list {
+    margin-bottom: 30px;
+}
+.publish-form-list input[type="text"], .checkout-form-list input[type="password"], .checkout-form-list input[type="email"] {
+    background: #ffffff;
+    border: 1px solid #eaedff;
+    border-radius: 0;
+    height: 45px;
+    padding: 0 0 0 10px;
+    width: 100%;
+}
+
+.images-area {
+    justify-content: center;
+}
+.input-line.image {
+    text-align: center;
+}
+.input-line {
+    margin-top: 30px;
+}
+.image .layui-box.layui-upload-button {
+    width: 153px;
+    height: 153px;
+    border: #eaedff solid 2px;
+}
+
+.layui-upload-button {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 60px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #DFDFDF;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: #fff;
+    color: #666;
+}
+.layui-upload-button {
+    outline: 0;
+    -webkit-transition: border-color .3s cubic-bezier(.65,.05,.35,.5);
+    transition: border-color .3s cubic-bezier(.65,.05,.35,.5);
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important;
+}
+
+.layui-upload-button input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    font-size: 100px;
+    width: 100%;
+    height: 100%;
+}
+.layui-upload-button input, .layui-upload-file {
+    opacity: .01;
+    filter: Alpha(opacity=1);
+    cursor: pointer;
+}
+
+.image .layui-upload-icon {
+    width: 153px;
+    height: 153px;
+    margin: 0;
+    text-align: center;
+    line-height: 149px;
+    font-size: 20px;
+}
+
+.layui-upload-icon {
+    display: block;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.image .layui-upload-icon i {
+    font-size:28px;
+    font-weight: bold;
+}
+
+.layui-upload-icon i {
+    margin-right: 5px;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #fe5245;
+}
+
+.uploaded {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.good-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    border: #eaedff solid 2px;
+}
+.uploaded i{
+    color: #f40;
+    position: absolute;
+    font-size: 24px;
+    right: -13px;
+    top: -10px;
+    cursor: pointer;
+}
+
+.publish-button {
+    text-align: right;
+}
+.publish-button button:first-child {
+    border: #eaedff solid 1px;
+    background-color: #ffffff;
+    color: #0b0b0b;
+    margin-right: 10px;
+}
+
+.buy-link-btn {
+    position: absolute;
+    padding: 15px 20px;
+}
+
+.form-radio-group {
+    padding: 5px 0;
+}
+.form-radio-group label {
+    margin-right: 20px;
+}
