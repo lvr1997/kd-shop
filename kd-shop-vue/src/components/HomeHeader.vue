@@ -45,10 +45,10 @@
                     <router-link to="/goods/listing">买闲置 </router-link>
                   </li>
                   <li>
-                    <router-link to="/news/list">新闻</router-link>
+                    <router-link to="/news">新闻</router-link>
                   </li>
                   <li>
-                    <router-link to="/contact">联系我们</router-link>
+                    <router-link to="/about">联系我们</router-link>
                   </li>
                 </ul>
               </nav>

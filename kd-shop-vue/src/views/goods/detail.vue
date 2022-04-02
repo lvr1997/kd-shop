@@ -56,7 +56,6 @@
                     aria-selected="true"
                     ><img
                       src="@/static/picture/pro1.jpg"
-                     
                       alt=""
                     />
                   </a>
@@ -89,7 +88,6 @@
                   /></a>
                 </li>
               </ul>
-              好
             </div>
           </div>
           <div class="col-xl-6 col-lg-8">
@@ -128,22 +126,16 @@
 
                 <div class="product-action-details variant-item">
                   <div class="product-details-action">
-                    <form action="#">
+                      
                       <div class="plus-minus">
-                        <div class="cart-plus-minus">
-                          <input type="text" value="1" />
-                        </div>
-                      </div>
-                      <button class="details-action-icon" type="submit">
-                        <i class="fas fa-heart"></i>
-                      </button>
-                      <button class="details-action-icon" type="submit">
-                        <i class="fas fa-hourglass"></i>
-                      </button>
-                      <div class="details-cart mt-40">
                         <button class="btn theme-btn">买！</button>
                       </div>
-                    </form>
+                      <button class="details-action-icon" type="submit">
+                        <HeartOutlined />
+                      </button>
+                      <button class="details-action-icon" type="submit">
+                        <MessageOutlined />
+                      </button>
                   </div>
                 </div>
               </div>
@@ -153,39 +145,16 @@
         <div class="row mt-50">
           <div class="col-xl-8 col-lg-8">
             <div class="product-review">
-              <ul class="nav review-tab" id="myTabproduct" role="tablist">
+              <ul class="nav review-tab" role="tablist">
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    id="home-tab6"
-                    data-toggle="tab"
-                    href="#home6"
-                    role="tab"
-                    aria-controls="home"
-                    aria-selected="true"
-                    >Description
-                  </a>
+                  <a class="nav-link" :class="tabAction?'active':''" @click="handleTab">闲置描述</a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    id="profile-tab6"
-                    data-toggle="tab"
-                    href="#profile6"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                    >Reviews (2)</a
-                  >
+                  <a class="nav-link" :class="!tabAction?'active':''" @click="handleTab">评论 (2)</a>
                 </li>
               </ul>
-              <div class="tab-content" id="myTabContent2">
-                <div
-                  class="tab-pane fade show active"
-                  id="home6"
-                  role="tabpanel"
-                  aria-labelledby="home-tab6"
-                >
+              <div class="tab-content">
+                <div class="tab-pane fade" :class="tabAction?'show active':''">
                   <div class="desc-text">
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -212,32 +181,23 @@
                     </p>
                   </div>
                 </div>
-                <div
-                  class="tab-pane fade"
-                  id="profile6"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab6"
-                >
+                <div class="tab-pane fade" :class="!tabAction?'show active':''">
                   <div class="desc-text review-text">
                     <div class="product-commnets">
                       <div class="product-commnets-list mb-25 pb-15">
                         <div class="pro-comments-img">
                           <img
                             src="../../static/picture/01.png"
-                           
                             alt=""
                           />
                         </div>
                         <div class="pro-commnets-text">
                           <h4>
                             Roger West -
-                            <span>June 5, 2018</span>
+                            <span>2018-07-05</span>
                           </h4>
                           <div class="pro-rating">
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <a-rate :value="5" disabled/>
                           </div>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -261,10 +221,7 @@
                             <span>June 5, 2018</span>
                           </h4>
                           <div class="pro-rating">
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <a-rate :value="5" disabled/>
                           </div>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -276,25 +233,11 @@
                       </div>
                     </div>
                     <div class="review-box mt-50">
-                      <h4>Add a Review</h4>
+                      <h4>留下你的足迹</h4>
                       <div class="your-rating mb-40">
-                        <span>Your Rating:</span>
+                        <span>觉得该物品怎么样？ </span>
                         <div class="rating-list">
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
+                          <a-rate v-model:value="rating"/>
                         </div>
                       </div>
                       <form class="review-form" action="#">
@@ -308,17 +251,9 @@
                               rows="10"
                             ></textarea>
                           </div>
-                          <div class="col-xl-6">
-                            <label for="r-name">用户名</label>
-                            <input type="text" id="r-name" />
-                          </div>
-                          <div class="col-xl-6">
-                            <label for="r-email">邮箱</label>
-                            <input type="email" id="r-email" />
-                          </div>
                           <div class="col-xl-12">
                             <button class="btn theme-btn">
-                              在这里评论吧！
+                              提交！
                             </button>
                           </div>
                         </div>
@@ -349,15 +284,12 @@
         <div class="row">
           <div class="col-xl-12">
             <div class="area-title text-center mb-50">
-              <h2>Releted Products</h2>
-              <p>Browse the huge variety of our products</p>
+              <h2>为您推荐</h2>
+              <p>你可能还对以下几个商品感兴趣？</p>
             </div>
           </div>
         </div>
-        <div class="product-slider-2 owl-carousel">
-          <div class="pro-item">
-            <GoodInfo></GoodInfo>
-          </div>
+        <div class="product-slider-2">
           <div class="pro-item">
             <GoodInfo></GoodInfo>
           </div>
@@ -380,18 +312,595 @@
 <script>
 import Breadcrumb from "@/components/Breadcrumb.vue";
 import GoodInfo from "@/components/GoodInfo";
+import { HeartOutlined, MessageOutlined } from '@ant-design/icons-vue'
 export default {
   name: "Detail",
   components: {
 	Breadcrumb,
-	GoodInfo
+	GoodInfo,
+  HeartOutlined, MessageOutlined
   },
   data() {
-    return {};
+    return {
+      title: "详情",
+      nav: ["Home","Goods", "Detail"],
+      tabAction: true,
+      rating: 3
+    };
   },
   created() {},
-  methods: {},
+  methods: {
+    handleTab() {
+      this.tabAction = !this.tabAction
+    }
+  },
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
+/* 14. Shop Details */
+
+.shop-tab ul li {
+
+     margin-left: 20px;
+
+}
+
+.shop-tab ul li a {
+
+     font-size: 16px;
+
+     font-weight: 500;
+
+     color: #6f7172;
+
+     letter-spacing: 2px;
+
+     padding: 0;
+
+     text-transform: uppercase;
+
+     position: relative;
+
+     height: 50px;
+
+     width: 50px;
+
+     border-radius: 50%;
+
+     background: #f6f6ff;
+
+     line-height: 50px;
+
+     text-align: center;
+
+}
+
+.product-large-img img {
+
+	width: 100%;
+
+}
+
+.shop-thumb-tab ul {
+
+	margin: 0 -5px;
+
+}
+
+.shop-thumb-tab ul li {
+
+	margin-bottom: 20px;
+
+	display: inline-block;
+
+	width: 33.33%;
+
+	padding: 0 5px;
+
+}
+
+ .shop-thumb-tab ul li a {
+
+     padding: 0;
+
+}
+
+.product-details-img {
+
+	margin-left: 0;
+
+	overflow: hidden;
+
+}
+
+
+
+/* details info */
+
+.details-cat a {
+
+	font-size: 14px;
+
+	text-transform: uppercase;
+
+	font-weight: 500;
+
+	letter-spacing: 2px;
+
+	color: #747691;
+
+}
+
+.details-cat a:hover{
+
+	color: #fe4536;
+
+}
+
+.details-price span {
+
+	color: #fe4536;
+
+	font-weight: 300;
+
+	font-size: 40px;
+
+	margin-right: 25px;
+
+}
+
+.details-price .old-price {
+
+	color: #d9dbec;
+
+	text-decoration: line-through;
+
+}
+
+.variant-name span {
+
+	text-transform: uppercase;
+
+	font-weight: 500;
+
+	letter-spacing: 2px;
+
+}
+
+
+
+.variant-name {
+
+	display: inline-block;
+
+	margin-right: 30px;
+
+}
+
+.shop-color{
+
+	display: inline-block;
+
+}
+
+.shop-color li{
+
+	display: inline-block;
+
+	margin-bottom: 0;
+
+}
+
+.shop-size{
+
+	display: inline-block;
+
+}
+
+.shop-size li{
+
+	display: inline-block;
+
+	margin-bottom: 0;
+
+}
+
+.shop-size li a {
+
+	color: #747691;
+
+	text-transform: uppercase;
+
+	border: 2px solid transparent;
+
+	line-height: 1;
+
+	padding: 10px;
+
+	padding-bottom: 8px;
+
+	display: inline-block;
+
+}
+
+.shop-size li.active a {
+
+	border: 2px solid #fe4536;
+
+	color: #fe4536;
+
+}
+
+.variant-item {
+
+	padding: 30px 0;
+
+	border-top: 1px solid #ffe7e5;
+
+}
+
+
+
+.details-timer{
+
+	display: inline-block;
+
+}
+
+.details-timer .cdown {
+
+	height: 60px;
+
+	width: 60px;
+
+	border-radius: 0;
+
+	line-height: 60px;
+
+	padding: 11px 0;
+
+	background: #fff1f0;
+
+	margin-right: 10px;
+
+	box-shadow: none;
+
+}
+
+.details-timer .cdown span {
+
+	font-size: 18px;
+
+	color: #fe4536;
+
+	margin-bottom: 7px;
+
+}
+
+.details-timer .cdown p {
+
+	color: #747691;
+
+	font-weight: 400;
+
+}
+
+.product-coming .variant-name span{
+
+	position: relative;
+
+	top: -11px;
+
+}
+
+.product-desc p{
+
+	margin-bottom: 0;
+
+}
+
+.product-info-list ul{
+
+
+
+}
+
+.product-info-list ul li{
+
+	margin-bottom: 10px;
+
+}
+
+.product-info-list ul li span {
+
+	font-weight: 500;
+
+	color: #232b37;
+
+	width: 120px;
+
+	display: inline-block;
+
+}
+
+.product-info-list ul li span.in-stock {
+
+	font-weight: 400;
+
+	color: #fe4536;
+
+}
+
+.product-details-action {
+  display: flex;
+  align-items: center;
+}
+
+.plus-minus {
+
+	display: inline-block;
+  margin-right: 20px;
+  button {
+    height: 50px;
+    padding: 18px 50px;
+  }
+
+}
+
+.details-action-icon {
+
+	height: 50px;
+
+	width: 50px;
+
+	border: 0;
+
+	background: #fff1f0;
+
+	border-radius: 50px;
+
+	margin-right: 13px;
+
+	color: #fe4536;
+
+	font-size: 15px;
+
+	line-height: 50px;
+
+}
+
+.details-action-icon:hover {
+
+	background: #fe4536;
+
+	color: #fff;
+
+}
+
+/* review */
+
+.pro-details-banner {
+
+	margin-top: 84px;
+
+}
+
+.review-tab .nav-link {
+
+	color: #333;
+
+	font-size: 14px;
+
+	font-weight: 500;
+
+	padding: 20px 40px;
+
+	color: #747691;
+
+	text-transform: uppercase;
+
+	letter-spacing: 2px;
+
+	line-height: 1;
+
+	border: 2px solid #ecedff
+
+}
+
+.review-tab .nav-item {
+
+	margin-right: 30px;
+
+	position: relative;
+
+	margin-bottom: 25px;
+
+}
+
+.review-tab .nav-link.active {
+
+  background: #fe4536;
+
+  border-color: #fe4536;
+
+  color: #fff;
+
+}
+
+.desc-text {
+
+	padding: 40px;
+
+	border: 4px solid #f9f9f9;
+
+}
+
+.pro-comments-img {
+
+  float: left;
+
+}
+
+.pro-commnets-text {
+
+	overflow: hidden;
+
+	padding-left: 15px;
+
+}
+
+.pro-commnets-text h4 {
+
+	font-size: 17px;
+
+	margin-bottom: 0;
+
+}
+
+.pro-commnets-text span {
+
+  font-size: 14px;
+
+}
+
+.pro-commnets-text .rating {
+
+  margin-bottom: 20px;
+
+}
+
+.pro-commnets-text > p {
+
+  margin: 0;
+
+}
+
+.product-commnets-list {
+
+  border-bottom: 1px solid #e5e5e5;
+
+}
+
+.pro-rating i {
+
+	font-size: 12px;
+
+	color: #FE4536;
+
+}
+
+.pro-commnets-text .pro-rating {
+
+	margin-bottom: 5px;
+
+	margin-top: 8px;
+
+}
+
+.pro-commnets-text .pro-rating {
+
+	margin-bottom: 5px;
+
+	margin-top: 8px;
+
+}
+
+.product-commnets .product-commnets-list:last-child{border: 0}
+
+
+
+.review-box > h4 {
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  margin-bottom: 10px;
+
+}
+
+.rating-list {
+
+  display: inline-block;
+
+}
+
+.your-rating > span {
+
+  color: #414149;
+
+  font-size: 16px;
+
+}
+
+.rating-list > a {
+
+  color: #646464;
+
+  font-size: 13px;
+
+}
+
+.rating-list > a:hover {
+
+  color: #FE4536;
+
+}
+
+.review-form{}
+
+.review-form label {
+
+	display: block;
+
+	font-size: 13px;
+
+	margin-bottom: 15px;
+
+	font-weight: 500;
+
+	text-transform: uppercase;
+
+	letter-spacing: 2px;
+
+}
+
+.review-form textarea {
+
+	border: 2px solid #ecedff;
+
+	height: 80px;
+
+	margin-bottom: 25px;
+
+	padding: 15px;
+
+	width: 100%;
+
+}
+
+.review-form input {
+
+  border: 2px solid #ecedff;
+
+  height: 50px;
+
+  margin-bottom: 30px;
+
+  padding: 0 15px;
+
+  width: 100%;
+
+}
+
+.review-form button{}
+
+.product-slider-2 {
+  display: flex;
+  justify-content: space-around;
+  .pro-item {
+    margin-right: 20px;
+  }
+}
+
 </style>

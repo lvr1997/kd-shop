@@ -140,7 +140,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../../assets/css/owl.carousel.min.css");
+/* @import url("../../../assets/css/owl.carousel.min.css"); */
 /* 3. Slider */
 .slider-area {
   position: relative;

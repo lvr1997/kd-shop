@@ -46,6 +46,11 @@ const routes = [
 			}
 		},
 		{
+			path: '/wishlist',
+			name: 'Wishlist',
+			component: () => import('@/views/wish/wishList')
+		},
+		{
 			path: '/goods/publish',
 			name: 'Publish',
 			component: () => import('@/views/goods/publish')
@@ -62,6 +67,10 @@ const routes = [
 			meta: {
 				index: 4
 			}
+		},{
+			path: '/checkout',
+			name: 'Checkout',
+			component: () => import('@/views/checkout/checkout')
 		}]
 	},
 
