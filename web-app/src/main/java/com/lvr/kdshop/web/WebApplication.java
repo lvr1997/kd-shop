@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.lvr.kdshop.web.config","com.lvr.kdshop.web.interceptor",
+@ComponentScan(basePackages = {"com.lvr.kdshop.web.config","com.lvr.kdshop.web.interceptor","com.lvr.kdshop.web.utils",
                                 "com.lvr.kdshop.business.service", "com.lvr.kdshop.web.controller"})
 @MapperScan("com.lvr.kdshop.business.mapper")
 @SpringBootApplication

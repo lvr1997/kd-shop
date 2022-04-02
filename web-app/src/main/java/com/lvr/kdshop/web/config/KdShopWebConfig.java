@@ -17,9 +17,6 @@ public class KdShopWebConfig implements WebMvcConfigurer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${imagesPath}")
-    private String mImagesPath;
-
     /**
      * 添加jwt拦截器
      * @param registry

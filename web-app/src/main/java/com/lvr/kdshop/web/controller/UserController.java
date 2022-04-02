@@ -60,9 +60,6 @@ public class UserController {
     @Resource
     private ReportService reportService;
 
-    @Value("${imagesPath}")
-    private String imgPath;
-
 
     @PassToken
     @ResponseBody
@@ -369,7 +366,7 @@ public class UserController {
 //        String format = sdf.format(new Date());
 
         //规定文件上传目录
-        String realPath = imgPath + "/avatar";
+        String realPath = "/avatar";
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
