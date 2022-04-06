@@ -15,10 +15,37 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class KdShopWebConfig implements WebMvcConfigurer {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**图片地址*/
     @Value("${imagesPath}")
     private String mImagesPath;
+    /**显示相对地址*/
+    @Value("${fileUploadPathRelative}")
+    private String fileRelativePath;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
+    /**
+     * 静态资源映射
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String os = System.getProperty("os.name");
+        //如果是Windows系统
+        if (os.toLowerCase().startsWith("win")) {
+            //表示在磁盘mImagesPath目录下的所有资源会被解析为fileRelativePath的路径
+            registry.addResourceHandler(fileRelativePath).addResourceLocations("file:"+mImagesPath);
+            //和页面有关的静态目录都放在项目的static目录下
+            registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+            logger.info("=========================Windows 图片资源映射============================");
+        }else {  //linux 和mac //媒体资源
+            registry.addResourceHandler("/OTA/**")
+                    .addResourceLocations("file:/www/wwwroot/www.bolglan.cn/dist/resource/OTA/");
+        }
+    }
+
 
     /**
      * 添加jwt拦截器
@@ -40,5 +67,8 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     public UserLoginInterceptor jwtInterceptor() {
         return new UserLoginInterceptor();
     }
+
+
+
 
 }
