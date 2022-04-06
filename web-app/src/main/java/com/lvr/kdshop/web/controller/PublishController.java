@@ -40,9 +40,6 @@ public class PublishController {
     @Resource
     private ReportService reportService;
 
-    @Value("${imagesPath}")
-    private String imgPath;
-
 
     /**
      * 上传商品图片
@@ -59,7 +56,7 @@ public class PublishController {
         String oldName = fileName.getOriginalFilename();
 
         //存储图片的物理路径
-        String realPath = imgPath + "/goods";
+        String realPath = "/goods";
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -108,7 +105,7 @@ public class PublishController {
     @RequestMapping(value = "/delete_image",method = RequestMethod.POST)
     public JSONResult delectUploadFile(@RequestParam("fileName") String fileName){
         //获得物理路径
-        String true_path = imgPath;
+        String true_path = "/path";
         //设置文件的存储路径
         String file_name = true_path+"\\goods\\"+fileName;
         File file1 = new File(file_name);
@@ -145,9 +142,6 @@ public class PublishController {
         User user = userService.selectByPrimaryKey(userId);
         goods.setUserId(user.getId());
         goodsService.insert(goods);
-        //更新对应的闲置分类数量
-        Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
-        catelogService.updateCatelogNum(goods.getCatelogId(),catelog.getNumber()+1);
         //插入闲置对应的图片信息
         good_images = good_images.substring(good_images.indexOf("\""),good_images.lastIndexOf("]"));
         String[] urls = good_images.split(",");
@@ -173,7 +167,6 @@ public class PublishController {
         //根据闲置id更新闲置状态
         Goods goods = goodsService.selectByPrimaryKey(gid);
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
-        catelogService.updateCatelogNum(goods.getCatelogId(),catelog.getNumber()-1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         goodsService.updateStatusByPrimaryKey(gid,(byte)2);
         goodsService.updateEndTimeByPrimaryKey(gid,sdf.format(new Date()));

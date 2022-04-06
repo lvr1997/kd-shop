@@ -13,6 +13,7 @@ public class Roles {
 
     private Integer id;
     private String roleId;
+    private String roleName;
     private String commet;
     private LocalDateTime createDate;
 

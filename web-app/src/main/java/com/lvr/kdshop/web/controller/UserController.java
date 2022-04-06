@@ -545,11 +545,11 @@ public class UserController {
                     OrdersExtend ordersExtend = new OrdersExtend();
                     Goods good = goodsService.selectByPrimaryKey(order.getGoodId());
                     List<Image> images = imageService.selectByGoodsPrimaryKey(good.getId());
-                    Address address = addressService.getAddressById(order.getAddressId());
+
                     ordersExtend.setGood(good);
                     ordersExtend.setImages(images);
                     ordersExtend.setUser(user);
-                    ordersExtend.setAddress(address);
+
                     ordersExtend.setOrders(order);
                     ordersExtends.add(ordersExtend);
                 }
@@ -586,11 +586,9 @@ public class UserController {
                     OrdersExtend ordersExtend = new OrdersExtend();
                     Goods good = goodsService.selectByPrimaryKey(order.getGoodId());
                     List<Image> images = imageService.selectByGoodsPrimaryKey(good.getId());
-                    Address address = addressService.getAddressById(order.getAddressId());
                     ordersExtend.setGood(good);
                     ordersExtend.setImages(images);
                     ordersExtend.setUser(user);
-                    ordersExtend.setAddress(address);
                     ordersExtend.setOrders(order);
                     ordersExtends.add(ordersExtend);
                 }
