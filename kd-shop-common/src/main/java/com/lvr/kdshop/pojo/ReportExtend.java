@@ -6,12 +6,12 @@ public class ReportExtend {
     private Report report;
     private Goods goods;
     private List<Image> images;
-    private User user;
+    private SysUser user;
 
     public ReportExtend() {
     }
 
-    public ReportExtend(Report report, Goods goods, List<Image> images, User user) {
+    public ReportExtend(Report report, Goods goods, List<Image> images, SysUser user) {
         this.report = report;
         this.goods = goods;
         this.images = images;
@@ -42,11 +42,11 @@ public class ReportExtend {
         this.images = images;
     }
 
-    public User getUser() {
+    public SysUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(SysUser user) {
         this.user = user;
     }
 }

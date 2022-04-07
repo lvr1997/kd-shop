@@ -51,7 +51,7 @@ public class GoodsController {
         goodsService.updateViewCountByPrimaryKey(goodId,goodsFind.getViewCount()+1);
         Goods goods = goodsService.selectByPrimaryKey(goodId);
         //找出当前商品的用户信息
-        User seller = userService.selectByPrimaryKey(goods.getUserId());
+        SysUser seller = userService.selectByPrimaryKey(goods.getUserId());
         //找出分类信息
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
         //找到闲置对应的图片信息

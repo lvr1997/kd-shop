@@ -47,26 +47,26 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     }
 
 
-    /**
-     * 添加jwt拦截器
-     * @param registry
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        logger.info("=========================进入拦截器============================");
-        registry.addInterceptor(jwtInterceptor())
-                // 拦截所有请求，通过判断是否有 @UserLoginToken 注解 决定是否需要登录
-                .addPathPatterns("/**");
-    }
+//    /**
+//     * 添加jwt拦截器
+//     * @param registry
+//     */
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        logger.info("=========================进入拦截器============================");
+//        registry.addInterceptor(jwtInterceptor())
+//                // 拦截所有请求，通过判断是否有 @UserLoginToken 注解 决定是否需要登录
+//                .addPathPatterns("/**");
+//    }
 
-    /**
-     * jwt拦截器
-     * @return
-     */
-    @Bean
-    public UserLoginInterceptor jwtInterceptor() {
-        return new UserLoginInterceptor();
-    }
+//    /**
+//     * jwt拦截器
+//     * @return
+//     */
+//    @Bean
+//    public UserLoginInterceptor jwtInterceptor() {
+//        return new UserLoginInterceptor();
+//    }
 
 
 

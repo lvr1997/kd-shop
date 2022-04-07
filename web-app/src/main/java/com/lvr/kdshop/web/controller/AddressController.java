@@ -4,7 +4,7 @@ package com.lvr.kdshop.web.controller;
 import com.lvr.kdshop.annotation.UserLoginToken;
 import com.lvr.kdshop.business.service.AddressService;
 import com.lvr.kdshop.pojo.Address;
-import com.lvr.kdshop.pojo.User;
+import com.lvr.kdshop.pojo.SysUser;
 import com.lvr.kdshop.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +30,7 @@ public class AddressController{
 						  @RequestParam("receiverPhone") String recvTel,
 						  @RequestParam("receiverZip") String recvZip,
 						  @RequestParam("addressName") String recvTag){
-		User user = (User)session.getAttribute("cur_user");
+		SysUser user = (SysUser)session.getAttribute("cur_user");
 		Address address = new Address();
 		address.setUid(user.getId());
 		address.setRecvName(recvName);

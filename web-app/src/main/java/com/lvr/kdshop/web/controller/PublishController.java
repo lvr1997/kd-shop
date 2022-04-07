@@ -145,7 +145,7 @@ public class PublishController {
         //goods.setCommetNum(0);
 
         //获取用户信息
-        User user = userService.selectByPrimaryKey(userId);
+        SysUser user = userService.selectByPrimaryKey(userId);
         goods.setUserId(user.getId());
         goodsService.insert(goods);
         //更新对应的闲置分类数量

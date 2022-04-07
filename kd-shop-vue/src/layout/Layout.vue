@@ -1,64 +1,64 @@
 <template>
-	<div class="content">
-		<!-- preloader -->
-		<transition name="preloader">
-			<div id="preloader" v-if="show">
-				<div class="preloader">
-					<span></span>
-					<span></span>
-				</div>
-			</div>
-		</transition>
-		<!-- preloader end  -->
-		<div class="header--sidebar"></div>
-		<HomeHeader></HomeHeader>
-		<router-view/>
-		<HomeFooter></HomeFooter>
-	</div>
+  <div class="content">
+    <!-- preloader -->
+    <transition name="preloader">
+      <div id="preloader" v-if="show">
+        <div class="preloader">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </transition>
+    <!-- preloader end  -->
+    <div class="header--sidebar"></div>
+    <HomeHeader></HomeHeader>
+    <router-view />
+    <HomeFooter></HomeFooter>
+  </div>
 </template>
 
 <script>
-	import HomeHeader from '../components/HomeHeader'
-	import HomeFooter from '../components/HomeFooter'
-	export default {
-		components:{
-			HomeHeader,
-			HomeFooter
-		},
-		data() {
-			return {
-				show: true,
-			}
-		},
-		mounted() {
-			this.show = false;
-		}
-	}
+import HomeHeader from "../components/HomeHeader";
+import HomeFooter from "../components/HomeFooter";
+export default {
+  components: {
+    HomeHeader,
+    HomeFooter,
+  },
+  data() {
+    return {
+      show: true,
+    };
+  },
+  mounted() {
+    this.show = false;
+  },
+};
 
-	// window.onload = () => {
-	// 	$('#preloader').delay(350).fadeOut('slow');
-	// 	$('body').delay(350).css({ 'overflow': 'visible' });
-	// }
+// window.onload = () => {
+// 	$('#preloader').delay(350).fadeOut('slow');
+// 	$('body').delay(350).css({ 'overflow': 'visible' });
+// }
 </script>
 
 <style>
-  @import url("../assets/css/css.css");
- @import url("../assets/css/bootstrap.min1.css");
- @import url("../assets/css/reset.css");
- @import url("../assets/css/default1.css");
- @import url("../assets/css/responsive1.css");
+@import url("../assets/css/css.css");
+@import url("../assets/css/bootstrap.min1.css");
+@import url("../assets/css/reset.css");
+@import url("../assets/css/default1.css");
+@import url("../assets/css/responsive1.css");
 
-.box-90{
-	padding-left: 90px;
-	padding-right: 90px;
+.box-90 {
+  padding-left: 90px;
+  padding-right: 90px;
 }
 
-.box-105{
-	padding-left: 105px;
-	padding-right: 105px;
+.box-105 {
+  padding-left: 105px;
+  padding-right: 105px;
 }
 
- /*--- preloader ---*/
+/*--- preloader ---*/
 .dark #preloader {
   background-color: #232323;
 }

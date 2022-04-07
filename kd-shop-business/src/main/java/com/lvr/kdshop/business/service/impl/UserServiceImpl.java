@@ -4,7 +4,7 @@ import com.lvr.kdshop.business.mapper.UserMapper;
 import com.lvr.kdshop.business.service.UserService;
 import com.lvr.kdshop.ex.PhoneNotFoundException;
 import com.lvr.kdshop.ex.UsernameTakenException;
-import com.lvr.kdshop.pojo.User;
+import com.lvr.kdshop.pojo.SysUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
         return userMapper.deleteByPrimaryKey(id);
     }
 
-    public int insert(User record) {
-        User user = userMapper.getUserByPhone(record.getPhone());
+    public int insert(SysUser record) {
+        SysUser user = userMapper.getUserByPhone(record.getPhone());
         if(user == null){
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             record.setId(UUID.randomUUID().toString());
@@ -36,28 +36,28 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public User selectByPrimaryKey(String id) {
+    public SysUser selectByPrimaryKey(String id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    public List<User> selectAll() {
+    public List<SysUser> selectAll() {
         return userMapper.selectAll();
     }
 
-    public int updateByPrimaryKey(User record) {
+    public int updateByPrimaryKey(SysUser record) {
         return userMapper.updateByPrimaryKey(record);
     }
 
-    public int updateLastLoginByPrimaryKey(User record) {
+    public int updateLastLoginByPrimaryKey(SysUser record) {
         return userMapper.updateLastLoginByPrimaryKey(record);
     }
 
-    public int updateByPrimaryKeySelective(User record) {
+    public int updateByPrimaryKeySelective(SysUser record) {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
-    public User getUserByPhone(String phone) {
-        User user = userMapper.getUserByPhone(phone);
+    public SysUser getUserByPhone(String phone) {
+        SysUser user = userMapper.getUserByPhone(phone);
         if(user == null){
             throw new PhoneNotFoundException("手机号未注册");
         }else{
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public List<User> getUserList() {
+    public List<SysUser> getUserList() {
         return userMapper.getUserList();
     }
 
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> searchUserByNameOrPhone(String name, String phone) {
+    public List<SysUser> searchUserByNameOrPhone(String name, String phone) {
         return userMapper.searchUserByNameOrPhone(name,phone);
     }
 }

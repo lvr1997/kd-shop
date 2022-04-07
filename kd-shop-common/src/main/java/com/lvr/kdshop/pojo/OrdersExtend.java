@@ -6,13 +6,13 @@ public class OrdersExtend {
     private Goods good;
     private Orders orders;
     private List<Image> images;
-    private User user;
+    private SysUser user;
     private Address address;
 
     public OrdersExtend() {
     }
 
-    public OrdersExtend(Goods good, Orders order, List<Image> images, User user, Address address) {
+    public OrdersExtend(Goods good, Orders order, List<Image> images, SysUser user, Address address) {
         this.good = good;
         this.orders = order;
         this.images = images;
@@ -55,11 +55,11 @@ public class OrdersExtend {
         this.images = images;
     }
 
-    public User getUser() {
+    public SysUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(SysUser user) {
         this.user = user;
     }
 
