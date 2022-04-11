@@ -1,10 +1,12 @@
-package com.lvr.kdshop.web.utils;
+package com.lvr.kdshop.web.security;
 
 import com.alibaba.fastjson.JSON;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.util.JSONResult;
 import com.lvr.kdshop.util.StringUtils;
 import com.lvr.kdshop.web.domain.LoginUser;
+import com.lvr.kdshop.web.utils.ServletUtils;
+import com.lvr.kdshop.web.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

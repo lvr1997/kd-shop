@@ -10,14 +10,14 @@ public class PhoneNotFoundException extends ServiceException{
     }
 
     public PhoneNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+        super(message);
     }
 
     public PhoneNotFoundException(Throwable cause) {
-        super(cause);
+        super(cause.getMessage());
     }
 
     protected PhoneNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+        super(message);
     }
 }

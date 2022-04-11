@@ -35,5 +35,15 @@ public class Constant {
     public static final int REPORT_TYPE = 1; //反馈类型为投诉
     public static final int REPORT_FEEDBACK = 2; //反馈类型为建议
 
+    /**
+     * 用户状态
+     */
+
+    public static final int USER_DEL_STATUS = 0; //用户已删除
+    public static final int USER_USED_STATUS = 1; //用户可用
+    public static final int USER_FREEZE_STATUS = 2; //用户已冻结
+
+
+
 
 }

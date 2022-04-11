@@ -10,14 +10,14 @@ public class UserPasswordErrorException extends ServiceException{
     }
 
     public UserPasswordErrorException(String message, Throwable cause) {
-        super(message, cause);
+        super(message);
     }
 
     public UserPasswordErrorException(Throwable cause) {
-        super(cause);
+        super(cause.getMessage());
     }
 
     protected UserPasswordErrorException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+        super(message);
     }
 }

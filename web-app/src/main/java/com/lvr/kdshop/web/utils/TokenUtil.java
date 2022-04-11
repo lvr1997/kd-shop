@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class TokenUtil {
@@ -40,8 +41,8 @@ public class TokenUtil {
 
     private static final Long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
 
-//    @Autowired
-//    private RedisCache redisCache;
+    @Autowired
+    private RedisCache redisCache;
 
     /**
      * 获取用户身份信息
@@ -54,8 +55,8 @@ public class TokenUtil {
             Claims claims = parseToken(token);
             String uuid = (String) claims.get(Constant.LOGIN_USER_KEY);
             String userkey = getTokenKey(uuid);
-//            LoginUser user = redisCache.getCacheObject(userKey);
-//            return user;
+            LoginUser user = redisCache.getCacheObject(userkey);
+            return user;
         }
 
         return null;
@@ -76,7 +77,7 @@ public class TokenUtil {
     public void delLoginUser(String token) {
         if (StringUtils.isNotEmpty(token)) {
             String userKey = getTokenKey(token);
-//            redisCache.deleteObject(userKey);
+            redisCache.deleteObject(userKey);
         }
     }
 
@@ -124,7 +125,7 @@ public class TokenUtil {
         loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
         // 根据uuid将loginUser缓存
         String userKey = getTokenKey(loginUser.getToken());
-//        redisCache.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
+        redisCache.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
     }
 
     /**

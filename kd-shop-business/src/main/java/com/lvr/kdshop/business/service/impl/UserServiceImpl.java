@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         SysUser user = userMapper.getUserByPhone(record.getPhone());
         if(user == null){
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            record.setId(UUID.randomUUID().toString());
+            record.setUserId(UUID.randomUUID().toString());
             record.setCreateAt(sdf.format(new Date()));
             return userMapper.insert(record);
         }else{
@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
+    @Override
+    public SysUser selectUserByUserName(String userName) {
+        return userMapper.selectUserByUserName(userName);
+    }
+
     public SysUser getUserByPhone(String phone) {
         SysUser user = userMapper.getUserByPhone(phone);
         if(user == null){
@@ -67,10 +72,6 @@ public class UserServiceImpl implements UserService {
 
     public List<SysUser> getUserList() {
         return userMapper.getUserList();
-    }
-
-    public int updateGoodsNum(String id, Integer goodsNum) {
-        return userMapper.updateGoodsNum(id,goodsNum);
     }
 
     public int updateImgUrl(String id, String url) {

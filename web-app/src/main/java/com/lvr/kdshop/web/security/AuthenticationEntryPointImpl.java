@@ -1,9 +1,10 @@
-package com.lvr.kdshop.web.utils;
+package com.lvr.kdshop.web.security;
 
 import com.alibaba.fastjson.JSON;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.util.JSONResult;
 import com.lvr.kdshop.util.StringUtils;
+import com.lvr.kdshop.web.utils.ServletUtils;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;

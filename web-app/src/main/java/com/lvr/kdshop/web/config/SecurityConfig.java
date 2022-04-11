@@ -1,8 +1,8 @@
 package com.lvr.kdshop.web.config;
 
-import com.lvr.kdshop.web.interceptor.JwtAuthenticationTokenInterceptor;
-import com.lvr.kdshop.web.utils.AuthenticationEntryPointImpl;
-import com.lvr.kdshop.web.utils.LogoutSuccessHandlerImpl;
+import com.lvr.kdshop.web.security.JwtAuthenticationTokenInterceptor;
+import com.lvr.kdshop.web.security.AuthenticationEntryPointImpl;
+import com.lvr.kdshop.web.security.LogoutSuccessHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

@@ -1,4 +1,4 @@
-package com.lvr.kdshop.web.interceptor;
+package com.lvr.kdshop.web.security;
 
 import com.lvr.kdshop.util.StringUtils;
 import com.lvr.kdshop.web.domain.LoginUser;

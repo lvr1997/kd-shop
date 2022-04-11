@@ -22,9 +22,9 @@ public class LoginUser implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    private Long userId;
+    private String userId;
 
-    private Long roleId;
+    private String roleId;
 
     private String token;
 
@@ -35,6 +35,20 @@ public class LoginUser implements UserDetails {
     private Set<String> permissions;
 
     private SysUser user;
+
+    public LoginUser(SysUser user, Set<String> permissions)
+    {
+        this.user = user;
+        this.permissions = permissions;
+    }
+
+    public LoginUser(String userId, String roleId, SysUser user, Set<String> permissions)
+    {
+        this.userId = userId;
+        this.roleId = roleId;
+        this.user = user;
+        this.permissions = permissions;
+    }
 
     @JSONField(serialize = false)
     @Override
