@@ -32,22 +32,18 @@ public class LoginUser implements UserDetails {
 
     private Long expireTime;
 
-    private Set<String> permissions;
-
     private SysUser user;
 
-    public LoginUser(SysUser user, Set<String> permissions)
+    public LoginUser(SysUser user)
     {
         this.user = user;
-        this.permissions = permissions;
     }
 
-    public LoginUser(String userId, String roleId, SysUser user, Set<String> permissions)
+    public LoginUser(String userId, String roleId, SysUser user)
     {
         this.userId = userId;
         this.roleId = roleId;
         this.user = user;
-        this.permissions = permissions;
     }
 
     @JSONField(serialize = false)
