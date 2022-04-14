@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updatePasswordByPrimaryKey(String uid, String password) {
+    public int updatePasswordByPrimaryKey(Integer uid, String password) {
         return userMapper.updatePasswordByPrimaryKey(uid,password);
     }
 

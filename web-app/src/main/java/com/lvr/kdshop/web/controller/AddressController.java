@@ -32,7 +32,7 @@ public class AddressController{
 						  @RequestParam("addressName") String recvTag){
 		SysUser user = (SysUser)session.getAttribute("cur_user");
 		Address address = new Address();
-		address.setUid(user.getId());
+//		address.setUid(user.getId());
 		address.setRecvName(recvName);
 		address.setRecvProvince(recvProvince);
 		address.setRecvCity(recvCity);

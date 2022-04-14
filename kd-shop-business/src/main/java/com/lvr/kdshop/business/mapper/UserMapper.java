@@ -58,7 +58,7 @@ public interface UserMapper {
 
     Integer checkUserByPhone(@Param("phone") String phone);
 
-    int updatePasswordByPrimaryKey(@Param("uid") String uid, @Param("password") String password);
+    int updatePasswordByPrimaryKey(@Param("uid") Integer uid, @Param("password") String password);
 
     List<SysUser> searchUserByNameOrPhone(@Param("name") String name, @Param("phone") String phone);
 

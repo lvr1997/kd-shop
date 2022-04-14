@@ -23,7 +23,7 @@ public interface OrdersMapper {
     List<Orders> selectAll();
 
 
-    List<Orders> selectOrdersByUserId(@Param("userId") String userId);
+    List<Orders> selectOrdersByUserId(@Param("userId") Integer userId);
 
     Orders selectOrdersByGoodId(@Param("goodId") Integer goodId);
 

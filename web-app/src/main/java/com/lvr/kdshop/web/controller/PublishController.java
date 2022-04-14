@@ -146,7 +146,7 @@ public class PublishController {
 
         //获取用户信息
         SysUser user = userService.selectByPrimaryKey(userId);
-        goods.setUserId(user.getId());
+        goods.setUserId(user.getUserId());
         goodsService.insert(goods);
         //更新对应的闲置分类数量
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());

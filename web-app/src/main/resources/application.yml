@@ -17,18 +17,18 @@ spring:
   devtools:
     restart:
       enabled: true
-  redis:
-    host: localhost
-    port: 6379
-    database: 0
-    password:
-    timeout: 10s
-    lettuce:
-      pool:
-        min-idle: 0
-        max-idle: 8
-        max-active: 8
-        max-wait: -1ms
+#  redis:
+#    host: localhost
+#    port: 6379
+#    database: 0
+#    password:
+#    timeout: 10s
+#    lettuce:
+#      pool:
+#        min-idle: 0
+#        max-idle: 8
+#        max-active: 8
+#        max-wait: -1ms
 
 mybatis:  #mybatyis的配置
   mapper-locations: classpath*:mapper/*.xml #指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件。

@@ -170,7 +170,7 @@
     from
       goods
     where
-      user_id = #{user_id,jdbcType=INTEGER}
+      user_id = #{user_id}
 
   </select>
 

@@ -10,7 +10,6 @@ import com.lvr.kdshop.ex.PhoneNotFoundException;
 import com.lvr.kdshop.ex.UsernameTakenException;
 import com.lvr.kdshop.pojo.*;
 import com.lvr.kdshop.util.JSONResult;
-import com.lvr.kdshop.web.utils.TokenUtil;
 import com.lvr.kdshop.util.MD5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,10 +138,10 @@ public class UserController {
                     cur_user.setLastLogin(sdf.format(new Date()));
                     userService.updateLastLoginByPrimaryKey(cur_user);
                     //生成签名
-                    String token= TokenUtil.sign(cur_user.getId());
+//                    String token= TokenUtil.sign(cur_user.getId());
                     //返回信息
                     Map<String, Object> map = new HashMap<String, Object>();
-                    map.put("token", token);
+//                    map.put("token", token);
                     map.put("user", cur_user);
                     return JSONResult.success(Constant.LOGIN_SUCCESS, map);
                 }else{
@@ -420,7 +419,7 @@ public class UserController {
                 user.setImgUrl(newUrl);
                 user.setId(user.getId());
                 userService.updateByPrimaryKeySelective(user);
-                SysUser cur_user = userService.selectByPrimaryKey(user.getId());
+                SysUser cur_user = userService.selectByPrimaryKey(user.getUserId());
                 //修改成功，返回提示
                 return JSONResult.success(Constant.SUCCESS_OPERATION, cur_user);
             }catch (Exception e) {
@@ -575,7 +574,7 @@ public class UserController {
 
         List<OrdersExtend> ordersExtends = new ArrayList<OrdersExtend>();
 
-        List<Goods> goods = goodsService.getGoodsByUserId(user.getId());
+        List<Goods> goods = goodsService.getGoodsByUserId(user.getUserId());
 
         List<Orders> orders = new ArrayList<Orders>();
 

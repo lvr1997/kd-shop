@@ -37,7 +37,7 @@ public interface UserService {
 
     Integer checkUserByPhone(String phone);
 
-    int updatePasswordByPrimaryKey(String uid, String password);
+    int updatePasswordByPrimaryKey(Integer uid, String password);
 
     List<SysUser> searchUserByNameOrPhone(String name, String phone);
 }

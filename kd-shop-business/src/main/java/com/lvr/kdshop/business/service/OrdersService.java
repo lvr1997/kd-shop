@@ -23,7 +23,7 @@ public interface OrdersService {
 
 
 
-    List<Orders> selectOrdersByUserId(String userId);
+    List<Orders> selectOrdersByUserId(Integer userId);
 
     Orders selectOrdersByGoodId(Integer goodId);
 
