@@ -57,7 +57,7 @@ public class SearchController {
     @PassToken
     @GetMapping(value = "/searchuser")
     public JSONResult searchUser(String username){
-        List<User> userList= userService.searchUserByNameOrPhone(username,username);
+        List<SysUser> userList= userService.searchUserByNameOrPhone(username,username);
 
         return JSONResult.success("获取成功", userList);
     }
@@ -74,7 +74,7 @@ public class SearchController {
         List<Goods> goodsList = goodsService.searchGoodsByKeyWord(keyword,keyword);
         for (Goods goods:goodsList) {
             Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
-            User user = userService.selectByPrimaryKey(goods.getUserId());
+            SysUser user = userService.selectByPrimaryKey(goods.getUserId());
             List<Image> images = imageService.selectByGoodsPrimaryKey(goods.getId());
             CatelogExtend catelogExtend = new CatelogExtend(goods,catelog,user,images);
             catelogExtendList.add(catelogExtend);
@@ -109,7 +109,7 @@ public class SearchController {
             Goods goods = goodsService.searchGoodsByKeyWordAndPrimary(report.getGoodId(),keyword,keyword);
             if(goods!=null){
                 List<Image> images = imageService.selectByGoodsPrimaryKey(goods.getId());
-                User user = userService.selectByPrimaryKey(report.getUserId());
+                SysUser user = userService.selectByPrimaryKey(report.getUserId());
                 ReportExtend reportExtend = new ReportExtend(report,goods,images,user);
                 reportExtendList.add(reportExtend);
             }
@@ -130,7 +130,7 @@ public class SearchController {
         for(Comments comment:comments){
             CommentsExtend commentsExtend = new CommentsExtend();
             Goods goods = goodsService.selectByPrimaryKey(comment.getGoodsId());
-            User user = userService.selectByPrimaryKey(comment.getUserId());
+            SysUser user = userService.selectByPrimaryKey(comment.getUserId());
             commentsExtend.setUser(user);
             commentsExtend.setGoods(goods);
             commentsExtend.setComments(comment);
@@ -149,7 +149,7 @@ public class SearchController {
             OrdersExtend ordersExtend = new OrdersExtend();
             Goods goods = goodsService.selectByPrimaryKey(order.getGoodId());
             List<Image> images = imageService.selectByGoodsPrimaryKey(goods.getId());
-            User user = userService.selectByPrimaryKey(order.getUserId());
+            SysUser user = userService.selectByPrimaryKey(order.getUserId());
             ordersExtend.setUser(user);
             ordersExtend.setOrders(order);
             ordersExtend.setImages(images);

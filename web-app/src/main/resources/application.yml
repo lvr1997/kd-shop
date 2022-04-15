@@ -5,19 +5,30 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/kd-shop?serverTimezone=GMT%2B8&useSSL=FALSE
+    url: jdbc:mysql://127.0.0.1:3306/kdshop?serverTimezone=GMT%2B8&useSSL=FALSE
     username: root  #数据库用户名
-    password: root  #该数据库用户的密码
+    password: root #该数据库用户的密码
   servlet:
     multipart:
       enabled: true
       file-size-threshold: 0
       max-file-size: 20MB
       max-request-size: 100MB
-  thymeleaf:
-    cache: false
-    mode: HTML5
-    encoding: UTF-8
+  devtools:
+    restart:
+      enabled: true
+#  redis:
+#    host: localhost
+#    port: 6379
+#    database: 0
+#    password:
+#    timeout: 10s
+#    lettuce:
+#      pool:
+#        min-idle: 0
+#        max-idle: 8
+#        max-active: 8
+#        max-wait: -1ms
 
 mybatis:  #mybatyis的配置
   mapper-locations: classpath*:mapper/*.xml #指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件。
@@ -28,9 +39,17 @@ mybatis:  #mybatyis的配置
 logging:
   config: classpath:logback.xml
 
+# token
+token:
+  header: Authorization
+  secret: lkjhgfdsa
+  expireTime: 30
+
 # 上传文件模式：local为本地上传，需要配置下方的imagesPath；
 #             oss为阿里云上传，需要在阿里云中开通对象存储服务，配置相应的key
 uploadMode: local
 # 文件上传映射本地路径
 # 在项目的源文件夹中建立upload目录，用于文件上传
-imagesPath: /E:/Code/kd-shop/upload
+imagesPath: E:/Code/kd-shop/upload/
+# 图片映射地址
+fileUploadPathRelative: /images/**

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.lvr.kdshop.business.mapper.RoleMapper">
+
+    <resultMap type="com.lvr.kdshop.pojo.Roles" id="SysRoleResult">
+        <id     property="id"             column="id"               />
+        <result property="roleId"           column="role_id"             />
+        <result property="roleName"            column="role_name"              />
+        <result property="commet"           column="commet"             />
+        <result property="createDate"          column="create_date"            />
+    </resultMap>
+
+    <sql id="selectRoleVo">
+	    select distinct r.id, r.role_id, r.role_name, r.commet, r.create_date
+        from roles r
+	        left join user_role ur on ur.role_id = r.role_id
+	        left join user u on u.user_id = ur.user_id
+    </sql>
+
+    <!--  根据userId查询该用户的角色信息  -->
+    <select id="selectRolePermissionByUserId" parameterType="String" resultMap="SysRoleResult">
+        <include refid="selectRoleVo"/>
+        WHERE ur.user_id = #{userId}
+    </select>
+
+</mapper>

@@ -2,7 +2,7 @@ package com.lvr.kdshop.pojo;
 
 public class CommentsExtend {
     private Goods goods;
-    private User user;
+    private SysUser user;
     private Comments comments;
     public Goods getGoods() {
         return goods;
@@ -11,11 +11,11 @@ public class CommentsExtend {
         this.goods = goods;
     }
 
-    public User getUser() {
+    public SysUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(SysUser user) {
         this.user = user;
     }
 

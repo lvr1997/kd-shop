@@ -10,14 +10,14 @@ public class PageNotFoundException extends ServiceException {
     }
 
     public PageNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+        super(message);
     }
 
     public PageNotFoundException(Throwable cause) {
-        super(cause);
+        super(cause.getMessage());
     }
 
     protected PageNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+        super(message);
     }
 }

@@ -9,7 +9,7 @@ import com.lvr.kdshop.constant.Constant;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.pojo.Goods;
 import com.lvr.kdshop.pojo.Orders;
-import com.lvr.kdshop.pojo.User;
+import com.lvr.kdshop.pojo.SysUser;
 import com.lvr.kdshop.util.JSONResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +47,7 @@ public class OrderController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         if(aid != null){
             Goods good = goodsService.selectByPrimaryKey(gid);
-            User seller = userService.selectByPrimaryKey(good.getUserId());
+            SysUser seller = userService.selectByPrimaryKey(good.getUserId());
             String payId = getOrderIdByTime();
 
             resultMap.put("good",good);

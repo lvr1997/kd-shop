@@ -3,7 +3,7 @@ package com.lvr.kdshop.pojo;
 public class WantedExtend {
     private Wanted wanted;
     private GoodsExtend goodsExtend;
-    private User user;
+    private SysUser user;
 
     public Wanted getWanted() {
         return wanted;
@@ -21,11 +21,11 @@ public class WantedExtend {
         this.goodsExtend = goodsExtend;
     }
 
-    public User getUser() {
+    public SysUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(SysUser user) {
         this.user = user;
     }
 }

@@ -1,6 +1,17 @@
 package com.lvr.kdshop.constant;
 
 public class Constant {
+
+    /**
+     * 登录认证相关
+     */
+    public static final String LOGIN_USER_KEY = "login_user_key";
+    public static final String TOKEN_PREFIX = "Bearer ";
+    public static final String TOKEN = "token";
+    public static final String CAPTCHA_CODE_KEY = "captcha_codes:"; //验证码 redis key
+    public static final String LOGIN_TOKEN_KEY = "login_tokens:"; //登录用户 redis key
+
+
     /**
      * 操作提示类型的常量
      */
@@ -23,6 +34,16 @@ public class Constant {
      */
     public static final int REPORT_TYPE = 1; //反馈类型为投诉
     public static final int REPORT_FEEDBACK = 2; //反馈类型为建议
+
+    /**
+     * 用户状态
+     */
+
+    public static final int USER_DEL_STATUS = 0; //用户已删除
+    public static final int USER_USED_STATUS = 1; //用户可用
+    public static final int USER_FREEZE_STATUS = 2; //用户已冻结
+
+
 
 
 }

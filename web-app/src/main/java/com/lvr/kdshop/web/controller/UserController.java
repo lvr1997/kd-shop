@@ -10,7 +10,6 @@ import com.lvr.kdshop.ex.PhoneNotFoundException;
 import com.lvr.kdshop.ex.UsernameTakenException;
 import com.lvr.kdshop.pojo.*;
 import com.lvr.kdshop.util.JSONResult;
-import com.lvr.kdshop.util.JwtUtil;
 import com.lvr.kdshop.util.MD5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,7 +68,7 @@ public class UserController {
                                        @RequestParam(value = "password",required = false) String password,
                                        @RequestParam(value = "captchaCode",required = false) String captchaCode){
         String captchaCheckCode = (String)session.getAttribute("number");
-        User user = userService.getUserByPhone(phone_number);
+        SysUser user = userService.getUserByPhone(phone_number);
         Map<String, Object> map = new HashMap<String, Object>();
         //判断验证码
         if(captchaCheckCode.equals(captchaCode)){
@@ -125,7 +124,7 @@ public class UserController {
             @RequestParam(value = "password",required = false) String password){
         try{
             //通过手机号查询用户信息
-            User cur_user = userService.getUserByPhone(phone);
+            SysUser cur_user = userService.getUserByPhone(phone);
             //判断用户信息
             if(cur_user != null) {
                 //用户信息存在
@@ -136,10 +135,10 @@ public class UserController {
                     cur_user.setLastLogin(sdf.format(new Date()));
                     userService.updateLastLoginByPrimaryKey(cur_user);
                     //生成签名
-                    String token= JwtUtil.sign(cur_user.getId());
+//                    String token= TokenUtil.sign(cur_user.getId());
                     //返回信息
                     Map<String, Object> map = new HashMap<String, Object>();
-                    map.put("token", token);
+//                    map.put("token", token);
                     map.put("user", cur_user);
                     return JSONResult.success(Constant.LOGIN_SUCCESS, map);
                 }else{
@@ -160,7 +159,7 @@ public class UserController {
     @ResponseBody
     @PostMapping(value = "/checkPhone")
     public JSONResult checkPhone(@RequestParam(value = "phone",required = true) String phone){
-        User user = userService.getUserByPhone(phone);
+        SysUser user = userService.getUserByPhone(phone);
         if(user != null) {
             return JSONResult.success(Constant.PHONE_SINED);
         } else {
@@ -186,7 +185,7 @@ public class UserController {
     @PassToken
     @PostMapping(value = "/register")
     @ResponseBody
-    public JSONResult handleRegister(@RequestParam("user") User user,@RequestParam("checkcode") String checkcode, HttpSession session){
+    public JSONResult handleRegister(@RequestParam("user") SysUser user, @RequestParam("checkcode") String checkcode, HttpSession session){
 
         String checkCode = (String)session.getAttribute("number");
 
@@ -229,7 +228,7 @@ public class UserController {
         if(commentsList.size()>0){
             for (Comments comment:commentsList) {
                 CommentsExtend commentsExtend = new CommentsExtend();
-                User user1 = userService.selectByPrimaryKey(comment.getUserId());
+                SysUser user1 = userService.selectByPrimaryKey(comment.getUserId());
                 Goods goods1 = goodsService.selectByPrimaryKey(comment.getGoodsId());
                 commentsExtend.setGoods(goods1);
                 commentsExtend.setUser(user1);
@@ -252,7 +251,7 @@ public class UserController {
         for(Comments comment:comments){
             //留言扩展类CommentsExtend(包含发布人，留言物品，留言内容)
             CommentsExtend commentsExtend = new CommentsExtend();
-            User user1 = userService.selectByPrimaryKey(comment.getUserId());
+            SysUser user1 = userService.selectByPrimaryKey(comment.getUserId());
             Integer goodsId = comment.getGoodsId();
             Goods goods1 = goodsService.selectByPrimaryKey(goodsId);
             commentsExtend.setGoods(goods1);
@@ -317,7 +316,7 @@ public class UserController {
     @UserLoginToken
     @ResponseBody
     @PostMapping(value = "/logout")
-    public JSONResult logout(@RequestParam("user") User user) {
+    public JSONResult logout(@RequestParam("user") SysUser user) {
         //设置用户最后登录信息
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         user.setLastLogin(sdf.format(new Date()));
@@ -407,7 +406,7 @@ public class UserController {
     @UserLoginToken
     @ResponseBody
     @RequestMapping(value = "/save_userinfo",method = RequestMethod.POST)
-    public JSONResult saveUserInfo(User user){
+    public JSONResult saveUserInfo(SysUser user){
 
         if(user!=null){
             try{
@@ -417,7 +416,7 @@ public class UserController {
                 user.setImgUrl(newUrl);
                 user.setId(user.getId());
                 userService.updateByPrimaryKeySelective(user);
-                User cur_user = userService.selectByPrimaryKey(user.getId());
+                SysUser cur_user = userService.selectByPrimaryKey(user.getUserId());
                 //修改成功，返回提示
                 return JSONResult.success(Constant.SUCCESS_OPERATION, cur_user);
             }catch (Exception e) {
@@ -536,7 +535,7 @@ public class UserController {
     @UserLoginToken
     @ResponseBody
     @PostMapping(value = "/order_buy")
-    public JSONResult order_buy(User user){
+    public JSONResult order_buy(SysUser user){
         List<OrdersExtend> ordersExtends = new ArrayList<OrdersExtend>();
         List<Orders> orders = ordersService.selectOrdersByUserId(user.getId());
         if(orders.size()>0) {
@@ -568,11 +567,11 @@ public class UserController {
     @UserLoginToken
     @ResponseBody
     @PostMapping(value = "/published_order")
-    public JSONResult published_order(User user){
+    public JSONResult published_order(SysUser user){
 
         List<OrdersExtend> ordersExtends = new ArrayList<OrdersExtend>();
 
-        List<Goods> goods = goodsService.getGoodsByUserId(user.getId());
+        List<Goods> goods = goodsService.getGoodsByUserId(user.getUserId());
 
         List<Orders> orders = new ArrayList<Orders>();
 

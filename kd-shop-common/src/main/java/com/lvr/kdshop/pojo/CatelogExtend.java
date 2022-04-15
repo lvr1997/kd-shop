@@ -5,13 +5,13 @@ import java.util.List;
 public class CatelogExtend {
     private Goods goods;
     private Catelog catelog;
-    private User user;
+    private SysUser user;
     private List<Image> images;
 
     public CatelogExtend() {
     }
 
-    public CatelogExtend(Goods goods, Catelog catelog, User user, List<Image> images) {
+    public CatelogExtend(Goods goods, Catelog catelog, SysUser user, List<Image> images) {
         this.goods = goods;
         this.catelog = catelog;
         this.user = user;
@@ -34,11 +34,11 @@ public class CatelogExtend {
         this.catelog = catelog;
     }
 
-    public User getUser() {
+    public SysUser getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(SysUser user) {
         this.user = user;
     }
 

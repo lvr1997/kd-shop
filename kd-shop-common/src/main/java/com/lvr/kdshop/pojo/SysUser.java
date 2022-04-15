@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class SysUser {
 
-    private String id;
+    private Integer id;
+
+    private String userId;
 
     private String phone;
 
@@ -32,6 +36,11 @@ public class User {
     private String residence;
 
     private String signature;
+
+    private String roleId;
+
+    /** 角色对象 */
+    private List<Roles> roles;
 
     public String getPhone() {
         if(this.phone != null && this.phone != ""){
