@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Layout from '@/layout/Layout'
+import AdminLayout from '@/views/admin'
 import NotFoundPage from '@/views/errorPage/notFound'
 
 const routes = [
@@ -72,6 +73,35 @@ const routes = [
 			name: 'Checkout',
 			component: () => import('@/views/checkout/checkout')
 		}]
+	},
+
+	//管理员页面
+	{
+		path: '/admin',
+		name: 'Admin',
+		component: AdminLayout,
+		children: [
+			{
+				path: '/website',
+				name: 'website',
+				component: () => import('@/views/admin/childViews/website')
+			},
+			{
+				path: '/users',
+				name: 'users',
+				component: () => import('@/views/admin/childViews/users')
+			},
+			{
+				path: '/school',
+				name: 'school',
+				component: () => import('@/views/admin/childViews/school')
+			},
+			{
+				path: '/setting',
+				name: 'setting',
+				component: () => import('@/views/admin/childViews/setting')
+			}
+		]
 	},
 
 
