@@ -47,13 +47,13 @@
 
     insert into user (user_id, phone, username,
       password, create_at,
-      goods_num, last_login,
+      last_login,
       status, birthday, sex,
       img_url, residence, signature
       )
     values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR},
       #{password,jdbcType=CHAR}, #{createAt,jdbcType=VARCHAR},
-      #{goodsNum,jdbcType=INTEGER}, #{lastLogin,jdbcType=VARCHAR},
+      #{lastLogin,jdbcType=VARCHAR},
       #{status,jdbcType=TINYINT}, #{birthday,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
       #{imgUrl,jdbcType=LONGVARCHAR}, #{residence,jdbcType=LONGVARCHAR}, #{signature,jdbcType=LONGVARCHAR}
       )
@@ -88,7 +88,7 @@
   <!--查询所有用户信息-->
   <select id="selectAll" resultMap="BaseResultMap" >
     select
-      user_id, phone, username, password, create_at, goods_num, last_login, status, birthday, sex, img_url, residence, signature
+      user_id, phone, username, password, create_at, last_login, status, birthday, sex, img_url, residence, signature
     from
       user
   </select>
@@ -96,7 +96,7 @@
   <!--和上面自动生成的一样-->
   <select id="getUserList" resultMap="BaseResultMap">
     SELECT
-      user_id, phone, username, password, create_at, goods_num, last_login, status, img_url, birthday, sex,residence,signature
+      user_id, phone, username, password, create_at, last_login, status, img_url, birthday, sex,residence,signature
     FROM
       user
   </select>
@@ -104,7 +104,7 @@
   <!--通过手机号获取用户信息-->
   <select id="getUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
     SELECT
-      user_id, phone, username, password, create_at, goods_num, last_login, status, img_url, birthday, sex,residence,signature
+      user_id, phone, username, password, create_at, last_login, status, img_url, birthday, sex,residence,signature
     FROM
       user
     WHERE
