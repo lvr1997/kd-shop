@@ -13,6 +13,6 @@ public class OrdersExtend {
     private Goods good;
     private Orders orders;
     private List<Image> images;
-    private User user;
+    private SysUser user;
 
 }

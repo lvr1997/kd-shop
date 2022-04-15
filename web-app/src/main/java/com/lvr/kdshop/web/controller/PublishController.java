@@ -139,8 +139,8 @@ public class PublishController {
         goods.setPolishTime(sdf.format(new Date()));
 //        goods.setCommetNum(0);
         //获取用户信息
-        User user = userService.selectByPrimaryKey(userId);
-        goods.setUserId(user.getId());
+        SysUser user = userService.selectByPrimaryKey(userId);
+        goods.setUserId(user.getUserId());
         goodsService.insert(goods);
         //插入闲置对应的图片信息
         good_images = good_images.substring(good_images.indexOf("\""),good_images.lastIndexOf("]"));
