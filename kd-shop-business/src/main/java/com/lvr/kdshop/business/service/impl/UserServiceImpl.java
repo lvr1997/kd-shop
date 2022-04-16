@@ -4,17 +4,24 @@ import com.lvr.kdshop.business.mapper.UserMapper;
 import com.lvr.kdshop.business.service.UserService;
 import com.lvr.kdshop.ex.PhoneNotFoundException;
 import com.lvr.kdshop.ex.UsernameTakenException;
+import com.lvr.kdshop.pojo.Roles;
 import com.lvr.kdshop.pojo.SysUser;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Resource
     private UserMapper userMapper;
@@ -92,4 +99,23 @@ public class UserServiceImpl implements UserService {
     public List<SysUser> searchUserByNameOrPhone(String name, String phone) {
         return userMapper.searchUserByNameOrPhone(name,phone);
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String userPhone) throws UsernameNotFoundException {
+        //user即为查询结果
+        SysUser user=userMapper.getUserByPhone(userPhone);
+        if(user==null){
+            throw new UsernameNotFoundException("用户名错误！！");
+        }
+        //获取用户权限，并把其添加到GrantedAuthority中
+        List<GrantedAuthority> grantedAuthorities=new ArrayList<>();
+        List<Roles> userRoles =  user.getRoles();
+        GrantedAuthority grantedAuthority;
+        for(Roles role : userRoles){
+            grantedAuthority=new SimpleGrantedAuthority(role.getRoleId());
+            grantedAuthorities.add(grantedAuthority);
+        }
+        return new org.springframework.security.core.userdetails.User(userPhone,user.getPassword(),grantedAuthorities);
+    }
+
 }

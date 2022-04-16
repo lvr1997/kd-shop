@@ -46,8 +46,7 @@
   <insert id="insert" parameterType="com.lvr.kdshop.pojo.SysUser" useGeneratedKeys="true" keyProperty="">
 
     insert into user (user_id, phone, username,
-      password, create_at,
-      goods_num, last_login,
+      password, create_at, last_login,
       status, birthday, sex,
       img_url, residence, signature
       )
@@ -66,7 +65,6 @@
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=CHAR},
       create_at = #{createAt,jdbcType=VARCHAR},
-      goods_num = #{goodsNum,jdbcType=INTEGER},
       last_login = #{lastLogin,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
       birthday = #{birthday,jdbcType=VARCHAR},
@@ -88,7 +86,7 @@
   <!--查询所有用户信息-->
   <select id="selectAll" resultMap="BaseResultMap" >
     select
-      user_id, phone, username, password, create_at, goods_num, last_login, status, birthday, sex, img_url, residence, signature
+      user_id, phone, username, password, create_at,  last_login, status, birthday, sex, img_url, residence, signature
     from
       user
   </select>
@@ -96,7 +94,7 @@
   <!--和上面自动生成的一样-->
   <select id="getUserList" resultMap="BaseResultMap">
     SELECT
-      user_id, phone, username, password, create_at, goods_num, last_login, status, img_url, birthday, sex,residence,signature
+      user_id, phone, username, password, create_at,  last_login, status, img_url, birthday, sex,residence,signature
     FROM
       user
   </select>
@@ -104,7 +102,7 @@
   <!--通过手机号获取用户信息-->
   <select id="getUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
     SELECT
-      user_id, phone, username, password, create_at, goods_num, last_login, status, img_url, birthday, sex,residence,signature
+      user_id, phone, username, password, create_at,  last_login, status, img_url, birthday, sex,residence,signature
     FROM
       user
     WHERE
@@ -151,9 +149,6 @@
       </if>
       <if test="createAt != null">
         create_at = #{createAt,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsNum != null">
-        goods_num = #{goodsNum,jdbcType=INTEGER},
       </if>
       <if test="lastLogin != null">
         last_login = #{lastLogin,jdbcType=VARCHAR},

@@ -122,6 +122,9 @@ export default {
       }
     },
   },
+  mounted() {
+        this.$refs.registerArea.style.display = "none";
+	},
   components: {
   },
 };
