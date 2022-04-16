@@ -16,6 +16,6 @@ public class Roles {
     private String roleId;
     private String roleName;
     private String commet;
-    private LocalDateTime createDate;
+    private String createDate;
 
 }

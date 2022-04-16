@@ -33,6 +33,7 @@ public class SelfAuthenticationProvider  implements AuthenticationProvider {
         //获取密码
         String password= (String) authentication.getCredentials();
         UserDetails userDetails= userServiceImpl.loadUserByUsername(account);
+        System.out.println(userDetails.getAuthorities());
         boolean checkPassword= bCryptPasswordEncoder.matches(password,userDetails.getPassword());
         if(!checkPassword){
             throw new BadCredentialsException("密码不正确，请重新登录!");

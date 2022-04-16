@@ -28,7 +28,7 @@ public class AccessDeny  implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
-        Msg result= Msg.denyAccess("无权访问，need Authorities!!");
+        Msg result= Msg.denyAccess("无权访问，需要管理员权限!!");
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSONUtil.toJsonStr(result));
     }

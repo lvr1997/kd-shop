@@ -148,13 +148,11 @@ public class SearchController {
         for(Orders order: orders){
             OrdersExtend ordersExtend = new OrdersExtend();
             Goods goods = goodsService.selectByPrimaryKey(order.getGoodId());
-            Address address = addressService.selectByPrimaryKey(order.getAddressId());
             List<Image> images = imageService.selectByGoodsPrimaryKey(goods.getId());
             SysUser user = userService.selectByPrimaryKey(order.getUserId());
             ordersExtend.setUser(user);
             ordersExtend.setOrders(order);
             ordersExtend.setImages(images);
-            ordersExtend.setAddress(address);
             ordersExtend.setGood(goods);
             ordersExtends.add(ordersExtend);
         }

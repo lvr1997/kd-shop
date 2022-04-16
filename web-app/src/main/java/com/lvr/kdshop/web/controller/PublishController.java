@@ -1,13 +1,11 @@
 package com.lvr.kdshop.web.controller;
 
-import cn.hutool.core.util.IdUtil;
 import com.lvr.kdshop.annotation.UserLoginToken;
 import com.lvr.kdshop.business.service.*;
 import com.lvr.kdshop.constant.Constant;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.pojo.*;
 import com.lvr.kdshop.util.JSONResult;
-import com.lvr.kdshop.web.utils.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,9 +40,6 @@ public class PublishController {
     @Resource
     private ReportService reportService;
 
-    @Value("${imagesPath}")
-    private String imgPath;
-
 
     /**
      * 上传商品图片
@@ -61,7 +56,7 @@ public class PublishController {
         String oldName = fileName.getOriginalFilename();
 
         //存储图片的物理路径
-        String realPath = imgPath + "/goods";
+        String realPath = "/goods";
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -110,7 +105,7 @@ public class PublishController {
     @RequestMapping(value = "/delete_image",method = RequestMethod.POST)
     public JSONResult delectUploadFile(@RequestParam("fileName") String fileName){
         //获得物理路径
-        String true_path = imgPath;
+        String true_path = "/path";
         //设置文件的存储路径
         String file_name = true_path+"\\goods\\"+fileName;
         File file1 = new File(file_name);
@@ -134,7 +129,7 @@ public class PublishController {
     @RequestMapping(value = "/complete",method = RequestMethod.POST)
     public JSONResult handlePublishComplete(@RequestParam("userId") String userId,
                                             @RequestParam("goods") Goods goods,
-                                            @RequestParam("goodImages") MultipartFile good_images){
+                                            @RequestParam("goodImages") String good_images){
 
         System.out.println("publish->CatelogId:"+goods.getCatelogId());
 
@@ -142,26 +137,24 @@ public class PublishController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         goods.setStartTime(sdf.format(new Date()));
         goods.setPolishTime(sdf.format(new Date()));
-        //goods.setCommetNum(0);
-
+//        goods.setCommetNum(0);
         //获取用户信息
         SysUser user = userService.selectByPrimaryKey(userId);
         goods.setUserId(user.getUserId());
         goodsService.insert(goods);
-        //更新对应的闲置分类数量
-        Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
-        catelogService.updateCatelogNum(goods.getCatelogId(),catelog.getNumber()+1);
-
-        //插入闲置对应的图片信息  自动生成uuid的图片名称
-        String imageName = IdUtil.randomUUID();
-        new ImageUtil().imageupload(good_images,imageName);
-        Image image = new Image(1,goods.getId(),imageName);
-        imageService.insert(image);
-
+        //插入闲置对应的图片信息
+        good_images = good_images.substring(good_images.indexOf("\""),good_images.lastIndexOf("]"));
+        String[] urls = good_images.split(",");
+        for (String url:urls) {
+            url = url.substring(url.lastIndexOf("/")+1,url.lastIndexOf("\""));
+            Image image = new Image(1,goods.getId(),url);
+            imageService.insert(image);
+        }
         //更新用户闲置物品数量
-        //userService.updateGoodsNum(user.getId(),user.getGoodsNum()+1);
+//        userService.updateGoodsNum(user.getId(),user.getGoodsNum()+1);
 
         //返回响应json数据
+
         return JSONResult.success(Constant.SUCCESS_OPERATION);
     }
 
@@ -174,7 +167,6 @@ public class PublishController {
         //根据闲置id更新闲置状态
         Goods goods = goodsService.selectByPrimaryKey(gid);
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
-        catelogService.updateCatelogNum(goods.getCatelogId(),catelog.getNumber()-1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         goodsService.updateStatusByPrimaryKey(gid,(byte)2);
         goodsService.updateEndTimeByPrimaryKey(gid,sdf.format(new Date()));

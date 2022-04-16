@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class KdShopWebConfig implements WebMvcConfigurer {
 
-
     /**图片地址*/
     @Value("${imagesPath}")
     private String mImagesPath;
@@ -20,7 +19,6 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     private String fileRelativePath;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 
     /**
      * 静态资源映射

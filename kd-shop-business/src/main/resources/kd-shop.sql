@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 31/03/2022 18:27:55
+ Date: 15/04/2022 16:22:37
 */
 
 SET NAMES utf8mb4;
@@ -296,7 +296,8 @@ INSERT INTO `school` VALUES (3, '00120002', '哈尔滨理工大学', NULL, '2022
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id，主键，系统自动生成',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自动递增',
+  `user_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id，唯一标识',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户手机号',
   `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
@@ -308,19 +309,20 @@ CREATE TABLE `user`  (
   `img_url` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '头像',
   `residence` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '简介',
   `signature` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '个性签名',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `user_id_indexq`(`user_id`) USING BTREE COMMENT '用户编号唯一'
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '15124680346', '测试用户AAA', '900150983CD24FB0D6963F7D28E17F72', '2019-05-19', '2019-06-03', 1, '', '女', 'default.png', '', '');
-INSERT INTO `user` VALUES ('2', '17611056916', '测试用户bbbb', '47BCE5C74F589F4867DBD57E9CA9F808', '2019-05-19', '2020-10-12', 1, '2019-05-19', '男', 'default.png', NULL, NULL);
-INSERT INTO `user` VALUES ('3', '13019711506', '西瓜味的小仙', 'E10ADC3949BA59ABBE56E057F20F883E', '2019-05-23', '2019-05-23', 1, '1989-05-26', '男', 'default.png', '黑龙江-哈尔滨市-松北区', '');
-INSERT INTO `user` VALUES ('4', '15232103749', 'AlineSerily', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-04-14', '2021-12-05', 1, '1998-04-09', '男', 'default.png', '黑龙江-哈尔滨市-南岗区', '');
-INSERT INTO `user` VALUES ('5', '13703111234', '詹三_审核员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, '1998-07-12', '男', 'default.png', NULL, NULL);
-INSERT INTO `user` VALUES ('6', '17765432111', '张三_系统管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-22', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
-INSERT INTO `user` VALUES ('7', '13207111234', '李四_超级管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES (1, 'aasdds', '15124680346', '测试用户AAA', '900150983CD24FB0D6963F7D28E17F72', '2019-05-19', '2019-06-03', 1, '', '女', 'default.png', '', '');
+INSERT INTO `user` VALUES (2, 'werefdsf', '17611056916', '测试用户bbbb', '47BCE5C74F589F4867DBD57E9CA9F808', '2019-05-19', '2020-10-12', 1, '2019-05-19', '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES (3, 'fdsdfsd', '13019711506', '西瓜味的小仙', 'E10ADC3949BA59ABBE56E057F20F883E', '2019-05-23', '2019-05-23', 1, '1989-05-26', '男', 'default.png', '黑龙江-哈尔滨市-松北区', '');
+INSERT INTO `user` VALUES (4, 'fdsff', '15232103749', 'AlineSerily', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-04-14', '2021-12-05', 1, '1998-04-09', '男', 'default.png', '黑龙江-哈尔滨市-南岗区', '');
+INSERT INTO `user` VALUES (5, 'dghfgh', '13703111234', '詹三_审核员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, '1998-07-12', '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES (6, 'fghgjgjgu', '17765432111', '张三_系统管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-22', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
+INSERT INTO `user` VALUES (7, 'fdfrhh', '13207111234', '李四_超级管理员', 'E10ADC3949BA59ABBE56E057F20F883E', '2020-12-23', NULL, 1, NULL, '男', 'default.png', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user_role

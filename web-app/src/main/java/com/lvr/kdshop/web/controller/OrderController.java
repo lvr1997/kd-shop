@@ -76,7 +76,7 @@ public class OrderController {
         Orders order = new Orders();
         order.setUserId(userId);
         order.setGoodId(gid);
-        order.setAddressId(aid);
+        order.setAddress("");
         order.setPayId(payid.trim());
         order.setStatus((byte)1);
         order.setCreateAt(sdf.format(new Date()));

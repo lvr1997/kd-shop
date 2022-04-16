@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @Date 2022/4/15 10:03
  * @EnableWebSecurity 开启Spring Security的功能
  * @EnableGlobalMethodSecurity prePostEnabled 属性决定Spring Security在接口前注解是否可用  开启权限注解,默认是关闭的
- *  @PreAuthorize,@PostAuthorize等注解,设置为true,会拦截加了这些注解的接口
+ * @PreAuthorize,@PostAuthorize等注解,设置为true,会拦截加了这些注解的接口
  **/
 @Configuration
 @EnableWebSecurity
@@ -49,6 +49,7 @@ public class WebSecurityConfg extends WebSecurityConfigurerAdapter {
     @Autowired
     SelfAuthenticationProvider selfAuthenticationProvider;
 
+    @Override
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserServiceImpl();
@@ -95,8 +96,7 @@ public class WebSecurityConfg extends WebSecurityConfigurerAdapter {
 
         //     /index需要权限为ROLE_USER才能访问   /hello需要权限为ROLE_ADMIN才能访问
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/admin").hasRole("SUPERMANAGER")
+                .antMatchers("/admin").hasAnyRole("ADMIN","SUPERMANAGER")
                 .and()
                 .formLogin()  //开启登录
                 .permitAll()  //允许所有人访问

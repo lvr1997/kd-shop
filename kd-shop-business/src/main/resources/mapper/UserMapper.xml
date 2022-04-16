@@ -29,10 +29,10 @@
 
   <sql id="selectUserVo">
         select
-        u.user_id, u.username, u.phone, u.password, u.sex,u.img_url, u.status, u.last_login, u.create_at, u.birthday,u.residence,u.signature
+        u.user_id, u.username, u.phone, u.password, u.sex,u.img_url, u.status, u.last_login, u.create_at, u.birthday,u.residence,u.signature,
         r.role_id, r.role_name, r.commet, r.create_date
-        from sys_user u
-		    left join user_role ur on u.user_id = ur.user_id
+        from user u
+		    left join user_role ur on u.id = ur.user_id
 		    left join roles r on r.role_id = ur.role_id
     </sql>
 
@@ -46,13 +46,16 @@
   <insert id="insert" parameterType="com.lvr.kdshop.pojo.SysUser" useGeneratedKeys="true" keyProperty="">
 
     insert into user (user_id, phone, username,
-      password, create_at, last_login,
+      password, create_at,
+      goods_num, last_login,
+      password, create_at,
+      last_login,
       status, birthday, sex,
       img_url, residence, signature
       )
     values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR},
       #{password,jdbcType=CHAR}, #{createAt,jdbcType=VARCHAR},
-      #{goodsNum,jdbcType=INTEGER}, #{lastLogin,jdbcType=VARCHAR},
+      #{lastLogin,jdbcType=VARCHAR},
       #{status,jdbcType=TINYINT}, #{birthday,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
       #{imgUrl,jdbcType=LONGVARCHAR}, #{residence,jdbcType=LONGVARCHAR}, #{signature,jdbcType=LONGVARCHAR}
       )
@@ -86,7 +89,7 @@
   <!--查询所有用户信息-->
   <select id="selectAll" resultMap="BaseResultMap" >
     select
-      user_id, phone, username, password, create_at,  last_login, status, birthday, sex, img_url, residence, signature
+user_id, phone, username, password, create_at, last_login, status, birthday, sex, img_url, residence, signature
     from
       user
   </select>
@@ -94,19 +97,16 @@
   <!--和上面自动生成的一样-->
   <select id="getUserList" resultMap="BaseResultMap">
     SELECT
-      user_id, phone, username, password, create_at,  last_login, status, img_url, birthday, sex,residence,signature
+ user_id, phone, username, password, create_at, last_login, status, img_url, birthday, sex,residence,signature
     FROM
       user
   </select>
 
   <!--通过手机号获取用户信息-->
   <select id="getUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT
-      user_id, phone, username, password, create_at,  last_login, status, img_url, birthday, sex,residence,signature
-    FROM
-      user
+      <include refid="selectUserVo"/>
     WHERE
-      phone = #{phone}
+      u.phone = #{phone}
 
   </select>
 
