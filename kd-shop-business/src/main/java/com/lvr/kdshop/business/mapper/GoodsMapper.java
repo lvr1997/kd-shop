@@ -67,7 +67,6 @@ public interface GoodsMapper {
 
     int updateEndTimeByPrimaryKey(@Param("id") Integer gid, @Param("endTime") String endTime);
 
-    int updateCommentNumByPrimaryKey(@Param("id") Integer gid, @Param("commentNum") Integer commentNum);
 
     List<Goods> searchGoodsByKeyWord(@Param("name") String name, @Param("describle") String describle);
 

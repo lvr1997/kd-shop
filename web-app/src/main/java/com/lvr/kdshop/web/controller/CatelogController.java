@@ -18,7 +18,6 @@ public class CatelogController {
     @Resource
     private CatelogService catelogService;
 
-    @UserLoginToken
     @GetMapping(value = "/list")
     public JSONResult publish(){
 

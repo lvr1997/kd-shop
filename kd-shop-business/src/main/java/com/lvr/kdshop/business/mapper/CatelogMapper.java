@@ -53,7 +53,7 @@ public interface CatelogMapper {
 //    int getCount(Catelog catelog);
     
 
-    int updateCatelogNum(@Param("id") Integer id, @Param("number") Integer number);
+//    int updateCatelogNum(@Param("id") Integer id, @Param("number") Integer number);
 
     List<Catelog> searchCatelogByName(@Param("name") String name);
 

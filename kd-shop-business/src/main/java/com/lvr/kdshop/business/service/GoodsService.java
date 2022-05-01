@@ -65,7 +65,6 @@ public interface GoodsService {
 
     int updateEndTimeByPrimaryKey(Integer gid, String endTime);
 
-    int updateCommentNumByPrimaryKey(Integer gid, Integer commentNum);
 
     List<Goods> searchGoodsByKeyWord(String name, String describle);
 

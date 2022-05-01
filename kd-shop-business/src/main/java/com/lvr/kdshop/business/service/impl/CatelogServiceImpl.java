@@ -71,9 +71,9 @@ public class CatelogServiceImpl implements CatelogService {
 //        return catelogMapper.getCount(catelog);
 //    }
 
-    public int updateCatelogNum(Integer id, Integer number) {
-        return catelogMapper.updateCatelogNum(id,number);
-    }
+//    public int updateCatelogNum(Integer id, Integer number) {
+//        return catelogMapper.updateCatelogNum(id,number);
+//    }
 
     @Override
     public List<Catelog> searchCatelogByName(String name) {

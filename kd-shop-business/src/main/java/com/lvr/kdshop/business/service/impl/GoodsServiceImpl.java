@@ -178,11 +178,6 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public int updateCommentNumByPrimaryKey(Integer gid, Integer commentNum) {
-        return goodsMapper.updateCommentNumByPrimaryKey(gid,commentNum);
-    }
-
-    @Override
     public List<Goods> searchGoodsByKeyWord(String name, String describle) {
         return goodsMapper.searchGoodsByKeyWord(name,describle);
     }

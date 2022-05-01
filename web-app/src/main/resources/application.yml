@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.94.102.163:3306/kdshop?serverTimezone=GMT%2B8&useSSL=FALSE
-    username: kdshop  #数据库用户名
-    password: kdshop #该数据库用户的密码
+    url: jdbc:mysql://127.0.0.1:3306/kd-shop?serverTimezone=GMT%2B8&useSSL=FALSE
+    username: root  #数据库用户名
+    password: root #该数据库用户的密码
   servlet:
     multipart:
       enabled: true

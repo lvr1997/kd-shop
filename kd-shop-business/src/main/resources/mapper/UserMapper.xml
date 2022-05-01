@@ -47,8 +47,6 @@
 
     insert into user (user_id, phone, username,
       password, create_at,
-      goods_num, last_login,
-      password, create_at,
       last_login,
       status, birthday, sex,
       img_url, residence, signature
@@ -78,7 +76,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <!--通过id查找用户-->
+  <!--通过user_id查找用户-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select user_id, phone, username, password, create_at, last_login,
     status, birthday, sex, img_url, residence, signature

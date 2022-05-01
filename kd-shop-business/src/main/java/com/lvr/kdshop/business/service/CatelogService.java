@@ -28,7 +28,7 @@ public interface CatelogService {
 
 //    int getCount(Catelog catelog);
 
-    int updateCatelogNum(Integer id, Integer number);
+//    int updateCatelogNum(Integer id, Integer number);
 
     List<Catelog> searchCatelogByName(String name);
 }
