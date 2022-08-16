@@ -1,5 +1,7 @@
 <template>
   <main>
+    <!-- loading -->
+    <loading-animation :isLoading="isLoading"></loading-animation>
     <!-- 轮播 -->
     <Slider></Slider>
     <!-- banner -->
@@ -94,6 +96,7 @@
 </template>
 
 <script>
+import LoadingAnimation from '../../components/LoadingAnimation.vue';
 import Slider from './components/slider.vue'
 import Banner from './components/banner.vue'
 import GoodInfo from "@/components/GoodInfo";
@@ -106,7 +109,16 @@ export default {
     Features,
     News,
     GoodInfo,
+    LoadingAnimation
   },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
+  mounted() {
+    this.isLoading = false
+  }
 };
 </script>
 

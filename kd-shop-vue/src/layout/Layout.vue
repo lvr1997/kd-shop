@@ -1,15 +1,5 @@
 <template>
   <div class="content">
-    <!-- preloader -->
-    <transition name="preloader">
-      <div id="preloader" v-if="show">
-        <div class="preloader">
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </transition>
-    <!-- preloader end  -->
     <div class="header--sidebar"></div>
     <HomeHeader></HomeHeader>
     <router-view />
@@ -24,15 +14,7 @@ export default {
   components: {
     HomeHeader,
     HomeFooter,
-  },
-  data() {
-    return {
-      show: true,
-    };
-  },
-  mounted() {
-    this.show = false;
-  },
+  }
 };
 
 // window.onload = () => {
