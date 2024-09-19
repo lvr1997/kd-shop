@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
+    @GetMapping("/login")
+    public String login() {
+        return "/login";
+    }
+
     @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("msg", "Hello 欢迎回来");

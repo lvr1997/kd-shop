@@ -1,9 +1,12 @@
 package com.lvr.kdshop.web.config;
 
+import com.lvr.kdshop.web.config.locale.MyLocaleResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -38,6 +41,15 @@ public class KdShopWebConfig implements WebMvcConfigurer {
             registry.addResourceHandler("/OTA/**")
                     .addResourceLocations("file:/www/wwwroot/www.bolglan.cn/dist/resource/OTA/");
         }
+    }
+
+    /**
+     * 配置国际化地区解析器
+     * @return
+     */
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new MyLocaleResolver();
     }
 
 }
