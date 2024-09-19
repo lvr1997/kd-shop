@@ -4,15 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lvr</groupId>
-        <artifactId>kdshop</artifactId>
+        <artifactId>kd-shop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>com.lvr.kdshop.business</groupId>
-    <artifactId>business</artifactId>
+    <artifactId>kd-shop-business</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>business</name>
+    <name>kd-shop-business</name>
     <description>业务层</description>
 
     <properties>
@@ -23,7 +23,7 @@
 
         <dependency>
             <groupId>com.lvr.kdshop</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>kd-shop-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

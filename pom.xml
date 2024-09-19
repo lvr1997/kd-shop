@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.lvr</groupId>
-    <artifactId>kdshop</artifactId>
+    <artifactId>kd-shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>kdshop</name>
+    <name>kd-shop</name>
     <description>科大二手工坊2.0</description>
     <packaging>pom</packaging>
 
@@ -25,7 +25,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.20</version>
+            <scope>provided</scope>
         </dependency>
 
         <!--   hutool工具包     -->
@@ -43,10 +44,8 @@
 
     </dependencies>
 
-
-
     <modules>
-        <module>web-app</module>
+        <module>kd-shop-web</module>
         <module>kd-shop-common</module>
         <module>kd-shop-business</module>
     </modules>

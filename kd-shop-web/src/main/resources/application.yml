@@ -1,13 +1,21 @@
 server:
-  port: 8888
+  port: 3000
 
 # springboot数据源配置
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/kd-shop?serverTimezone=GMT%2B8&useSSL=FALSE
     username: root  #数据库用户名
-    password: root #该数据库用户的密码
+    password: 123!@# #该数据库用户的密码
   servlet:
     multipart:
       enabled: true
@@ -45,12 +53,12 @@ token:
   secret: lkjhgfdsa
   expireTime: 30
 
-# 上传文件模式：local为本地上传，需要配置下方的imagesPath；
+# 上传文件模式：local为本地上传，需要配置下方的imagesPath；imagesPath为你本地图片文件夹路径
 #             oss为阿里云上传，需要在阿里云中开通对象存储服务，配置相应的key
 uploadMode: local
 # 文件上传映射本地路径
 # 在项目的源文件夹中建立upload目录，用于文件上传
-imagesPath: C:/Users/My VM/Desktop/kd-shop/kd-shop/upload/
+imagesPath: E:/Code/kd-shop/upload/
 
 # 图片映射地址
 fileUploadPathRelative: /images/**

@@ -4,15 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.lvr</groupId>
-        <artifactId>kdshop</artifactId>
+        <artifactId>kd-shop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>com.lvr.kdshop</groupId>
-    <artifactId>web</artifactId>
+    <artifactId>kd-shop-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>web</name>
+    <name>kd-shop-web</name>
     <description>web服务</description>
 
     <properties>
@@ -23,19 +23,24 @@
 
         <dependency>
             <groupId>com.lvr.kdshop</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>kd-shop-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.lvr.kdshop.business</groupId>
-            <artifactId>business</artifactId>
+            <artifactId>kd-shop-business</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
 
@@ -68,7 +73,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
