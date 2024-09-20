@@ -1,12 +1,14 @@
 package com.lvr.kdshop.web.config;
 
 import com.lvr.kdshop.web.config.locale.MyLocaleResolver;
+import com.lvr.kdshop.web.interceptor.AuthenticationInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -63,4 +65,10 @@ public class KdShopWebConfig implements WebMvcConfigurer {
         return new MyLocaleResolver();
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AuthenticationInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/", "/index.html","/admin/login","/css/*","/img/*","/js/*");
+    }
 }

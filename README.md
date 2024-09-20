@@ -1,5 +1,7 @@
 # 『I have』校园二手交易平台
 
+**基于科大二手工坊的V2.0版本**
+
 后端
 
 ![images](https://img.shields.io/badge/SpringBoot-2.5.2.RELEASE-brightgreen) 
@@ -8,10 +10,12 @@
 
 前端
 
-![images](https://img.shields.io/badge/Vue-2.6-green)
-![images](https://img.shields.io/badge/axios-0.24.0-green)
+> 项目前端分为两部分。一个是学生端前台，另一个是管理员端后台
 
-#### 基于科大二手工坊的V2.0版本
+学生端前台（Vue3版本，https://github.com/lvr1997/kd-shop-web）
+管理员端后台（本项目）
+
+
 
 > 写在前面：本项目的灵感是来源于我的2019年毕业设计科大二手工坊，
 当时科大二手工坊是基于SSM框架构建，现在想将项目升级为SpringBoot版，
@@ -19,14 +23,11 @@
 学习上的一些总结吧。
 > 2.0版本其实早就应该和大家见面的，奈何由于个人时间精力原因，一直耽搁了这么久，让大家久等了。。。
 
-> 最终确定的技术栈为：`SpringBoot`+`MyBatis`+`Vue3`+ `AntDesign2` + `axios`+`Bootstrap`。
-项目采用的前后端分离的模式，实现了前后端独立部署。
-
 > 最后感谢各位小伙伴们的支持，希望项目会对你们有所帮助
 
 ## 项目介绍
 
-介绍：一个专为各大高校开发的校园二手交易平台。实现校园内闲置物品的流通交易。真正让闲置物品“活”起来。
+介绍：一个专为各大高校开发的校园二手交易平台。实现校园内闲置物品的流通交易。
 
 项目分为学生端和后台管理端
 
@@ -93,20 +94,21 @@ SpringBoot+Mybatis+MySQL+JWT
 
 ### 环境准备：
 
-项目开发环境： IDEA
-数据库：Mysql5.7
+- 项目开发环境: JDK8
+- 项目开发工具： IDEA2023
+- 数据库：Mysql8.0、Redis
 
 ### 各模块说明
 
-`common` 项目通用实体，工具类、自定义注解等
+`kd-shop-common` 项目通用实体，工具类、自定义注解等
 `kd-shop-business` 业务代码模块
-`web-app` `web`启动模块
+`kd-shop-web` `web`启动模块
 
 ### 如何启动项目
 
 1. 导入sql文件 在项目目录 `kd-shop-business\src\main\resources\kd-shop.sql` 文件夹下（该sql仅为结构）
 2. 导入测试数据 在项目目录 `kd-shop-business\src\main\resources\init-data.sql` 文件夹下
-3. `web-app` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
+3. `kd-shop-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
 
 
 感兴趣的话可以添加 qq群 696224249 一起讨论哦 ^v^

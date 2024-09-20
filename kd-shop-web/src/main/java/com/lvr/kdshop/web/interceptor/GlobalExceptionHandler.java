@@ -1,6 +1,5 @@
 package com.lvr.kdshop.web.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.lvr.kdshop.constant.Constant;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.ex.PhoneNotFoundException;
