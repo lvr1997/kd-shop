@@ -15,10 +15,6 @@
     <name>kd-shop-web</name>
     <description>web服务</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -43,24 +39,11 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-
-        <!-- redis 缓存操作 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
         <dependency>

@@ -29,13 +29,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--   hutool工具包     -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>4.5.15</version>
-        </dependency>
-
         <!-- spring security 安全认证 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

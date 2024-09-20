@@ -25,7 +25,7 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 配置路径映射
+     * 配置路径映射（无逻辑跳转）
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
