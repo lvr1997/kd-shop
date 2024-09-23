@@ -20,15 +20,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader(Constant.TOKEN); //从请求头中获取token
-        String adminToken = (String) request.getSession().getAttribute(Constant.TOKEN);
+//        String token = request.getHeader(Constant.TOKEN); //从请求头中获取token
 
         // 如果不是映射到方法直接通过
 //        if(!(object instanceof HandlerMethod)){
 //            return true;
 //        }
-        // TODO https://blog.csdn.net/mr_accompany/article/details/104159436
-        // TODO https://blog.csdn.net/Littleflowers/article/details/115269953 thymeleaf
 
         //先获取session，看看有没有用户相关的session
         Object username = request.getSession().getAttribute("LoginUser");
