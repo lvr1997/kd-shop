@@ -2,6 +2,14 @@ package com.lvr.kdshop.util;
 
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderFormatting;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+
+import javax.swing.border.Border;
+
+import static org.apache.poi.ss.usermodel.CellType.STRING;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,7 +52,7 @@ public class WriteExcel {
         // 将列头设置到sheet的单元格中
         for(int n=0;n<columnNum;n++){
             HSSFCell cellRowName = rowRowName.createCell(n);				//创建列头对应个数的单元格
-            cellRowName.setCellType(HSSFCell.CELL_TYPE_STRING);				//设置列头单元格的数据类型
+            cellRowName.setCellType(STRING);				//设置列头单元格的数据类型
             HSSFRichTextString text = new HSSFRichTextString(rowName[n]);
             cellRowName.setCellValue(text);									//设置列头单元格的值
             cellRowName.setCellStyle(columnTopStyle);						//设置列头单元格样式
@@ -57,7 +65,7 @@ public class WriteExcel {
             HSSFRow row = sheet.createRow(i+1);//创建所需的行数
             for(int j=0; j<obj.length; j++){
                 HSSFCell  cell = null;   //设置单元格的数据类型
-                cell = row.createCell(j,HSSFCell.CELL_TYPE_STRING);
+                cell = row.createCell(j,STRING);
                 if(!"".equals(obj[j]) && obj[j] != null){
                     cell.setCellValue(obj[j].toString());						//设置单元格的值
                 }
@@ -77,7 +85,7 @@ public class WriteExcel {
                 }
                 if (currentRow.getCell(colNum) != null) {
                     HSSFCell currentCell = currentRow.getCell(colNum);
-                    if (currentCell.getCellType() == HSSFCell.CELL_TYPE_STRING) {
+                    if (currentCell.getCellType() == STRING) {
                         int length = currentCell.getStringCellValue().getBytes().length;
                         if (columnWidth < length) {
                             columnWidth = length;
@@ -121,35 +129,35 @@ public class WriteExcel {
         //设置字体大小
         font.setFontHeightInPoints((short)11);
         //字体加粗
-        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        font.setBold(true);
         //设置字体名字
         font.setFontName("Courier New");
         //设置样式;
         HSSFCellStyle style = workbook.createCellStyle();
         //设置底边框;
-        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        style.setBorderBottom(BorderStyle.THIN);
         //设置底边框颜色;
-        style.setBottomBorderColor(HSSFColor.BLACK.index);
+        style.setBottomBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置左边框;
-        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+        style.setBorderLeft(BorderStyle.THIN);
         //设置左边框颜色;
-        style.setLeftBorderColor(HSSFColor.BLACK.index);
+        style.setLeftBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置右边框;
-        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        style.setBorderRight(BorderStyle.THIN);
         //设置右边框颜色;
-        style.setRightBorderColor(HSSFColor.BLACK.index);
+        style.setRightBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置顶边框;
-        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        style.setBorderTop(BorderStyle.THIN);
         //设置顶边框颜色;
-        style.setTopBorderColor(HSSFColor.BLACK.index);
+        style.setTopBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //在样式用应用设置的字体;
         style.setFont(font);
         //设置自动换行;
         style.setWrapText(false);
         //设置水平对齐的样式为居中对齐;
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        style.setAlignment(HorizontalAlignment.CENTER);
         //设置垂直对齐的样式为居中对齐;
-        style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         return style;
 
@@ -170,29 +178,29 @@ public class WriteExcel {
         //设置样式;
         HSSFCellStyle style = workbook.createCellStyle();
         //设置底边框;
-        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        style.setBorderBottom(BorderStyle.THIN);
         //设置底边框颜色;
-        style.setBottomBorderColor(HSSFColor.BLACK.index);
+        style.setBottomBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置左边框;
-        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+        style.setBorderLeft(BorderStyle.THIN);
         //设置左边框颜色;
-        style.setLeftBorderColor(HSSFColor.BLACK.index);
+        style.setLeftBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置右边框;
-        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        style.setBorderRight(BorderStyle.THIN);
         //设置右边框颜色;
-        style.setRightBorderColor(HSSFColor.BLACK.index);
+        style.setRightBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //设置顶边框;
-        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        style.setBorderTop(BorderStyle.THIN);
         //设置顶边框颜色;
-        style.setTopBorderColor(HSSFColor.BLACK.index);
+        style.setTopBorderColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
         //在样式用应用设置的字体;
         style.setFont(font);
         //设置自动换行;
         style.setWrapText(false);
         //设置水平对齐的样式为居中对齐;
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        style.setAlignment(HorizontalAlignment.CENTER);
         //设置垂直对齐的样式为居中对齐;
-        style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         return style;
 
