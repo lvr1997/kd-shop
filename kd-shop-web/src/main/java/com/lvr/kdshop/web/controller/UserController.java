@@ -51,6 +51,9 @@ public class UserController {
     private UserService userService;
 
     @Resource
+    private RoleService roleService;
+
+    @Resource
     private AddressService addressService;
 
     @Resource
@@ -131,6 +134,7 @@ public class UserController {
                 String word = MD5.md5(password);
                 if(cur_user.getPassword().equals(word)) {
                     //密码正确，并设置登录信息
+//                    Roles userRoles = roleService.
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     cur_user.setLastLogin(sdf.format(new Date()));
                     userService.updateLastLoginByPrimaryKey(cur_user);
