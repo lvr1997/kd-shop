@@ -42,6 +42,11 @@ public class SysUser {
     /** 角色对象 */
     private List<Roles> roles;
 
+    public SysUser(String userId, String username) {
+        this.userId = userId;
+        this.username = username;
+    }
+
     public String getPhone() {
         if(this.phone != null && this.phone != ""){
             this.phone = this.phone.replaceAll("(\\w{3})\\w*(\\w{4})", "$1****$2");

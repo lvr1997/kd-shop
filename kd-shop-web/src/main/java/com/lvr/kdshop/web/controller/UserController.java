@@ -1,6 +1,7 @@
 package com.lvr.kdshop.web.controller;
 
 
+import cn.hutool.jwt.JWTUtil;
 import com.lvr.kdshop.annotation.PassToken;
 import com.lvr.kdshop.annotation.UserLoginToken;
 import com.lvr.kdshop.business.service.*;
@@ -138,13 +139,12 @@ public class UserController {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     cur_user.setLastLogin(sdf.format(new Date()));
                     userService.updateLastLoginByPrimaryKey(cur_user);
-                    //生成签名
-//                    String token= TokenUtil.sign(cur_user.getId());
                     //返回信息
                     Map<String, Object> map = new HashMap<String, Object>();
-//                    map.put("token", token);
-                    map.put("user", cur_user);
-                    return JSONResult.success(Constant.LOGIN_SUCCESS, map);
+                    map.put("userId", cur_user.getUserId());
+                    //生成签名
+                    String token= JWTUtil.createToken(map, Constant.LOGIN_USER_KEY.getBytes());
+                    return JSONResult.success(Constant.LOGIN_SUCCESS, token);
                 }else{
                     //密码不正确
                     return JSONResult.fail(StatusEnum.FAIL.getCode(), Constant.LOGIN_FAILED);

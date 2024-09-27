@@ -4,6 +4,7 @@ import com.lvr.kdshop.web.config.locale.MyLocaleResolver;
 import com.lvr.kdshop.web.interceptor.AuthenticationInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,9 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     /**显示相对地址*/
     @Value("${fileUploadPathRelative}")
     private String fileRelativePath;
+
+    @Autowired
+    AuthenticationInterceptor authenticationInterceptor;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -67,7 +71,7 @@ public class KdShopWebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthenticationInterceptor())
+        registry.addInterceptor(authenticationInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/", "/index.html","/admin/login","/css/*","/img/*","/js/*");
     }

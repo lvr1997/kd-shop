@@ -6,10 +6,13 @@ import com.lvr.kdshop.business.service.UserService;
 import com.lvr.kdshop.constant.Constant;
 import com.lvr.kdshop.constant.StatusEnum;
 import com.lvr.kdshop.ex.UsernameTakenException;
-import io.jsonwebtoken.Claims;
+import com.lvr.kdshop.pojo.SysUser;
+import com.lvr.kdshop.util.UserContext;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
+@Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -35,28 +40,30 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(!(handler instanceof HandlerMethod)){
             return true;
         }
-        //如果是方法探测，直接通过
-        if (HttpMethod.OPTIONS.equals(request.getMethod())) {
-            response.setStatus(HttpServletResponse.SC_OK);
-            return true;
-        }
 
         if(StringUtils.isEmpty(adminToken)) {
-            throw new UsernameTakenException(StatusEnum.UNAUTHORIZED.getMsg());
+            log.error(StatusEnum.TOKEN_IS_EXPIRED.getMsg());
+            return false;
         }
 
         //验证，并获取token内部信息
-        JWT claims = JWTUtil.parseToken(adminToken);
-//        String userInfo = claims.get
+        boolean result = JWTUtil.verify(adminToken, Constant.LOGIN_USER_KEY.getBytes());
+        if(!result) {
+            log.error("token 验证失败！token is {}, uri is {}", adminToken, request.getRequestURI());
+            return false;
+        }
 
-//        if(username != null){
-//            return true;
-//        }else{
-//            request.setAttribute("msg","未登录！");
-////            response.sendRedirect("/index.html");
-//            request.getRequestDispatcher("/index.html").forward(request,response);
-//            return false;
-//        }
+        JWT jwt = JWTUtil.parseToken(adminToken);
+        String userId = (String) jwt.getPayload("userId");
+
+        if(userId == null || userId == "") {
+            log.info("token错误");
+            return false;
+        }
+
+        UserContext.setCurrentId(userId);
+        log.info("token校验成功！！！");
+        return true;
     }
 
     @Override
