@@ -1,6 +1,7 @@
 package com.lvr.kdshop.web.config;
 
 import com.lvr.kdshop.web.config.locale.MyLocaleResolver;
+import com.lvr.kdshop.web.interceptor.AdminInterceptor;
 import com.lvr.kdshop.web.interceptor.AuthenticationInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

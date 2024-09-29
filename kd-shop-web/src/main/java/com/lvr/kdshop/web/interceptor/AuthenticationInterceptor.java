@@ -33,27 +33,26 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        String token = request.getHeader(Constant.TOKEN); //从请求头中获取token
-        //先获取session，看看有没有用户相关的session
-        String adminToken = (String) request.getSession().getAttribute(Constant.TOKEN);
+        String token = (String) request.getSession().getAttribute(Constant.TOKEN);
 
         // 如果不是映射到方法直接通过
         if(!(handler instanceof HandlerMethod)){
             return true;
         }
 
-        if(StringUtils.isEmpty(adminToken)) {
+        if(StringUtils.isEmpty(token)) {
             log.error(StatusEnum.TOKEN_IS_EXPIRED.getMsg());
             return false;
         }
 
         //验证，并获取token内部信息
-        boolean result = JWTUtil.verify(adminToken, Constant.LOGIN_USER_KEY.getBytes());
+        boolean result = JWTUtil.verify(token, Constant.LOGIN_USER_KEY.getBytes());
         if(!result) {
-            log.error("token 验证失败！token is {}, uri is {}", adminToken, request.getRequestURI());
+            log.error("token 验证失败！token is {}, uri is {}", token, request.getRequestURI());
             return false;
         }
 
-        JWT jwt = JWTUtil.parseToken(adminToken);
+        JWT jwt = JWTUtil.parseToken(token);
         String userId = (String) jwt.getPayload("userId");
 
         if(userId == null || userId == "") {
