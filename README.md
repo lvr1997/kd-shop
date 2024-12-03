@@ -21,7 +21,6 @@
 当时科大二手工坊是基于SSM框架构建，现在想将项目升级为SpringBoot版，
 但是并不是完全拷贝，技术和项目模块上也做了一些改变，也当做是对我毕业一年以来
 学习上的一些总结吧。
-> 2.0版本其实早就应该和大家见面的，奈何由于个人时间精力原因，一直耽搁了这么久，让大家久等了。。。
 
 > 最后感谢各位小伙伴们的支持，希望项目会对你们有所帮助
 
@@ -89,9 +88,6 @@ SpringBoot+Mybatis+MySQL+JWT
 
 ## 关于本项目
 
-**都看到这里了，怎么也不请作者姐姐喝杯奶茶？**
-
-
 ### 环境准备：
 
 - 项目开发环境: JDK8
@@ -109,6 +105,3 @@ SpringBoot+Mybatis+MySQL+JWT
 1. 导入sql文件 在项目目录 `kd-shop-business\src\main\resources\kd-shop.sql` 文件夹下（该sql仅为结构）
 2. 导入测试数据 在项目目录 `kd-shop-business\src\main\resources\init-data.sql` 文件夹下
 3. `kd-shop-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
-
-
-感兴趣的话可以添加 qq群 696224249 一起讨论哦 ^v^
