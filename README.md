@@ -1,21 +1,8 @@
 # 『I have』校园二手交易平台
 
-**基于科大二手工坊的V2.0版本**，项目采用SpringBoot3 + Vue3构建，持续更新中...
+**基于2019年科大二手工坊毕业设计的V2.0版本，项目采用SpringBoot3 + Vue3构建，持续更新中...**
 
-后端
-
-![images](https://img.shields.io/badge/SpringBoot-2.5.2.RELEASE-brightgreen) 
-![images](https://img.shields.io/badge/Mybatis-3.3-yellowgreen)
-![images](https://img.shields.io/badge/jwt-0.9.1-yellow)
-
-前端
-
-> 项目前端分为两部分。一个是学生端前台，另一个是管理员端后台
-
-学生端前台（Vue3版本，https://github.com/lvr1997/kd-shop-web）
-管理员端后台（本项目）
-
-
+> 项目前端分为两部分。一个是学生端前台，另一个是管理员端后台（前后端同库）
 
 > 写在前面：本项目的灵感是来源于我的2019年毕业设计科大二手工坊，
 当时科大二手工坊是基于SSM框架构建，现在想将项目升级为SpringBoot版，
