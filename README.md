@@ -1,21 +1,24 @@
 # 『I have』校园二手交易平台
 
+> 2024年9月3日，我再次回到这个项目，最重要的是积累和坚持✊
+> 不能放弃！！
+
 **基于科大二手工坊的V2.0版本**
 
-后端
+## ⚒️技术选型
 
 ![images](https://img.shields.io/badge/SpringBoot-2.5.2.RELEASE-brightgreen) 
 ![images](https://img.shields.io/badge/Mybatis-3.3-yellowgreen)
 ![images](https://img.shields.io/badge/jwt-0.9.1-yellow)
 
-前端
+![images](https://img.shields.io/badge/vue-3.4-green)
+![Static Badge](https://img.shields.io/badge/ElementPlus-2.8.5-darkgreen)
 
-> 项目前端分为两部分。一个是学生端前台，另一个是管理员端后台
+🙆‍♀️项目的灵感是来源于我的2019年毕业设计：[科大二手工坊](https://github.com/lvr1997/kd-second-hand-workshop)；科大二手工坊是基于Java语言编写由SSM框架构建，页面是基于jsp+layui编写的，项目相关技术还比较老旧
 
-学生端前台（Vue3版本，https://github.com/lvr1997/kd-shop-web）
-管理员端后台（本项目）
+🙋‍♀️而如今，由于我个人职业发展因素的变更以及前端技术的不断更新迭代，我想就这个项目，完成一个新的尝试。也作为我毕业这么长时间以来，对前端方面学习上的一些总结吧。
 
-
+kd-shop项目对我而言，我想实现在我职业技术生涯中的一项新的挑战。
 
 > 写在前面：本项目的灵感是来源于我的2019年毕业设计科大二手工坊，
 当时科大二手工坊是基于SSM框架构建，现在想将项目升级为SpringBoot版，
@@ -25,11 +28,11 @@
 
 > 最后感谢各位小伙伴们的支持，希望项目会对你们有所帮助
 
-## 项目介绍
+## 📑项目需求
 
 介绍：一个专为各大高校开发的校园二手交易平台。实现校园内闲置物品的流通交易。
 
-项目分为学生端和后台管理端
+按学生、管理员不同角色登录，学生用户跳转到商铺页，管理用户登入到管理端页面
 
 学生端：
 
@@ -40,10 +43,7 @@
 2. 在用户登录之后，只能查看校内发布的闲置物品，并且仅可在本校内交易
 3. 由后台系统管理员维护学校信息，学生用户在前台注册账号时，学校信息一经选择不得更改
 
-开发环境及用到的技术点：
-SpringBoot+Mybatis+MySQL+JWT
-
-后台管理端：
+![kd-shop.png](./src/scanshoot/kd-shop.png)
 
 ## 项目更新记录
 
@@ -111,4 +111,6 @@ SpringBoot+Mybatis+MySQL+JWT
 3. `kd-shop-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
 
 
-感兴趣的话可以添加 qq群 696224249 一起讨论哦 ^v^
+## 🐞项目Bug与踩坑
+
+1. 前端在配置axios请求代理时一定要加上请求前缀baseUrl，否则当前端路由地址刚好与后端接口地址一样时，你会发现惊喜🙃

@@ -1,0 +1,20 @@
+<svg width="320" height="94" xmlns="http://www.w3.org/2000/svg" fill="none">
+ <defs>
+  <linearGradient id="paint1_linear_501_142" x1="-3.92616" y1="0" x2="1.5254" y2="1.31369">
+   <stop stop-color="#BF66FF"/>
+   <stop offset="0.51042" stop-color="#6248FF"/>
+   <stop offset="1" stop-color="#00DDEB"/>
+  </linearGradient>
+  <linearGradient id="paint2_linear_501_142" x1="0" y1="-5.02186" x2="1.09282" y2="0.59129">
+   <stop stop-color="#BF66FF"/>
+   <stop offset="0.51042" stop-color="#6248FF"/>
+   <stop offset="1" stop-color="#00DDEB"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="null" id="svg_8" d="m0,83.2195c0,-2.6671 2.44005,-4.8293 5.45,-4.8293l98.1,0c3.01001,0 5.45,2.1622 5.45,4.8293l0,5.9512c0,2.6672 -2.43999,4.8293 -5.45,4.8293l-98.1,0c-3.00995,0 -5.45,-2.1621 -5.45,-4.8293l0,-5.9512z" fill="url(#paint2_linear_501_142)"/>
+  <text style="cursor: move;" transform="matrix(1.14267 0 0 1.07572 -2.17366 0.989688)" stroke="null" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Azeret Mono'" font-size="70" stroke-width="0" id="svg_10" y="58.21116" x="-2.25388" fill="url(#paint1_linear_501_142)">KD.</text>
+  <text style="cursor: move;" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Azeret Mono'" font-size="70" id="svg_11" y="61.33349" x="135.49998" stroke-width="0" fill="url(#paint2_linear_501_142)">Shop</text>
+ </g>
+</svg>
