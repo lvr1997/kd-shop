@@ -5,7 +5,7 @@ import com.lvr.kdshop.business.service.AddressService;
 import com.lvr.kdshop.pojo.Address;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.List;
 
 @Service("addressService")

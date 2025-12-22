@@ -8,9 +8,9 @@ import com.lvr.kdshop.pojo.SysUser;
 import com.lvr.kdshop.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Generated;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import jakarta.annotation.Generated;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/address")

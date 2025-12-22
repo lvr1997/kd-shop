@@ -2,7 +2,7 @@ package com.lvr.kdshop.web.controller;
 
 import com.lvr.kdshop.annotation.PassToken;
 import com.lvr.kdshop.business.service.CarouselService;
-import com.lvr.kdshop.business.service.CatelogService;
+import com.lvr.kdshop.business.service.CategoryService;
 import com.lvr.kdshop.business.service.GoodsService;
 import com.lvr.kdshop.business.service.ImageService;
 import com.lvr.kdshop.constant.Constant;
@@ -11,7 +11,7 @@ import com.lvr.kdshop.pojo.*;
 import com.lvr.kdshop.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +28,7 @@ public class HomeController {
     private ImageService imageService;
 
     @Resource
-    private CatelogService catelogService;
+    private CategoryService catelogService;
 
     @Resource
     private CarouselService carouselService;

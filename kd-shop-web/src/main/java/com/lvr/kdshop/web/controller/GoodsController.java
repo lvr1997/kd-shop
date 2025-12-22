@@ -7,7 +7,7 @@ import com.lvr.kdshop.pojo.*;
 import com.lvr.kdshop.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.*;
 
 @RestController
@@ -23,7 +23,7 @@ public class GoodsController {
     private ImageService imageService;
 
     @Resource
-    private CatelogService catelogService;
+    private CategoryService catelogService;
 
     @Resource
     private UserService userService;

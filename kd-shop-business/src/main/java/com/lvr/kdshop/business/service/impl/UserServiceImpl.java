@@ -8,7 +8,7 @@ import com.lvr.kdshop.pojo.Roles;
 import com.lvr.kdshop.pojo.SysUser;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

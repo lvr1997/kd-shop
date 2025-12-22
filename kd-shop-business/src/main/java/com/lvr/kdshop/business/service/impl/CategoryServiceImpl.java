@@ -2,23 +2,23 @@ package com.lvr.kdshop.business.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lvr.kdshop.business.mapper.CatelogMapper;
-import com.lvr.kdshop.business.service.CatelogService;
+import com.lvr.kdshop.business.mapper.CategoryMapper;
+import com.lvr.kdshop.business.service.CategoryService;
 import com.lvr.kdshop.business.utils.PageRequest;
 import com.lvr.kdshop.business.utils.PageResult;
 import com.lvr.kdshop.business.utils.PageUtils;
 import com.lvr.kdshop.pojo.Catelog;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 
 @Service("catelogService")
-public class CatelogServiceImpl implements CatelogService {
+public class CategoryServiceImpl implements CategoryService {
 
     @Resource
-    private CatelogMapper catelogMapper;
+    private CategoryMapper catelogMapper;
 
     public int deleteByPrimaryKey(Integer id) {
         return catelogMapper.deleteByPrimaryKey(id);

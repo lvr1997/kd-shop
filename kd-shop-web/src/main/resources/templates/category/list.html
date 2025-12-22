@@ -19,33 +19,27 @@
 			<div class="row">
 				<div th:replace="~{commons/common::sidebar(active='category')}"></div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2><a th:href="@{/emp}" class="btn btn-sm btn-success">添加分类</a></h2>
+					<h2><a th:href="@{/category/add}" class="btn btn-sm btn-success">添加分类</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-responsive-lg">
 							<thead>
 								<tr>
 									<th>id</th>
-									<th>lastName</th>
-									<th>email</th>
-									<th>gender</th>
-									<th>department</th>
-									<th>birth</th>
+									<th>名称</th>
+									<th>状态</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="emp:${emps}">
-									<td th:text="${emp.getId()}"></td>
-									<td th:text="${emp.getLastName()}"></td>
-									<td th:text="${emp.getEmail()}"></td>
-									<td th:text="${emp.getGender()==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartment().getDepartmentName()}"></td>
-									<td th:text="${#dates.format(emp.getBirth(),'yyyy-MM-dd HH:mm:ss')}"></td>
+								<tr th:each="data:${list}">
+									<td th:text="${data.getId()}"></td>
+									<td th:text="${data.getName()}"></td>
+									<td th:text="${data.getStatus()}"></td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{'/emp/'+${emp.getId()}}">
+										<a class="btn btn-sm btn-primary" th:href="@{'/category/'+${data.getId()}}">
 											修改
 										</a>
-										<a class="btn btn-sm btn-danger" th:href="@{'/delemp/'+${emp.getId()}}">删除</a>
+										<a class="btn btn-sm btn-danger" th:href="@{'/category/delete/'+${data.getId()}}">删除</a>	
 									</td>
 								</tr>
 							</tbody>

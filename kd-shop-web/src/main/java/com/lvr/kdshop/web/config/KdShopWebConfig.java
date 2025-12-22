@@ -9,11 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSessionFactory;
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -25,6 +33,12 @@ public class KdShopWebConfig implements WebMvcConfigurer {
     /**显示相对地址*/
     @Value("${fileUploadPathRelative}")
     private String fileRelativePath;
+
+    @Value("${mybatis.config-location}")
+    private String mybatisConfigLocation;
+
+    @Value("${mybatis.mapper-locations}")
+    private String mapperLocations;
 
     @Autowired
     AuthenticationInterceptor authenticationInterceptor;
@@ -75,5 +89,27 @@ public class KdShopWebConfig implements WebMvcConfigurer {
         registry.addInterceptor(authenticationInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/", "/index.html","/admin/login","/css/*","/img/*","/js/*");
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSource);
+        Resource config = new PathMatchingResourcePatternResolver().getResource(mybatisConfigLocation);
+        factoryBean.setConfigLocation(config);
+        Resource[] mappers = new PathMatchingResourcePatternResolver().getResources(mapperLocations);
+        factoryBean.setMapperLocations(mappers);
+        return factoryBean.getObject();
+    }
+
+    @Bean
+    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

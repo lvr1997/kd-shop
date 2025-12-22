@@ -8,7 +8,7 @@ import com.lvr.kdshop.pojo.Catelog;
 import java.util.HashMap;
 import java.util.List;
 
-public interface CatelogService {
+public interface CategoryService {
 
     int deleteByPrimaryKey(Integer id);
 

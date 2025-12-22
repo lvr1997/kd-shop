@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class SearchController {
     private CommentsService commentsService;
 
     @Resource
-    private CatelogService catelogService;
+    private CategoryService catelogService;
 
     @Resource
     private CarouselService carouselService;

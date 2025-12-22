@@ -5,7 +5,7 @@ import com.lvr.kdshop.business.service.OrdersService;
 import com.lvr.kdshop.pojo.Orders;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.List;
 
 
