@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.lvr.ihave.business</groupId>
+    <groupId>com.lvr.ihave</groupId>
     <artifactId>ihave-business</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
