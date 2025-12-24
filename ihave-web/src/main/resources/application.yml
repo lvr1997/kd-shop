@@ -4,7 +4,7 @@ server:
     encoding:
       charset: UTF-8
 
-# springboot数据源配置
+# springboot配置
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -17,11 +17,6 @@ spring:
   messages:
     basename: i18n.login
     encoding: UTF-8
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ihave?serverTimezone=GMT%2B8&useSSL=FALSE
-    username: root  #数据库用户名
-    password: 123456 #该数据库用户的密码
   servlet:
     multipart:
       enabled: true
@@ -31,20 +26,20 @@ spring:
   devtools:
     restart:
       enabled: true
-#  redis:
-#    host: localhost
-#    port: 6379
-#    database: 0
-#    password:
-#    timeout: 10s
-#    lettuce:
-#      pool:
-#        min-idle: 0
-#        max-idle: 8
-#        max-active: 8
-#        max-wait: -1ms
-
-mybatis:  #mybatyis的配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ihave?serverTimezone=GMT%2B8&useSSL=FALSE
+    username: root  #数据库用户名
+    password: 123456 #该数据库用户的密码
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      
+#mybatyis的配置
+mybatis:  
   mapper-locations: classpath*:mapper/*.xml #指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件。
   type-aliases-package: com.lvr.ihave.pojo
   config-location: classpath:mybatis/mybatis-config.xml

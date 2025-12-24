@@ -1,6 +1,5 @@
 package com.lvr.ihave.business.service;
 
-import com.github.pagehelper.PageInfo;
 import com.lvr.ihave.business.utils.PageRequest;
 import com.lvr.ihave.business.utils.PageResult;
 import com.lvr.ihave.pojo.Catelog;

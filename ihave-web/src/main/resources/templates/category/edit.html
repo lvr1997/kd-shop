@@ -48,36 +48,21 @@
 			<div class="row">
 				<div th:replace="~{commons/common::sidebar(active='category')}"></div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<form method="post" th:action="@{'/emp/'+${emp.getId()}}" >
+					<form method="post" th:action="@{'/category/'+${catelog.getId()}}" >
 						<div class="form-group">
-							<label for="username">名字：</label>
-							<input type="text" name="lastName" th:value="${emp.getLastName()}" class="form-control" id="username" placeholder="请输入名字">
+							<label for="username">分类名称：</label>
+							<input type="text" name="name" th:value="${catelog.getName()}" class="form-control" id="categoryName" placeholder="请输入分类名称">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">邮箱地址：</label>
-							<input type="email" name="email" th:value="${emp.getEmail()}" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱">
-						</div>
-						<div class="form-group">
-							<label>性别：</label><br>
+							<label>状态：</label><br>
 							<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" value="1" name="gender" th:checked="${emp.getGender()==1}">
-							<label class="form-check-label">男</label>
+								<input class="form-check-input" type="radio" name="status" id="statusEnabled" value="1" th:checked="${catelog.getStatus() == 1}">
+								<label class="form-check-label" for="statusEnabled">启用</label>
 							</div>
 							<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" value="0" name="gender" th:checked="${emp.getGender()==0}">
-							<label class="form-check-label">女</label>
+								<input class="form-check-input" type="radio" name="status" id="statusDisabled" value="0" th:checked="${catelog.getStatus() == 0}">
+								<label class="form-check-label" for="statusDisabled">禁用</label>
 							</div>
-						</div>
-						<div class="form-group">
-							<label>部门：</label>
-							<select class="form-control" name="department.id" th:value="${emp.getDepartment().getDepartmentName()}" >
-								<option th:each="dept:${depts}" th:value="${dept.getId()}" th:text="${dept.getDepartmentName()}" th:selected="${dept.getId()==emp.getDepartment().getId()}">
-								</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>出生日期：</label>
-							<input class="form-control" name="birth" type="text" th:value="${#dates.format(emp.getBirth(),'yyyy/MM/dd')}">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
@@ -96,38 +81,6 @@
 		<script type="text/javascript" th:src="@{/js/feather.min.js}" ></script>
 		<script>
 			feather.replace()
-		</script>
-
-		<!-- Graphs -->
-		<script type="text/javascript" th:src="@{/js/Chart.min.js}" ></script>
-		<script>
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-					datasets: [{
-						data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-						lineTension: 0,
-						backgroundColor: 'transparent',
-						borderColor: '#007bff',
-						borderWidth: 4,
-						pointBackgroundColor: '#007bff'
-					}]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: false
-							}
-						}]
-					},
-					legend: {
-						display: false,
-					}
-				}
-			});
 		</script>
 
 	</body>

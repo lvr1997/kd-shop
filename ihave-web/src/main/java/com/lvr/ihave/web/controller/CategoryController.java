@@ -4,6 +4,9 @@ import com.lvr.ihave.business.service.CategoryService;
 import com.lvr.ihave.business.utils.PageRequest;
 import com.lvr.ihave.business.utils.PageResult;
 import com.lvr.ihave.pojo.Catelog;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +21,9 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @RequestMapping("/list")
-    public String list(@RequestParam(value = "keyword",required = false) String keyword, 
-                        @RequestParam(value = "pageNum",required = false, defaultValue = "1") Integer pageNum,
-                        @RequestParam(value = "pageSize",required = false, defaultValue = "10") Integer pageSize,
-     Model model){
-        PageRequest pageRequest = new PageRequest(pageNum, pageSize);
-        PageResult catelogs = categoryService.findPage(keyword, pageRequest);
+    public String list(@RequestParam(value = "keyword",required = false) String keyword, Model model){
+       
+        List<Catelog> catelogs = categoryService.selectAll();
         model.addAttribute("list",catelogs);
         return "category/list";
     }
@@ -37,7 +37,8 @@ public class CategoryController {
 
     //post请求走这个方法
     @PostMapping("/add")
-    public String add(Catelog catelog){
+    public String add(@ModelAttribute Catelog catelog){
+        catelog.setStatus((byte) 1);
         categoryService.insert(catelog);
         return "redirect:/category/list";
     }

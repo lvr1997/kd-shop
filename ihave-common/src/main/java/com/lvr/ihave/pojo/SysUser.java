@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,7 +38,7 @@ public class SysUser {
     private String roleId;
 
     /** 角色对象 */
-    private List<Roles> roles;
+    private Roles role;
 
     public SysUser(String userId, String username) {
         this.userId = userId;

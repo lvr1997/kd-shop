@@ -34,7 +34,7 @@
 								<tr th:each="data:${list}">
 									<td th:text="${data.getId()}"></td>
 									<td th:text="${data.getName()}"></td>
-									<td th:text="${data.getStatus()}"></td>
+									<td th:text="${data.getStatus()==1?'正常':'停用'}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{'/category/'+${data.getId()}}">
 											修改

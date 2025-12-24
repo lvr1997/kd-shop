@@ -609,11 +609,17 @@ public class UserController {
      */
     @GetMapping("/list")
     public String userList(Model model){
-        List<SysUser> userList = userService.getUserList();
+        List<SysUser> list = userService.getUserList();
         //将用户列表添加到模型中
-        model.addAttribute("userList",userList);
+        model.addAttribute("userList", list);
         //跳转到用户列表页面
         return "user/list";
+    }
+
+    @GetMapping("/edit")
+    public String editUser(Model model){
+        
+        return "user/edit";
     }
 
 }

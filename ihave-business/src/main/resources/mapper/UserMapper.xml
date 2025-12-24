@@ -16,7 +16,7 @@
     <result column="img_url" property="imgUrl" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
     <result column="residence" property="residence" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     <result column="signature" property="signature" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
-    <collection property="roles" javaType="java.util.List" resultMap="roleResultMap" />
+    <association property="role" javaType="com.lvr.ihave.pojo.Roles" resultMap="roleResultMap" />
   </resultMap>
 
   <resultMap id="roleResultMap" type="com.lvr.ihave.pojo.Roles">
@@ -32,8 +32,7 @@
         u.user_id, u.username, u.phone, u.password, u.sex,u.img_url, u.status, u.last_login, u.create_at, u.birthday,u.residence,u.signature,
         r.role_id, r.role_name, r.commet, r.create_date
         from user u
-		    left join user_role ur on u.id = ur.user_id
-		    left join roles r on r.role_id = ur.role_id
+		    left join roles r on r.role_id = u.role_id
     </sql>
 
   <!--通过id删除用户信息-->
@@ -94,10 +93,7 @@ user_id, phone, username, password, create_at, last_login, status, birthday, sex
 
   <!--和上面自动生成的一样-->
   <select id="getUserList" resultMap="BaseResultMap">
-    SELECT
- user_id, phone, username, password, create_at, last_login, status, img_url, birthday, sex,residence,signature
-    FROM
-      user
+    <include refid="selectUserVo"/>
   </select>
 
   <!--通过手机号获取用户信息-->

@@ -11,17 +11,6 @@
         <result property="createDate"          column="create_date"            />
     </resultMap>
 
-    <sql id="selectRoleVo">
-	    select distinct r.id, r.role_id, r.role_name, r.commet, r.create_date
-        from roles r
-	        left join user_role ur on ur.role_id = r.role_id
-	        left join user u on u.user_id = ur.user_id
-    </sql>
-
-    <!--  根据userId查询该用户的角色信息  -->
-    <select id="selectRolePermissionByUserId" parameterType="String" resultMap="SysRoleResult">
-        <include refid="selectRoleVo"/>
-        WHERE ur.user_id = #{userId}
-    </select>
+   
 
 </mapper>

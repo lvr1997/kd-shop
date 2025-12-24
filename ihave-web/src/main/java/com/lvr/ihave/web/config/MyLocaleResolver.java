@@ -1,4 +1,4 @@
-package com.lvr.ihave.web.config.locale;
+package com.lvr.ihave.web.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
