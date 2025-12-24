@@ -16,6 +16,7 @@
     <result column="img_url" property="imgUrl" jdbcType="LONGNVARCHAR" javaType="java.lang.String" />
     <result column="residence" property="residence" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     <result column="signature" property="signature" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" javaType="java.lang.String" />
     <association property="role" javaType="com.lvr.ihave.pojo.Roles" resultMap="roleResultMap" />
   </resultMap>
 
@@ -43,18 +44,17 @@
 
   <!--添加用户-->
   <insert id="insert" parameterType="com.lvr.ihave.pojo.SysUser" useGeneratedKeys="true" keyProperty="">
-
     insert into user (user_id, phone, username,
       password, create_at,
       last_login,
       status, birthday, sex,
-      img_url, residence, signature
+      img_url, residence, signature, role_id
       )
     values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR},
       #{password,jdbcType=CHAR}, #{createAt,jdbcType=VARCHAR},
       #{lastLogin,jdbcType=VARCHAR},
       #{status,jdbcType=TINYINT}, #{birthday,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
-      #{imgUrl,jdbcType=LONGVARCHAR}, #{residence,jdbcType=LONGVARCHAR}, #{signature,jdbcType=LONGVARCHAR}
+      #{imgUrl,jdbcType=LONGVARCHAR}, #{residence,jdbcType=LONGVARCHAR}, #{signature,jdbcType=LONGVARCHAR}, #{roleId,jdbcType=VARCHAR}
       )
   </insert>
 
@@ -71,14 +71,16 @@
       sex = #{sex,jdbcType=VARCHAR},
       img_url = #{imgUrl,jdbcType=LONGVARCHAR},
       residence = #{residence,jdbcType=LONGVARCHAR},
-      signature = #{signature,jdbcType=LONGVARCHAR}
+      signature = #{signature,jdbcType=LONGVARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
   <!--通过user_id查找用户-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select user_id, phone, username, password, create_at, last_login,
-    status, birthday, sex, img_url, residence, signature
+    status, birthday, sex, img_url, residence, signature,
+    role_id
     from user
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
@@ -164,6 +166,9 @@ user_id, phone, username, password, create_at, last_login, status, birthday, sex
       </if>
       <if test="signature != null">
         signature = #{signature,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="roleId != null">
+        , role_id = #{roleId,jdbcType=VARCHAR}
       </if>
     </set>
     where

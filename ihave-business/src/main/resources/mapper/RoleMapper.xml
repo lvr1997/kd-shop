@@ -11,6 +11,12 @@
         <result property="createDate"          column="create_date"            />
     </resultMap>
 
+    <!-- 获取所有角色列表 -->
+    <select id="selectAllRoles" resultMap="SysRoleResult">
+        select id, role_id, role_name, commet, create_date 
+        from roles 
+        order by id
+    </select>
    
 
 </mapper>

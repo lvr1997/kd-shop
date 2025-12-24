@@ -14,7 +14,6 @@ import com.lvr.ihave.util.JSONResult;
 import com.lvr.ihave.util.MD5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -609,17 +608,106 @@ public class UserController {
      */
     @GetMapping("/list")
     public String userList(Model model){
-        List<SysUser> list = userService.getUserList();
+        List<SysUser> userList = userService.getUserList();
         //将用户列表添加到模型中
-        model.addAttribute("userList", list);
+        model.addAttribute("userList",userList);
         //跳转到用户列表页面
         return "user/list";
     }
 
+    /**
+     * 编辑用户页面
+     * @param id 用户ID
+     * @param model 模型
+     * @return
+     */
     @GetMapping("/edit")
-    public String editUser(Model model){
+    public String editUser(@RequestParam(value = "id", required = false) String id, Model model){
+        if(id != null){
+            // 修改操作，查询用户信息
+            SysUser user = userService.selectByPrimaryKey(id);
+            model.addAttribute("user", user);
+        }
         
+        // 获取所有角色列表并传递到页面
+        List<Roles> roleList = roleService.getAllRoles();
+        model.addAttribute("roleList", roleList);
+        
+        // 跳转到编辑页面
         return "user/edit";
+    }
+
+    /**
+     * 添加用户页面（重定向到编辑页面）
+     * @return
+     */
+    @GetMapping("/add")
+    public String addUserPage(){
+        // 重定向到编辑页面，id参数为空表示新增
+        return "redirect:/user/edit";
+    }
+
+    /**
+     * 添加用户
+     * @param user 用户信息
+     * @return
+     */
+    @PostMapping("/add")
+    @ResponseBody
+    public JSONResult addUser(SysUser user){
+        try {
+            // 验证角色ID是否为大写字母
+            if (user.getRoleId() != null && !user.getRoleId().matches("^[A-Z]+$")) {
+                return JSONResult.fail(StatusEnum.FAIL.getCode(),"角色ID必须为大写字母");
+            }
+            
+            // 设置用户名默认为手机号
+            if (user.getUsername() == null || user.getUsername().isEmpty()) {
+                user.setUsername(user.getPhone());
+            }
+            
+            // 密码加密
+            if (user.getPassword() != null) {
+                user.setPassword(MD5.md5(user.getPassword()));
+            }
+            
+            // 执行添加操作，ID由系统自动生成
+            userService.insert(user);
+            return JSONResult.success("用户添加成功");
+        } catch (Exception e) {
+            return JSONResult.fail(StatusEnum.FAIL.getCode(),"用户添加失败: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 修改用户
+     * @param user 用户信息
+     * @return
+     */
+    @PostMapping("/update")
+    @ResponseBody
+    public JSONResult updateUser(SysUser user){
+        try {
+            // 验证角色ID是否为大写字母
+            if (user.getRoleId() != null && !user.getRoleId().matches("^[A-Z]+$")) {
+                return JSONResult.fail(StatusEnum.FAIL.getCode(),"角色ID必须为大写字母");
+            }
+            
+            // 密码加密
+            if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+                user.setPassword(MD5.md5(user.getPassword()));
+            } else {
+                // 如果密码为空，不更新密码字段
+                SysUser existingUser = userService.selectByPrimaryKey(user.getUserId());
+                user.setPassword(existingUser.getPassword());
+            }
+            
+            // 执行更新操作
+            userService.updateByPrimaryKey(user);
+            return JSONResult.success("用户更新成功");
+        } catch (Exception e) {
+            return JSONResult.fail(StatusEnum.FAIL.getCode(),"用户更新失败: " + e.getMessage());
+        }
     }
 
 }

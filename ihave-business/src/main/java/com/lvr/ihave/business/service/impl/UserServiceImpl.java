@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.Random;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -30,7 +31,10 @@ public class UserServiceImpl implements UserService {
         SysUser user = userMapper.getUserByPhone(record.getPhone());
         if(user == null){
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            record.setUserId(UUID.randomUUID().toString());
+            // 生成六位随机数字ID
+            Random random = new Random();
+            String userId = String.format("%06d", random.nextInt(1000000));
+            record.setUserId(userId);
             record.setCreateAt(sdf.format(new Date()));
             return userMapper.insert(record);
         }else{
