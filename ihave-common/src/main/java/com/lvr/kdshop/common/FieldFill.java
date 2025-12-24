@@ -1,4 +1,4 @@
-package com.lvr.kdshop.common;/*
+package com.lvr.ihave.common;/*
  * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

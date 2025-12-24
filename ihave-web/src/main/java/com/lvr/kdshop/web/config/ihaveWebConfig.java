@@ -1,8 +1,8 @@
-package com.lvr.kdshop.web.config;
+package com.lvr.ihave.web.config;
 
-import com.lvr.kdshop.web.config.locale.MyLocaleResolver;
-import com.lvr.kdshop.web.interceptor.AdminInterceptor;
-import com.lvr.kdshop.web.interceptor.AuthenticationInterceptor;
+import com.lvr.ihave.web.config.locale.MyLocaleResolver;
+import com.lvr.ihave.web.interceptor.AdminInterceptor;
+import com.lvr.ihave.web.interceptor.AuthenticationInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
-public class KdShopWebConfig implements WebMvcConfigurer {
+public class ihaveWebConfig implements WebMvcConfigurer {
 
     /**图片地址*/
     @Value("${imagesPath}")

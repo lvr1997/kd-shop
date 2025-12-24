@@ -1,4 +1,4 @@
-package com.lvr.kdshop.constant;
+package com.lvr.ihave.constant;
 
 public enum StatusEnum {
     FAIL(100, "失败"),

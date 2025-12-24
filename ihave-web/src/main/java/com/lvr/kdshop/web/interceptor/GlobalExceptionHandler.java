@@ -1,11 +1,11 @@
-package com.lvr.kdshop.web.interceptor;
+package com.lvr.ihave.web.interceptor;
 
-import com.lvr.kdshop.constant.Constant;
-import com.lvr.kdshop.constant.StatusEnum;
-import com.lvr.kdshop.ex.PhoneNotFoundException;
-import com.lvr.kdshop.ex.UserPasswordErrorException;
-import com.lvr.kdshop.ex.UsernameTakenException;
-import com.lvr.kdshop.util.JSONResult;
+import com.lvr.ihave.constant.Constant;
+import com.lvr.ihave.constant.StatusEnum;
+import com.lvr.ihave.ex.PhoneNotFoundException;
+import com.lvr.ihave.ex.UserPasswordErrorException;
+import com.lvr.ihave.ex.UsernameTakenException;
+import com.lvr.ihave.util.JSONResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

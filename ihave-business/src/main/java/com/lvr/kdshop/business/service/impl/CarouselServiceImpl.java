@@ -1,8 +1,8 @@
-package com.lvr.kdshop.business.service.impl;
+package com.lvr.ihave.business.service.impl;
 
-import com.lvr.kdshop.business.mapper.CarouselMapper;
-import com.lvr.kdshop.business.service.CarouselService;
-import com.lvr.kdshop.pojo.Carousel;
+import com.lvr.ihave.business.mapper.CarouselMapper;
+import com.lvr.ihave.business.service.CarouselService;
+import com.lvr.ihave.pojo.Carousel;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

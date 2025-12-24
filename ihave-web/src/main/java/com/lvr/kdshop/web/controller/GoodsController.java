@@ -1,10 +1,10 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
-import com.lvr.kdshop.annotation.PassToken;
-import com.lvr.kdshop.business.service.*;
-import com.lvr.kdshop.constant.Constant;
-import com.lvr.kdshop.pojo.*;
-import com.lvr.kdshop.util.JSONResult;
+import com.lvr.ihave.annotation.PassToken;
+import com.lvr.ihave.business.service.*;
+import com.lvr.ihave.constant.Constant;
+import com.lvr.ihave.pojo.*;
+import com.lvr.ihave.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;

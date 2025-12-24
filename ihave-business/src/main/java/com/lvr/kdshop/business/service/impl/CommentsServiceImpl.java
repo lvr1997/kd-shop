@@ -1,8 +1,8 @@
-package com.lvr.kdshop.business.service.impl;
+package com.lvr.ihave.business.service.impl;
 
-import com.lvr.kdshop.business.mapper.CommentsMapper;
-import com.lvr.kdshop.business.service.CommentsService;
-import com.lvr.kdshop.pojo.Comments;
+import com.lvr.ihave.business.mapper.CommentsMapper;
+import com.lvr.ihave.business.service.CommentsService;
+import com.lvr.ihave.pojo.Comments;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

@@ -1,4 +1,4 @@
-package com.lvr.kdshop.ex;
+package com.lvr.ihave.ex;
 
 public class UserPasswordErrorException extends ServiceException{
     public UserPasswordErrorException() {

@@ -1,9 +1,9 @@
-package com.lvr.kdshop.business.service;
+package com.lvr.ihave.business.service;
 
 import com.github.pagehelper.PageInfo;
-import com.lvr.kdshop.business.utils.PageRequest;
-import com.lvr.kdshop.business.utils.PageResult;
-import com.lvr.kdshop.pojo.Catelog;
+import com.lvr.ihave.business.utils.PageRequest;
+import com.lvr.ihave.business.utils.PageResult;
+import com.lvr.ihave.pojo.Catelog;
 
 import java.util.HashMap;
 import java.util.List;

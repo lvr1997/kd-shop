@@ -1,4 +1,4 @@
-package com.lvr.kdshop.util;
+package com.lvr.ihave.util;
 
 /**
  * 分页结果的封装

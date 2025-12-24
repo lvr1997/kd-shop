@@ -1,4 +1,4 @@
-package com.lvr.kdshop.web.utils;
+package com.lvr.ihave.web.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

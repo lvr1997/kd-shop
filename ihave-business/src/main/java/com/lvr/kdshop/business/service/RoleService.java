@@ -1,6 +1,6 @@
-package com.lvr.kdshop.business.service;
+package com.lvr.ihave.business.service;
 
-import com.lvr.kdshop.pojo.Roles;
+import com.lvr.ihave.pojo.Roles;
 
 import java.util.Collection;
 import java.util.List;

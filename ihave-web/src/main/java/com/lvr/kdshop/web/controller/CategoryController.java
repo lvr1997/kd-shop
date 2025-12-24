@@ -1,9 +1,9 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
-import com.lvr.kdshop.business.service.CategoryService;
-import com.lvr.kdshop.business.utils.PageRequest;
-import com.lvr.kdshop.business.utils.PageResult;
-import com.lvr.kdshop.pojo.Catelog;
+import com.lvr.ihave.business.service.CategoryService;
+import com.lvr.ihave.business.utils.PageRequest;
+import com.lvr.ihave.business.utils.PageResult;
+import com.lvr.ihave.pojo.Catelog;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

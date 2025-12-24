@@ -1,6 +1,6 @@
-package com.lvr.kdshop.business.mapper;
+package com.lvr.ihave.business.mapper;
 
-import com.lvr.kdshop.pojo.Notice;
+import com.lvr.ihave.pojo.Notice;
 
 import java.util.List;
 

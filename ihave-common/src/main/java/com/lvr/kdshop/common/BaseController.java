@@ -1,8 +1,8 @@
-package com.lvr.kdshop.common;
+package com.lvr.ihave.common;
 
 
-import com.lvr.kdshop.util.ResuTree;
-import com.lvr.kdshop.util.ResultTable;
+import com.lvr.ihave.util.ResuTree;
+import com.lvr.ihave.util.ResultTable;
 
 /**
  * web层通用数据处理

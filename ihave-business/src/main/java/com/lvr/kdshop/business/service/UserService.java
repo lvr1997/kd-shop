@@ -1,7 +1,7 @@
-package com.lvr.kdshop.business.service;
+package com.lvr.ihave.business.service;
 
 
-import com.lvr.kdshop.pojo.SysUser;
+import com.lvr.ihave.pojo.SysUser;
 
 import java.util.List;
 

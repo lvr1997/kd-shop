@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.lvr.kdshop.business.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.lvr.kdshop.pojo.SysUser" >
+<mapper namespace="com.lvr.ihave.business.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.lvr.ihave.pojo.SysUser" >
     <id column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" javaType="java.lang.String" />
     <result column="phone" property="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -19,7 +19,7 @@
     <collection property="roles" javaType="java.util.List" resultMap="roleResultMap" />
   </resultMap>
 
-  <resultMap id="roleResultMap" type="com.lvr.kdshop.pojo.Roles">
+  <resultMap id="roleResultMap" type="com.lvr.ihave.pojo.Roles">
     <id column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
     <result column="role_id" property="roleId" jdbcType="VARCHAR" javaType="java.lang.String" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -43,7 +43,7 @@
   </delete>
 
   <!--添加用户-->
-  <insert id="insert" parameterType="com.lvr.kdshop.pojo.SysUser" useGeneratedKeys="true" keyProperty="">
+  <insert id="insert" parameterType="com.lvr.ihave.pojo.SysUser" useGeneratedKeys="true" keyProperty="">
 
     insert into user (user_id, phone, username,
       password, create_at,
@@ -60,7 +60,7 @@
   </insert>
 
   <!--通过id更新用户信息-->
-  <update id="updateByPrimaryKey" parameterType="com.lvr.kdshop.pojo.SysUser" >
+  <update id="updateByPrimaryKey" parameterType="com.lvr.ihave.pojo.SysUser" >
     update user
     set phone = #{phone,jdbcType=CHAR},
       username = #{username,jdbcType=VARCHAR},
@@ -109,7 +109,7 @@ user_id, phone, username, password, create_at, last_login, status, birthday, sex
   </select>
 
   <!--更新最后登录时间-->
-  <update id="updateLastLoginByPrimaryKey" parameterType="com.lvr.kdshop.pojo.SysUser">
+  <update id="updateLastLoginByPrimaryKey" parameterType="com.lvr.ihave.pojo.SysUser">
       update
        user
       set
@@ -132,7 +132,7 @@ user_id, phone, username, password, create_at, last_login, status, birthday, sex
   </update>
 
   <!--更新用户信息-->
-  <update id="updateByPrimaryKeySelective" parameterType="com.lvr.kdshop.pojo.SysUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lvr.ihave.pojo.SysUser">
     UPDATE
       USER
     <set>

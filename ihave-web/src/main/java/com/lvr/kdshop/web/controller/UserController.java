@@ -1,17 +1,17 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
 
 import cn.hutool.jwt.JWTUtil;
-import com.lvr.kdshop.annotation.PassToken;
-import com.lvr.kdshop.annotation.UserLoginToken;
-import com.lvr.kdshop.business.service.*;
-import com.lvr.kdshop.constant.Constant;
-import com.lvr.kdshop.constant.StatusEnum;
-import com.lvr.kdshop.ex.PhoneNotFoundException;
-import com.lvr.kdshop.ex.UsernameTakenException;
-import com.lvr.kdshop.pojo.*;
-import com.lvr.kdshop.util.JSONResult;
-import com.lvr.kdshop.util.MD5;
+import com.lvr.ihave.annotation.PassToken;
+import com.lvr.ihave.annotation.UserLoginToken;
+import com.lvr.ihave.business.service.*;
+import com.lvr.ihave.constant.Constant;
+import com.lvr.ihave.constant.StatusEnum;
+import com.lvr.ihave.ex.PhoneNotFoundException;
+import com.lvr.ihave.ex.UsernameTakenException;
+import com.lvr.ihave.pojo.*;
+import com.lvr.ihave.util.JSONResult;
+import com.lvr.ihave.util.MD5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

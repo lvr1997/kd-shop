@@ -1,4 +1,4 @@
-package com.lvr.kdshop.web;
+package com.lvr.ihave.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

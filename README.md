@@ -100,7 +100,7 @@ ihave项目对我而言，我想实现在我职业技术生涯中的一项新的
 
 1. 导入sql文件 在项目目录 `ihave-business\src\main\resources\ihave.sql` 文件夹下（该sql仅为结构）
 2. 导入测试数据 在项目目录 `ihave-business\src\main\resources\init-data.sql` 文件夹下
-3. `ihave-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
+3. `ihave-web` 模块为服务启动模块，运行`com.lvr.ihave.web.WebApplication`启动学生端`web`服务
 
 
 ## 🐞项目Bug与踩坑

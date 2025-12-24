@@ -1,8 +1,8 @@
-package com.lvr.kdshop.business.service.impl;
+package com.lvr.ihave.business.service.impl;
 
-import com.lvr.kdshop.business.mapper.AddressMapper;
-import com.lvr.kdshop.business.service.AddressService;
-import com.lvr.kdshop.pojo.Address;
+import com.lvr.ihave.business.mapper.AddressMapper;
+import com.lvr.ihave.business.service.AddressService;
+import com.lvr.ihave.pojo.Address;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

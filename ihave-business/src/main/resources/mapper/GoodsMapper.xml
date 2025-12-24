@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.lvr.kdshop.business.mapper.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.lvr.kdshop.pojo.Goods" >
+<mapper namespace="com.lvr.ihave.business.mapper.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.lvr.ihave.pojo.Goods" >
       <id column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <result column="cate_id" property="catelogId" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <result column="user_id" property="userId" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -25,7 +25,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.lvr.kdshop.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="com.lvr.ihave.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
 
     <!--
       WARNING - @mbggenerated
@@ -43,7 +43,7 @@
       #{viewCount,jdbcType=INTEGER}, #{describle,jdbcType=LONGVARCHAR})
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.lvr.kdshop.pojo.Goods" >
+  <update id="updateByPrimaryKey" parameterType="com.lvr.ihave.pojo.Goods" >
 
     <!--
       WARNING - @mbggenerated

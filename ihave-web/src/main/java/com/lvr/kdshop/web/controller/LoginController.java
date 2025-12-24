@@ -1,4 +1,4 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

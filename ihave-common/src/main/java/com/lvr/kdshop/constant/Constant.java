@@ -1,4 +1,4 @@
-package com.lvr.kdshop.constant;
+package com.lvr.ihave.constant;
 
 public class Constant {
 

@@ -1,4 +1,4 @@
-package com.lvr.kdshop.ex;
+package com.lvr.ihave.ex;
 
 public class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;

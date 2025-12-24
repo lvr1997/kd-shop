@@ -1,11 +1,11 @@
-package com.lvr.kdshop.business.service.impl;
+package com.lvr.ihave.business.service.impl;
 
-import com.lvr.kdshop.business.mapper.UserMapper;
-import com.lvr.kdshop.business.service.UserService;
-import com.lvr.kdshop.ex.PhoneNotFoundException;
-import com.lvr.kdshop.ex.UsernameTakenException;
-import com.lvr.kdshop.pojo.Roles;
-import com.lvr.kdshop.pojo.SysUser;
+import com.lvr.ihave.business.mapper.UserMapper;
+import com.lvr.ihave.business.service.UserService;
+import com.lvr.ihave.ex.PhoneNotFoundException;
+import com.lvr.ihave.ex.UsernameTakenException;
+import com.lvr.ihave.pojo.Roles;
+import com.lvr.ihave.pojo.SysUser;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

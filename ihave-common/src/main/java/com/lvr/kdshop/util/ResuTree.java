@@ -1,4 +1,4 @@
-package com.lvr.kdshop.util;
+package com.lvr.ihave.util;
 
 /**
  * Describe: Ajax 返回 Dtree 结果封装数据

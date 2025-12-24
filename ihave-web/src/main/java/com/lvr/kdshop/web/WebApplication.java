@@ -1,12 +1,12 @@
-package com.lvr.kdshop.web;
+package com.lvr.ihave.web;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@MapperScan("com.lvr.kdshop.business.mapper")
-@SpringBootApplication(scanBasePackages = "com.lvr.kdshop")
+@MapperScan("com.lvr.ihave.business.mapper")
+@SpringBootApplication(scanBasePackages = "com.lvr.ihave")
 public class WebApplication {
 
     public static void main(String[] args) {

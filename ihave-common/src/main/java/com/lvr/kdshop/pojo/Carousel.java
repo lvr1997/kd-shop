@@ -1,4 +1,4 @@
-package com.lvr.kdshop.pojo;
+package com.lvr.ihave.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

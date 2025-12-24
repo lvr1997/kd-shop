@@ -1,6 +1,6 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
-import com.lvr.kdshop.annotation.PassToken;
+import com.lvr.ihave.annotation.PassToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

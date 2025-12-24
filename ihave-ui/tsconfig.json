@@ -15,7 +15,7 @@
       "~/*": ["src/*"]
     },
     "skipLibCheck": true,
-    "types": ["element-plus/global"]
+    "types": []
   },
   "vueCompilerOptions": {
     "target": 3

@@ -1,6 +1,6 @@
-package com.lvr.kdshop.util;
+package com.lvr.ihave.util;
 
-import com.lvr.kdshop.constant.StatusEnum;
+import com.lvr.ihave.constant.StatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

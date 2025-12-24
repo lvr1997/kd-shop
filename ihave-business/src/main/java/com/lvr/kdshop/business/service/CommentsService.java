@@ -1,7 +1,7 @@
-package com.lvr.kdshop.business.service;
+package com.lvr.ihave.business.service;
 
 
-import com.lvr.kdshop.pojo.Comments;
+import com.lvr.ihave.pojo.Comments;
 
 import java.util.List;
 

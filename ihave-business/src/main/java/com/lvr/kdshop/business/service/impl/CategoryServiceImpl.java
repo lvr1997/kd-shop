@@ -1,13 +1,13 @@
-package com.lvr.kdshop.business.service.impl;
+package com.lvr.ihave.business.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lvr.kdshop.business.mapper.CategoryMapper;
-import com.lvr.kdshop.business.service.CategoryService;
-import com.lvr.kdshop.business.utils.PageRequest;
-import com.lvr.kdshop.business.utils.PageResult;
-import com.lvr.kdshop.business.utils.PageUtils;
-import com.lvr.kdshop.pojo.Catelog;
+import com.lvr.ihave.business.mapper.CategoryMapper;
+import com.lvr.ihave.business.service.CategoryService;
+import com.lvr.ihave.business.utils.PageRequest;
+import com.lvr.ihave.business.utils.PageResult;
+import com.lvr.ihave.business.utils.PageUtils;
+import com.lvr.ihave.pojo.Catelog;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

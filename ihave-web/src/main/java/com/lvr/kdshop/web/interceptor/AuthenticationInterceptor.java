@@ -1,13 +1,13 @@
-package com.lvr.kdshop.web.interceptor;
+package com.lvr.ihave.web.interceptor;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
-import com.lvr.kdshop.business.service.UserService;
-import com.lvr.kdshop.constant.Constant;
-import com.lvr.kdshop.constant.StatusEnum;
-import com.lvr.kdshop.ex.UsernameTakenException;
-import com.lvr.kdshop.pojo.SysUser;
-import com.lvr.kdshop.util.UserContext;
+import com.lvr.ihave.business.service.UserService;
+import com.lvr.ihave.constant.Constant;
+import com.lvr.ihave.constant.StatusEnum;
+import com.lvr.ihave.ex.UsernameTakenException;
+import com.lvr.ihave.pojo.SysUser;
+import com.lvr.ihave.util.UserContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

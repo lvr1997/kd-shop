@@ -1,11 +1,11 @@
-package com.lvr.kdshop.web.controller;
+package com.lvr.ihave.web.controller;
 
 
-import com.lvr.kdshop.annotation.UserLoginToken;
-import com.lvr.kdshop.business.service.AddressService;
-import com.lvr.kdshop.pojo.Address;
-import com.lvr.kdshop.pojo.SysUser;
-import com.lvr.kdshop.util.JSONResult;
+import com.lvr.ihave.annotation.UserLoginToken;
+import com.lvr.ihave.business.service.AddressService;
+import com.lvr.ihave.pojo.Address;
+import com.lvr.ihave.pojo.SysUser;
+import com.lvr.ihave.util.JSONResult;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Generated;

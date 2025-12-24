@@ -1,4 +1,4 @@
-package com.lvr.kdshop.util;
+package com.lvr.ihave.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

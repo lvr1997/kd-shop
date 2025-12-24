@@ -46,7 +46,7 @@ spring:
 
 mybatis:  #mybatyis的配置
   mapper-locations: classpath*:mapper/*.xml #指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件。
-  type-aliases-package: com.lvr.kdshop.pojo
+  type-aliases-package: com.lvr.ihave.pojo
   config-location: classpath:mybatis/mybatis-config.xml
 
 # 日志

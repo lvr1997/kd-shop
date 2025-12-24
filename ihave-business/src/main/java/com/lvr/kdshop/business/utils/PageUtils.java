@@ -1,4 +1,4 @@
-package com.lvr.kdshop.business.utils;
+package com.lvr.ihave.business.utils;
 
 import com.github.pagehelper.PageInfo;
 

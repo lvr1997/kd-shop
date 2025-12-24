@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.lvr.kdshop</groupId>
+    <groupId>com.lvr.ihave</groupId>
     <artifactId>ihave-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -18,13 +18,13 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.lvr.kdshop</groupId>
+            <groupId>com.lvr.ihave</groupId>
             <artifactId>ihave-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.lvr.kdshop.business</groupId>
+            <groupId>com.lvr.ihave.business</groupId>
             <artifactId>ihave-business</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

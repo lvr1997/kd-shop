@@ -1,6 +1,6 @@
-package com.lvr.kdshop.business.mapper;
+package com.lvr.ihave.business.mapper;
 
-import com.lvr.kdshop.pojo.Address;
+import com.lvr.ihave.pojo.Address;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

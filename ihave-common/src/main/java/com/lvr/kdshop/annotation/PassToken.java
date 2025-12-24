@@ -1,4 +1,4 @@
-package com.lvr.kdshop.annotation;
+package com.lvr.ihave.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

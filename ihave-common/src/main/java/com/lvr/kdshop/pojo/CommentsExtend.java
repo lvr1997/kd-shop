@@ -1,4 +1,4 @@
-package com.lvr.kdshop.pojo;
+package com.lvr.ihave.pojo;
 
 public class CommentsExtend {
     private Goods goods;

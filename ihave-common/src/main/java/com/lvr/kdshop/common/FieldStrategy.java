@@ -1,4 +1,4 @@
-package com.lvr.kdshop.common;
+package com.lvr.ihave.common;
 
 /**
  * 字段策略枚举类

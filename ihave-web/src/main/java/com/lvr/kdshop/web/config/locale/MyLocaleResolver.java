@@ -1,4 +1,4 @@
-package com.lvr.kdshop.web.config.locale;
+package com.lvr.ihave.web.config.locale;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
