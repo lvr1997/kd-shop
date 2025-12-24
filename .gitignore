@@ -32,8 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 !**/node_modules/
-kd-shop-vue/node_modules/
+ihave-vue/node_modules/
 
-kd-shop-business/bin/
-kd-shop-common/bin/
-kd-shop-web/bin/
+ihave-business/bin/
+ihave-common/bin/
+ihave-web/bin/

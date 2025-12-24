@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.lvr</groupId>
-    <artifactId>kd-shop</artifactId>
+    <artifactId>ihave</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>kd-shop</name>
+    <name>ihave</name>
     <description>科大二手工坊2.0</description>
     <packaging>pom</packaging>
 
@@ -32,8 +32,8 @@
     </dependencies>
 
     <modules>
-        <module>kd-shop-common</module>
-        <module>kd-shop-business</module>
-        <module>kd-shop-web</module>
+        <module>ihave-common</module>
+        <module>ihave-business</module>
+        <module>ihave-web</module>
     </modules>
 </project>

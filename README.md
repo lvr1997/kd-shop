@@ -9,7 +9,7 @@
 > 项目前端分为两部分。一个是学生端前台，另一个是管理员端后台（前后端同库）
 🙋‍♀️而如今，由于我个人职业发展因素的变更以及前端技术的不断更新迭代，我想就这个项目，完成一个新的尝试。也作为我毕业这么长时间以来，对前端方面学习上的一些总结吧。
 
-kd-shop项目对我而言，我想实现在我职业技术生涯中的一项新的挑战。
+ihave项目对我而言，我想实现在我职业技术生涯中的一项新的挑战。
 
 > 2.0版本其实早就应该和大家见面的，奈何由于个人时间精力原因，一直耽搁了这么久，让大家久等了。。。
 
@@ -38,7 +38,7 @@ kd-shop项目对我而言，我想实现在我职业技术生涯中的一项新�
 2. 在用户登录之后，只能查看校内发布的闲置物品，并且仅可在本校内交易
 3. 由后台系统管理员维护学校信息，学生用户在前台注册账号时，学校信息一经选择不得更改
 
-![kd-shop.png](./src/scanshoot/kd-shop.png)
+![ihave.png](./src/scanshoot/ihave.png)
 
 ## 项目更新记录
 
@@ -92,15 +92,15 @@ kd-shop项目对我而言，我想实现在我职业技术生涯中的一项新�
 
 ### 各模块说明
 
-`kd-shop-common` 项目通用实体，工具类、自定义注解等
-`kd-shop-business` 业务代码模块
-`kd-shop-web` `web`启动模块
+`ihave-common` 项目通用实体，工具类、自定义注解等
+`ihave-business` 业务代码模块
+`ihave-web` `web`启动模块
 
 ### 如何启动项目
 
-1. 导入sql文件 在项目目录 `kd-shop-business\src\main\resources\kd-shop.sql` 文件夹下（该sql仅为结构）
-2. 导入测试数据 在项目目录 `kd-shop-business\src\main\resources\init-data.sql` 文件夹下
-3. `kd-shop-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
+1. 导入sql文件 在项目目录 `ihave-business\src\main\resources\ihave.sql` 文件夹下（该sql仅为结构）
+2. 导入测试数据 在项目目录 `ihave-business\src\main\resources\init-data.sql` 文件夹下
+3. `ihave-web` 模块为服务启动模块，运行`com.lvr.kdshop.web.WebApplication`启动学生端`web`服务
 
 
 ## 🐞项目Bug与踩坑
