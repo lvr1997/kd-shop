@@ -36,4 +36,12 @@
         <module>ihave-business</module>
         <module>ihave-web</module>
     </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/lvr1997/i-have</url>
+        </repository>
+    </distributionManagement>
 </project>
