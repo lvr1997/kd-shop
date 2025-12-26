@@ -172,7 +172,7 @@ user_id, phone, username, password, create_at, last_login, status, birthday, sex
       </if>
     </set>
     where
-      id = #{id,jdbcType=VARCHAR}
+      user_id = #{userId,jdbcType=VARCHAR}
   </update>
 
   <select id="checkUserByPhone" resultType="java.lang.Integer">

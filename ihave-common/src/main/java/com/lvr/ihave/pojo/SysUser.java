@@ -45,11 +45,11 @@ public class SysUser {
         this.username = username;
     }
 
-    public String getPhone() {
-        if(this.phone != null && this.phone != ""){
-            this.phone = this.phone.replaceAll("(\\w{3})\\w*(\\w{4})", "$1****$2");
-        }
-        return this.phone;
-    }
+    // public String getPhone() {
+    //     if(this.phone != null && this.phone != ""){
+    //         this.phone = this.phone.replaceAll("(\\w{3})\\w*(\\w{4})", "$1****$2");
+    //     }
+    //     return this.phone;
+    // }
 
 }

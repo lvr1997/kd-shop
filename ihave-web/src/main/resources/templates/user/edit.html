@@ -49,7 +49,10 @@
             <div th:replace="~{commons/common::sidebar(active='user')}"></div>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <h2>编辑用户信息</h2>
-                <form method="post" th:action="${user?.userId != null} ? @{'/user/update'} : @{'/user/add'}">
+                <div class="alert alert-danger" role="alert" th:if="${errorMsg != null}">
+                    <strong>错误：</strong>[[${errorMsg}]]
+                </div>
+                <form method="post" th:action="@{/user/update}">
                     <input type="hidden" name="userId" th:value="${user?.userId}">
                     <div class="form-group" th:if="${user?.userId != null}">
                         <label for="userId">用户ID：</label>
@@ -67,15 +70,9 @@
                                placeholder="请输入手机号" required pattern="[0-9]{11}" title="请输入11位手机号">
                     </div>
                     <div class="form-group">
-                        <label for="password">密码：</label>
-                        <input type="password" name="password" th:value="${user?.password}" class="form-control" id="password" 
-                               th:required="${user?.userId == null}" placeholder="请输入密码">
-                        <small class="form-text text-muted" th:if="${user?.userId != null}">修改时如果不输入密码，将保留原密码</small>
-                    </div>
-                    <div class="form-group">
                         <label for="roleId">角色：</label>
                         <select name="roleId" class="form-control" id="roleId" 
-                                th:readonly="${user?.userId != null}" required>
+                                th:value="${user?.roleId}" required>
                             <option value="">请选择角色</option>
                             <option th:each="role : ${roleList}" 
                                     th:value="${role.roleId}" 
@@ -83,7 +80,40 @@
                                     th:selected="${user?.roleId == role.roleId}">
                             </option>
                         </select>
-                        <small class="form-text text-muted" th:if="${user?.userId != null}">角色新增后不可修改</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">生日：</label>
+                        <input type="date" name="birthday" th:value="${user?.birthday}" class="form-control" id="birthday" 
+                               placeholder="请选择生日">
+                    </div>
+                    <div class="form-group">
+                        <label>性别：</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sex" id="sexMale" value="男" 
+                                   th:checked="${user?.sex == '男'}">
+                            <label class="form-check-label" for="sexMale">男</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sex" id="sexFemale" value="女" 
+                                   th:checked="${user?.sex == '女'}">
+                            <label class="form-check-label" for="sexFemale">女</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sex" id="sexUnknown" value="未知" 
+                                   th:checked="${user?.sex == null or user?.sex == '未知'}">
+                            <label class="form-check-label" for="sexUnknown">未知</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="imgUrl">头像：</label>
+                        <div class="input-group">
+                            <input type="text" name="imgUrl" th:value="${user?.imgUrl}" class="form-control" id="imgUrl" 
+                                   placeholder="头像地址（暂不支持上传，请输入图片URL）" readonly>
+                            <div class="input-group-append">
+                                <span class="input-group-text">默认头像</span>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">当前版本暂不支持图片上传，使用默认头像</small>
                     </div>
                     <button type="submit" class="btn btn-primary">保存</button>
                     <button type="reset" class="btn btn-secondary">重置</button>
@@ -108,8 +138,8 @@
         // 表单提交前的验证
         document.querySelector('form').addEventListener('submit', function(e) {
             let roleId = document.getElementById('roleId').value;
-            if (roleId && !/^[A-Z]+$/.test(roleId)) {
-                alert('角色ID必须为大写字母');
+            if (!roleId) {
+                alert('请选择角色');
                 e.preventDefault();
                 return false;
             }

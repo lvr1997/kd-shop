@@ -53,7 +53,7 @@
                                     <span th:unless="${data.getRole() != null}">--</span>
                                 </td>
                                 <td>
-                                    <a class="btn btn-sm btn-primary" th:href="@{'/user/edit(id='+${data.getUserId()}+')'}">
+                                    <a class="btn btn-sm btn-primary" th:href="@{'/user/edit/'+${data.getUserId()}}">
                                         修改
                                     </a>
                                     <a class="btn btn-sm btn-danger"
